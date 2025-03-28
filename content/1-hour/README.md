@@ -34,7 +34,7 @@ You will also need the following available and installed locally:
 
 - A recent [Node.js runtime][nodejs-link].
 - A recent version of [Python][python-link].
-  - NOTE: If you are on Windows install Python from the [Windows store][python-windows-link] to ensure Pyhon is properly configured after installation. 
+  - NOTE: If you are on Windows install Python from the [Windows store][python-windows-link] to ensure Python is properly configured after installation. 
 - The [git CLI][git-link].
 - A shell capable of running BASH commands.
 
