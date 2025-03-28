@@ -34,6 +34,7 @@ You will also need the following available and installed locally:
 
 - A recent [Node.js runtime][nodejs-link].
 - A recent version of [Python][python-link].
+  - For Windows, you can install [Python via the Windows store](https://apps.microsoft.com/detail/9pjpw5ldxlz5?hl=en-US&gl=US).
 - The [git CLI][git-link].
 - A shell capable of running BASH commands.
 
@@ -65,5 +66,6 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 [stage-4]: ./4-add-feature.md
 [walkthrough-previous]: ../README.md
 [walkthrough-next]: ./0-setup.md
+[windows-python-link]: https://apps.microsoft.com/detail/9pjpw5ldxlz5
 [windows-subsystem-linux]: https://learn.microsoft.com/en-us/windows/wsl/about
 [vscode-link]: https://code.visualstudio.com/
