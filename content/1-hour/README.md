@@ -34,6 +34,7 @@ You will also need the following available and installed locally:
 
 - A recent [Node.js runtime][nodejs-link].
 - A recent version of [Python][python-link].
+  - NOTE: If you are on Windows install Python from the [Windows store][python-windows-link] to ensure Python is properly configured after installation. 
 - The [git CLI][git-link].
 - A shell capable of running BASH commands.
 
@@ -59,6 +60,7 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 [github-account]: https://github.com/join
 [nodejs-link]: https://nodejs.org/en
 [python-link]: https://www.python.org/
+[python-windows-link]: https://apps.microsoft.com/detail/9PNRBTZXMB4Z?hl=en-us&gl=US&ocid=pdpshare
 [stage-1]: ./1-add-endpoint.md
 [stage-2]: ./2-explore-project.md
 [stage-3]: ./3-copilot-instructions.md
