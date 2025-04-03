@@ -18,7 +18,6 @@ Here's some ideas of how you could continue to grow and build upon what you've d
 - Add a form to allow a user to apply to adopt a dog if the dog is available.
 - Add a form to allow users to register a dog they found.
 
-
 | [← Add the filter feature][walkthrough-previous] | [Next: Pets workshop selection →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
 

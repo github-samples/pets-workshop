@@ -38,6 +38,11 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 7. [Use the GitHub flow][github-flow] to incorporate changes into your codebase
 8. [Deploy your application][deployment] to Azure to make your application available to users
 
+## Check out these resources to dive in and learn more
+Check out the resources in [**GitHub-Copilot-Resources.md**][GitHub-Copilot-Resources]. 
+
+This resource list has been carefully curated to help you to learn more about GitHub Copilot, how to use it effectively, what is coming in the future and more. There are even YouTube playlists that include the latest videos from the GitHub Developer Relations team and others from GitHub. 
+
 | [← Pets workshop selection][walkthrough-previous] | [Next: Workshop setup →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
 
@@ -59,3 +64,4 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 [testing]: ./4-testing.md
 [walkthrough-next]: ./0-setup.md
 [walkthrough-previous]: ../README.md
+[GitHub-Copilot-Resources]: ../GitHub-Copilot-Resources.md

@@ -51,6 +51,11 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 3. [Create custom instructions][stage-3] to ensure Copilot chat has additional context.
 4. [Add the new feature][stage-4] to the website, and ensure it works!
 
+## Check out these resources to dive in and learn more
+Check out the resources in [**GitHub-Copilot-Resources.md**][GitHub-Copilot-Resources]. 
+
+This resource list has been carefully curated to help you to learn more about GitHub Copilot, how to use it effectively, what is coming in the future and more. There are even YouTube playlists that include the latest videos from the GitHub Developer Relations team and others from GitHub. 
+
 | [← Pets workshop selection][walkthrough-previous] | [Next: Workshop setup →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
 
@@ -69,3 +74,4 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 [windows-python-link]: https://apps.microsoft.com/detail/9pjpw5ldxlz5
 [windows-subsystem-linux]: https://learn.microsoft.com/en-us/windows/wsl/about
 [vscode-link]: https://code.visualstudio.com/
+[GitHub-Copilot-Resources]: ../GitHub-Copilot-Resources.md
