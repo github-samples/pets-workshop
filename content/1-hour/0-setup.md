@@ -1,86 +1,66 @@
 # Workshop setup
 
-| [← Getting started with GitHub Copilot][walkthrough-previous] | [Next: Coding with GitHub Copilot →][walkthrough-next] |
-|:-----------------------------------|------------------------------------------:|
+To complete this workshop you will need to clone a repository with a copy of the contents of this repository
 
-To complete this workshop you will need to create a repository with a copy of the contents of this repository. While this can be done by [forking a repository][fork-repo], the goal of a fork is to eventually merge code back into the original (or upstream) source. In our case we want a separate copy as we don't intend to merge our changes. This is accomplished through the use of a [template repository][template-repo]. Template repositories are a great way to provide starters for your organization, ensuring consistency across projects.
+> [!Hint]
+> Under regular conditions you would need to ensure all requirements, but don't worry. We have ensured this environment as all you need.
 
-The repository for this workshop is configured as a template, so we can use it to create your repository.
+## Configure GitHub Copilot
 
-> [!IMPORTANT]
-> Ensure you have the [requisite software][required-software] and [requisite resources][required-resources] setup.
+> [!NOTE]
+> For your convenience we have the username and password on the instructions, but you can also see their values in the **Resources** tab
 
-## Create your repository
 
-Let's create the repository you'll use for your workshop.
+1. [] Open Visual Studio Code
+2. [] Click on Copilot icon on top bar (left side next to the search input box)
 
-1. Navigate to [the repository root](/)
-2. Select **Use this template** > **Create a new repository**
+![Copilot icon](./images/0-copilot-icon.png)
 
-    ![Screenshot of Use this template dropdown](images/0-setup-template.png)
+3. [] Click on **Open Chat** option
+4. [] If there is a login button on the chat window, click it, otherwise type something and press enter in the chat input box to force the login window
+5. [] Click on **Sign In** blue button on the modal window
+6. [] A browser will automatically open, enter on the login input `user_events` (the password input will be greyed out once you enter the username) click on green **Sign in** button
+7. [] Click **Continue** button on the **Single sign-on** page
+8. [] Enter +++@lab.CloudPortalCredential(User1).Username+++ on the **Email, phone, or Skype** input box and click on **Next**
+9. [] Enter ++++++@lab.CloudPortalCredential(User1).Password+++ on the password field and click on **Sign in** button
+10. [] Click **open**  browser asks for the confirmation (**This site is trying to open Visual Studio Code.**)
+11dum. [] After Copilot is setup you should now have a **Walkthrough: GitHub Copilot Chat** open tab in Visual Studio Code
 
-3. Under **Owner**, select the name of your GitHub handle, or the owner specified by your workshop leader.
-4. Under **Repository**, set the name to **pets-workshop**, or the name specified by your workshop leader.
-5. Ensure **Public** is selected for the visibility, or the value indicated by your workshop leader.
-6. Select **Create repository from template**.
+We are now ready to start working on our code with the help of Copilot.
 
-    ![Screenshot of configured template creation dialog](images/0-setup-configure.png)
+## Clone lab repository
 
-In a few moments a new repository will be created from the template for this workshop!
+Let's clone the repository you'll use for the lab.
 
-## Clone the repository and start the app
+1. [] Click on the Source Control icon on the left sidebar
 
-With the repository created, it's now time to clone the repository locally. We'll do this from a shell capable of running BASH commands.
+![Source control icon](./images/0-source-control-icon.png)
 
-1. Copy the URL for the repository you just created in the prior set.
-2. Open your terminal or command shell.
-3. Run the following command to clone the repository locally (changing directories to a parent directory as appropriate):
+2. [] Click on **Clone Repository** button
+3. [] Type `https://github.com/github-samples/pets-workshop` and press enter.
+4. [] Select the repository destination folder (suggestion: use the one is automatically shown. The user home folder) by clicking in **Select as Repository Destination** button.
+    - Note: The repository will be cloned to **SELECTED FOLDER/pets-workshop**
+5. [] Click **Open** button when asked if you **Would like to open the cloned repository?**
+6. [] Click the **Yes, I trust the authors** button when asked.
 
-    ```sh
-    git clone <INSERT_REPO_URL_HERE>
+The code is now opened in Visual Studio, feel free to take a look at it or skip to the next section to start the app.
+
+## Start the app
+
+1. [] Click on **...** (three dots, or **Terminal** if already visible) on the menu bar at the top and then select **Terminal -> New Terminal**
+2. [] Start the application by running the following command on the terminal:
+
+    ```pwsh
+    .\scripts\start-app.ps1
     ```
 
-4. Change directories into the cloned repository by running the following command:
+The startup script will install dependencies and start two applications:
 
-    ```sh
-    cd <REPO_NAME_HERE>
-    ```
+- The backend Flask app on **http://localhost:5100**. You can see a list of dogs by opening the the url ++http://localhost:5100/api/dogs++
+- The frontend Astro/Svelte app on ++http://localhost:4321++. You can see the by opening that URL.
 
-5. Start the application by running the following command:
-
-    ```sh
-    ./scripts/start-app.sh
-    ```
-
-The startup script will start two applications:
-
-- The backend Flask app on [localhost:5100][flask-url]. You can see a list of dogs by opening the [dogs API][dogs-api].
-- The frontend Astro/Svelte app on [localhost:4321][astro-url]. You can see the [website][website-url] by opening that URL.
-
-## Open your editor
-
-With the code cloned locally, and the site running, let's open the codebase up in VS Code.
-
-1. Open VS Code.
-2. Select **File** > **Open Folder**.
-3. Navigate to the folder which contains the project you cloned earlier in this exercise.
-4. With the folder highlighted, select **Open folder**.
+- [] Try it now, open a browser and navigate to the links provided above.
 
 ## Summary and next steps
 
-You've now cloned the repository you'll use for this workshop and have your IDE setup! Next let's [add a new endpoint to the server][walkthrough-next]!
-
-
-| [← Getting started with GitHub Copilot][walkthrough-previous] | [Next: Coding with GitHub Copilot →][walkthrough-next] |
-|:-----------------------------------|------------------------------------------:|
-
-[astro-url]: http://localhost:4321
-[dogs-api]: http://localhost:5100/api/dogs
-[flask-url]: http://localhost:5100
-[fork-repo]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[required-resources]: ./README.md#required-resources
-[required-software]: ./README.md#required-local-installation
-[template-repo]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository
-[walkthrough-previous]: README.md
-[walkthrough-next]: ./1-add-endpoint.md
-[website-url]: http://localhost:4321
+You've now cloned the repository you'll use for this workshop and have GitHub Copilot setup! Next let's **add a new endpoint to the server**
