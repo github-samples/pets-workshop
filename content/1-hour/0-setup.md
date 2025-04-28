@@ -3,7 +3,7 @@
 To complete this workshop you will need to clone a repository with a copy of the contents of this repository
 
 > [!Hint]
-> Under regular conditions you would need to ensure all requirements, but don't worry. We have ensured this environment as all you need.
+> Under regular conditions you would need to ensure all requirements, but don't worry. We have ensured this environment has all you need.
 
 ## Configure GitHub Copilot
 
@@ -22,7 +22,7 @@ To complete this workshop you will need to clone a repository with a copy of the
 6. [] A browser will automatically open, enter on the login input `user_events` (the password input will be greyed out once you enter the username) click on green **Sign in** button
 7. [] Click **Continue** button on the **Single sign-on** page
 8. [] Enter +++@lab.CloudPortalCredential(User1).Username+++ on the **Email, phone, or Skype** input box and click on **Next**
-9. [] Enter ++++++@lab.CloudPortalCredential(User1).Password+++ on the password field and click on **Sign in** button
+9. [] Enter +++@lab.CloudPortalCredential(User1).Password+++ on the password field and click on **Sign in with your entity provider** button
 10. [] Click **open**  browser asks for the confirmation (**This site is trying to open Visual Studio Code.**)
 11dum. [] After Copilot is setup you should now have a **Walkthrough: GitHub Copilot Chat** open tab in Visual Studio Code
 
