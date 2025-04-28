@@ -23,9 +23,10 @@ To complete this workshop you will need to clone a repository with a copy of the
 7. [] Click **Continue** button on the **Single sign-on** page
 8. [] Enter +++@lab.CloudPortalCredential(User1).Username+++ on the **Email, phone, or Skype** input box and click on **Next**
 9. [] Enter +++@lab.CloudPortalCredential(User1).Password+++ on the password field and click on **Sign in with your entity provider** button
-10. [] Authorize the user by clicking continue and authorize VS Code access to user email by clicking on **Authorize....*** button
-11. [] Click **open**  browser asks for the confirmation (**This site is trying to open Visual Studio Code.**)
-12. [] After Copilot is setup you should now have a **Walkthrough: GitHub Copilot Chat** open tab in Visual Studio Code
+10. [] Click **open**  browser asks for the confirmation (**This site is trying to open Visual Studio Code.**)
+11. [] Authorize the user by clicking continue and authorize VS Code access to user email by clicking on **Authorize....*** button
+12. [] Click **open**  browser asks for the confirmation (**This site is trying to open Visual Studio Code.**)
+13. [] After Copilot is setup you should now have a **Walkthrough: GitHub Copilot Chat** open tab in Visual Studio Code
 
 We are now ready to start working on our code with the help of Copilot.
 
