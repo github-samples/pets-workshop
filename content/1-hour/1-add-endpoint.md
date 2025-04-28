@@ -39,7 +39,10 @@ Let's build our new route in our Flask backend with the help of code completion.
     ```
 
 6. []  Once you see the full function signature, select <kbd>Tab</kbd> to accept the code suggestion.
-   > [!HINT] You can also use <kbd>control</kbd><kbd>Right Arrow</kbd> to accept a single word at a time.
+
+> [!Hint] 
+> You can also use <kbd>control</kbd>+<kbd>Right Arrow</kbd> to accept a single word at a time.
+
 7. []  If it didn't already, code completion should then suggest the remainder of the function signature; just as before select <kbd>Tab</kbd> to accept the code suggestion.
     
     The code generated should look a little like this:
