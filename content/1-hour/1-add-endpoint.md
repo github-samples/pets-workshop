@@ -71,7 +71,9 @@ Let's build our new route in our Flask backend with the help of code completion.
 8. [] Let's add a comment to the newly created function. To do this, place your cursor inside the function (anywhere between the lines **def get_breeds...** and **return jsonify...**). Then, press <kbd>Control</kbd>+<kbd>I</kbd> to open the editor inline chat. 
 In the input box, type **/doc**. (You can optionally provide additional details, but it's not required). This will prompt GitHub Copilot to generate a documentation comment for the function. The suggested comment will appear inline in the code (highlighted in green). Click **Accept** to apply the comment to your code, or click **Close** to discard the suggestion. 
 
-> [!TIP]You just used a slash command, a shortcut to streamline a task, these commands eliminate the need for verbose prompts.
+> [!TIP] 
+> You just used a slash command, a shortcut to streamline a task, these commands eliminate the need for verbose prompts.
+> ![doc slash command](images/1-doc-slash-command-suggestion.png)
 
 9. []  **Save** the file.
 
@@ -79,9 +81,9 @@ In the input box, type **/doc**. (You can optionally provide additional details,
 
 With the code created and saved, let's quickly validate the endpoint to ensure it works.
 
-1. []  Navigate to ++http://localhost:5100/api/breeds++ on the browser to validate the new route. You should see JSON displayed which contains the list of breeds!
+1. []  Navigate to +++http://localhost:5100/api/breeds+++ on the browser to validate the new route. You should see JSON displayed which contains the list of breeds!
 2. [] Let's commit the changes locally, click on the Source control icon on the left sidebar
-3. [] Click on the **+** icon so stage **server/app.py**
+3. [] Click on the **+** icon to stage **server/app.py**
 4. [] On the commit message box click on the icon with two stars, Copilot is going to create the commit message for you
 5. [] Click on the **Commit** blue button to commit locally if you are happy with the commit message, otherwise adjust the message before committing.
   - Don't try to push the changes (by pushing or synching), you do not have write permissions on the repository.

@@ -23,13 +23,16 @@ GitHub Copilot Chat has a set of available [chat participants][chat-participants
 > You can open Chat by clicking on GitHub Copilot icon at the top bar and then choose **Open Chat** or use <kbd>Control</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>
 
 4. []  Select the **+** icon towards the top of Copilot chat to begin a new chat.
-5. []  Type **@workspace** in the chat prompt window and hit <kbd>tab</kbd> to select or activate it, then continue by asking Copilot about your project. You can ask what technologies are in use, what the project does, where functionality resides, etc.
+5. []  Type `@workspace` in the chat prompt window and hit <kbd>tab</kbd> to select or activate it, then continue by asking Copilot about your project. You can ask what technologies are in use, what the project does, where functionality resides, etc.
 
-6. []  Spend a few minutes exploring to find the answers to the following questions:
+> [!NOTE]
+> You may be asked to authenticate again, if that happens follow the process you have followed before (this time you won't need to enter the credentials).
+
+6. []  Spend a few minutes exploring to find the answers to the following questions (don't forget the **@workspace**where i):
     - Where's the database the project uses?
     - What files are involved in listing dogs?
 
-> [!Knowledge] Did you noticed that when files were referenced, there is a icon in front of the name? if you click on it, it will open the file on the editor.
+> [!Knowledge] Did you notice that when files are referenced, there's an icon in front of the name? If you click on it, it will open the file in the editor. Those files are part of the prompt Context.
 
 ## Summary and next steps
 

@@ -29,7 +29,7 @@ Adding the filters to the page will require updating a minimum of two files - th
     - If asked **Changing the chat mode mode will end your current session. Would you like to continue?** click **Yes**
     - If you were already on Copilot Edit mode, press **+** to start a new chat.
 6. []  If available, select **Claude 3.5 Sonnet** from the list of available models
-7. []  Select **Add Context...** in the chat window.
+7. []  Click **Add Context...** in the chat window.
 8. []  Select **server/app.py** and **client/src/components/DogList.svelte** files (you need to select **Add context** for each file) 
 
 > [!TIP]
@@ -70,7 +70,7 @@ You can also keep or undo all changes made.
 And
 
 1. []  Review the code suggestions to ensure they behave the way you expect them to, making any necessary changes. Once you're satisfied, you can select **Keep** on the files individually or in Copilot Chat to accept all changes.
-2. []  Open the page at ++http://localhost:4321++ to see the updates!
+2. []  Open the page at +++http://localhost:4321+++ to see the updates!
 3. []  Run the Python tests by running the following commands (you might want to open a new terminal)
    - `./venv/Scripts/Activate.ps1`
    - `python -m unittest discover -s server` ensure all tests pass (3 tests should pass)
