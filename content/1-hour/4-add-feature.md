@@ -23,7 +23,7 @@ Adding the filters to the page will require updating a minimum of two files - th
 
 1. []  Return to Visual Studio Code.
 2. []  Close any tabs you may have open in your VS Code to ensure Copilot chat has an empty context.
-3. []  Enable Auto Save by selecting **File** > **Auto Save**.
+3. []  Enable Auto Save by selecting **File** > **Auto Save**. (top left menu)
 4. []  Open or switch to GitHub Copilot Chat.
 5. []  Switch to edit mode by selecting **Edit** in the chat mode dropdown at the bottom of Chat view (should be currently **Ask**)
     - If asked **Changing the chat mode mode will end your current session. Would you like to continue?** click **Yes**

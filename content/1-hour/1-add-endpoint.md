@@ -9,7 +9,7 @@ It's standard to work in phases when adding functionality to an application. Giv
 The application uses a Flask app with SQLAlchemy as the backend API (in the [/server][server-code] folder), and an Astro app with Svelte as the frontend (in the [/client][client-code] folder). You will explore more of the project later; this exercise will focus solely on the Flask application.
 
 > [!NOTE]
-> As you begin making changes to the application, there is always a chance a breaking change could be created. If the page stops working, check the terminal window you used previously to start the application for any error messages. You can stop the app by using <kbd>Ctl</kbd>+<kbd>C</kbd>, and restart it by running `./scripts/start-app.ps1`.
+> As you begin making changes to the application, there is always a chance a breaking change could be created. If the page stops working, check the terminal window you used previously to start the application for any error messages. You can stop the app by using <kbd>Control</kbd>+<kbd>C</kbd>, and restart it by running `./scripts/start-app.ps1`.
 
 ## Flask routes
 
@@ -68,7 +68,11 @@ Let's build our new route in our Flask backend with the help of code completion.
 > [!IMPORTANT]
 > Because LLMs are probabilistic, not deterministic, the exact code generated can vary. The above is a representative example. If your code is different, that's just fine as long as it works!
 
-8. [] Add a comment to the newly created function. To do this, place your cursor inside the function (anywhere between the lines **def get_breeds...** and **return jsonify...**). Then, press <kbd>Ctl</kbd>+<kbd>I</kbd> (or <kbd>cmd</kbd>+<kbd>I</kbd> on a Mac) to open the editor inline chat. In the input box, type **/doc**. (You can optionally provide additional details, but it's not required). This will prompt GitHub Copilot to generate a documentation comment for the function. The suggested comment will appear inline in the code (highlighted in green). Click **Accept** to apply the comment to your code, or click **Close** to discard the suggestion. You just used a slash command, a shortcut to streamline a task, these commands eliminate the need for verbose prompts.
+8. [] Let's add a comment to the newly created function. To do this, place your cursor inside the function (anywhere between the lines **def get_breeds...** and **return jsonify...**). Then, press <kbd>Control</kbd>+<kbd>I</kbd> to open the editor inline chat. 
+In the input box, type **/doc**. (You can optionally provide additional details, but it's not required). This will prompt GitHub Copilot to generate a documentation comment for the function. The suggested comment will appear inline in the code (highlighted in green). Click **Accept** to apply the comment to your code, or click **Close** to discard the suggestion. 
+
+> [!TIP]You just used a slash command, a shortcut to streamline a task, these commands eliminate the need for verbose prompts.
+
 9. []  **Save** the file.
 
 ## Validate the endpoint
@@ -79,8 +83,8 @@ With the code created and saved, let's quickly validate the endpoint to ensure i
 2. [] Let's commit the changes locally, click on the Source control icon on the left sidebar
 3. [] Click on the **+** icon so stage **server/app.py**
 4. [] On the commit message box click on the icon with two stars, Copilot is going to create the commit message for you
-5. [] Click on the **Commit** blue button to commit locally if you are happy with the commit message, otherwise adjust the message before commiting.
-  - Don't try to push the changes (by pushing or synching), you do not write permissions on the repository.
+5. [] Click on the **Commit** blue button to commit locally if you are happy with the commit message, otherwise adjust the message before committing.
+  - Don't try to push the changes (by pushing or synching), you do not have write permissions on the repository.
 
 ## Summary and next steps
 

@@ -30,7 +30,7 @@ In this section, you will use Copilot's agent mode to add themes to the Tailspin
 4. [] Select agent mode, by selecting **Agent** (just like you did **Edit** before) in the model selector dropdown at the bottom of the chat window.
 5. [] Select one of models (some may not be available) **Claude 3.7 Sonnet**, **Claude 3.5 Sonnet** or **GPT-4.1 (Preview)**
 6. [] Click **Add Context...**
-7. [] Select **Prompts** from the list 
+7. [] Select **Prompt...** from the list 
 8. [] From the list of available prompts select **fun-add-themes**
 9. The agent mode will take it's time, since it searches by itself the relevant files to modify, and then does multiple passes including talking with himself to refine the task at hand
 10. [] While Agent is doing it's thing, expand the **Used 2 references** (first line after copilot response in the chat window) and notice it mentions the prompt you selected, click on the name of the prompt and examine the content of the prompt that was used.
