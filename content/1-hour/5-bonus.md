@@ -29,12 +29,12 @@ In this section, you will use Copilot's agent mode to add themes to the Tailspin
 3. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
 4. [] Select agent mode, by selecting **Agent** (just like you did **Edit** before) in the model selector dropdown at the bottom of the chat window.
 5. [] Select one of models (some may not be available) **Claude 3.7 Sonnet**, **Claude 3.5 Sonnet** or **GPT-4.1 (Preview)**
-6. [] Click **Add Context...**
-7. [] Select **Prompt...** from the list 
-8. [] From the list of available prompts select **fun-add-themes**
+6. [] Navigate to [](https://github.com/github-samples/pets-workshop/tree/msbuild-25/contents/prompts/fun-add-themes.md)
+7. [] Copy the content of the prompt
+8. [] Paste the content in the copilot prompt input
 9. The agent mode will take it's time, since it searches by itself the relevant files to modify, and then does multiple passes including talking with himself to refine the task at hand
-10. [] While Agent is doing it's thing, expand the **Used 2 references** (first line after copilot response in the chat window) and notice it mentions the prompt you selected, click on the name of the prompt and examine the content of the prompt that was used.
-11. [] When the agent is done (you no longer see any spinners and the thumb up/down icons will be visible), 
+10. [] While Agent is doing it's thing, take the opportunity to examine the content of prompt that was used.
+11. [] When the agent is done (you no longer see any spinners and the thumb up/down icons will be visible), examine the prompt response
  open a browser to see the results
     - Open the page at ++http://localhost:4321++ to see the updates! 
     - Examine the changes made to the files if you like
@@ -69,13 +69,14 @@ Here's some ideas of how you could continue to grow and build upon what you've d
 - Add a form to allow a user to apply to adopt a dog if the dog is available.
 - Add a form to allow users to register a dog they found.
 
+We have provided you some prompts in [prompts][github-prompts-path] folder, which you can use directly as inspiration for your explorations.
 
-> [!HINT]
-> We have provided you some prompts in **.github/prompts** folder 
-> you can use directly as direct source or as inspiration for your explorations.
-
+> [!TIP]
+> These prompts are meant to be used as one shot, but if have prompts that can be are generic, reusable prompt are a great way to share prompts with the team members. They can be placed in a well know folder and be invoked directly in the Copilot Chat by referencing them.
+> Learn more about [reusable prompts in Visual Studio Code][vscode-prompts]
 > [!Knowledge] To use a prompt, select **Add Context..** in the chat and then select **Prompt**
 > Learn more about [prompts in Visual Studio Code][vscode-prompts]
 
 
 [vscode-prompts]: https://aka.ms/vscode-ghcp-prompt-snippets
+[github-prompts-path: https://github.com/github-samples/pets-workshop/tree/msbuild-25/contents/prompts/
