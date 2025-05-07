@@ -86,7 +86,7 @@ And
 
 > [!HINT]
 > If you are stuck or just want to see alternatives way of prompting we have provided two prompts
-> A [simple one](https://github.com/github-samples/pets-workshop/tree/msbuild-25/contents/prompts/add-feature-simple.md), that is simple, with some ambiguity that leaves some space for interpretation but it gets the job done. Another one which is more [verbose](https://github.com/github-samples/pets-workshop/tree/msbuild-25/contents/prompts/add-feature-verbose.md) and leaves not a lot of space for interpretation.
+> A [simple one](https://github.com/github-samples/pets-workshop/tree/msbuild-25/content/prompts/add-feature-simple.md), that is simple, with some ambiguity that leaves some space for interpretation but it gets the job done. Another one which is more [verbose](https://github.com/github-samples/pets-workshop/tree/msbuild-25/content/prompts/add-feature-verbose.md) and leaves not a lot of space for interpretation.
 > Take a look at the differences and see which one you like better.
 
 ## Summary

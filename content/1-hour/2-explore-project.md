@@ -28,7 +28,7 @@ GitHub Copilot Chat has a set of available [chat participants][chat-participants
 > [!NOTE]
 > You may be asked to authenticate again, if that happens follow the process you have followed before (this time you won't need to enter the credentials).
 
-6. []  Spend a few minutes exploring to find the answers to the following questions (don't forget the **@workspace**where i):
+6. []  Spend a few minutes exploring to find the answers to the following questions (don't forget the **@workspace**):
     - Where's the database the project uses?
     - What files are involved in listing dogs?
 
