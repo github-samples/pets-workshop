@@ -28,7 +28,7 @@ In this section, you will use Copilot's agent mode to add themes to the Tailspin
 2. [] Close any tabs you may have open in your VS Code to ensure Copilot chat has an empty context.
 3. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
 4. [] Select agent mode, by selecting **Agent** (just like you did **Edit** before) in the model selector dropdown at the bottom of the chat window.
-5. [] Select one of models (some may not be available) **Claude 3.7 Sonnet**, **Claude 3.5 Sonnet** or **GPT-4.1 (Preview)**
+5. [] Select one of models (some may not be available) **Claude 3.5 Sonnet**, **Claude 3.7 Sonnet** or **GPT-4.1**
 6. [] Navigate to [](https://github.com/github-samples/pets-workshop/tree/msbuild-25/content/prompts/fun-add-themes.md)
 7. [] Copy the content of the prompt
 8. [] Paste the content in the copilot prompt input
