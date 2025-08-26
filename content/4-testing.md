@@ -22,13 +22,7 @@ Let's take a look at the tests defined for the project.
 
 1. Return to your codespace, or reopen it by navigating to your repository and selecting **Code** > **Codespaces** and the name of your codespace.
 2. In **Explorer**, navigate to **server** and open **test_app.py**.
-3. Open GitHub Copilot Chat and ask for an explanation of the file.
-
-> [!NOTE]
-> Consider using the following GitHub Copilot tips to gain an understanding of the tests:
->
-> - `/explain` is a [slash command][copilot-slash-commands] to quickly ask for an explanation
-> - Highlight specific sections of the file to focus on areas you may have questions about
+3. Open GitHub Copilot Chat and, in your own words, ask for an explanation of the tests in the file.
 
 ## Understanding workflows
 
