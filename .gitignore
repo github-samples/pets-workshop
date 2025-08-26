@@ -40,3 +40,4 @@ flask_session/
 htmlcov/
 
 test-results/
+playwright-report/
