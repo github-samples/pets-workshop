@@ -38,3 +38,5 @@ instance/
 flask_session/
 .coverage
 htmlcov/
+
+test-results/

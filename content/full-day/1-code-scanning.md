@@ -50,8 +50,8 @@ Regardless of the reason, even seemingly innocuous tokens can create a security 
 Let's enable Secret scanning to detect any potential keys.
 
 1. On the same page (**Settings** > **Code security and analysis**), towards the very bottom, locate the **Secret scanning** section.
-1. Next to **Receive alerts on GitHub for detected secrets, keys or other tokens**, select **Enable**.
-1. Next to **Push protection**, select **Enable** to block pushes to the repository which contain a [supported secret][supported-secrets].
+2. Next to **Receive alerts on GitHub for detected secrets, keys or other tokens**, select **Enable**.
+3. Next to **Push protection**, select **Enable** to block pushes to the repository which contain a [supported secret][supported-secrets].
 
     ![Screenshot of fully configured secret scanning](./images/1-secret-scanning.png)
 

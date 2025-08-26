@@ -26,9 +26,9 @@ Our project needs two main updates. We want to make the updates to support devel
 1. Return to the repository you created at the beginning of this workshop.
 1. Select the **Issues** tab.
 1. Select **New issue**.
-2. If prompted for type, select **Blank issue**.
-3. Select **Create more** at the bottom of the page to streamline the creation process.
-4. Create new issues by adding the information indicated in the table below, selecting **Submit new issue** after creating each one:
+1. If prompted for type, select **Blank issue**.
+1. Select **Create more** at the bottom of the page to streamline the creation process.
+1. Create new issues by adding the information indicated in the table below, selecting **Submit new issue** after creating each one:
 
     | Title                   | Description                                                                    |
     | ----------------------- | ------------------------------------------------------------------------------ |
@@ -42,9 +42,11 @@ Our project needs two main updates. We want to make the updates to support devel
 You've now defined all the issues for the workshop! You'll use these issues to help guide your progress through the workshop.
 
 ## Summary and next steps
+
 GitHub Issues are the core to project management on GitHub. Their flexibility allows your organization to determine the best course of action to support your development lifecycle's methodology. With your issues created, it's time to turn your attention to the first big change to the project, [defining a codespace][walkthrough-next].
 
 ## Resources
+
 - [GitHub Issues][issues-docs]
 - [Communicate using markdown][skills-markdown]
 - [GitHub Projects][projects-docs]

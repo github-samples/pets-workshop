@@ -104,8 +104,8 @@ You've now defined a custom container!
 Whenever someone uses the codespace you defined they'll have an environment with Node.js and Mongo DB, and the GitHub Copilot extension installed. Let's use this container!
 
 1. Access the Command Palette (<kbd>F1</kbd> or clicking ☰ → View → Command Palette), then start typing **dev container**.
-1. Type **rebuild** and select **Codespaces: Rebuild container**.
-1. Select **Rebuild Container** on the dialog box. Your container now rebuilds.
+2. Type **rebuild** and select **Codespaces: Rebuild container**.
+3. Select **Rebuild Container** on the dialog box. Your container now rebuilds.
 
 > [!IMPORTANT]
 > Rebuilding the container can take several minutes. Obviously this isn't an ideal situation for providing fast access to your developers, even if it's faster than creating everything from scratch. Fortunately you can [prebuild your codespaces][codespace-prebuild] to ensure developers can spin one up within seconds.
@@ -149,9 +149,11 @@ Custom containers for GitHub Codespaces become part of the source code for the r
 
 
 ## Summary and next steps
+
 Congratulations! You have now defined a custom development environment including all services and extensions. This eliminates the initial setup hurdle normally required when contributing to a project. Let's use this codespace to [implement testing and continuous integration][walkthrough-next] for the project.
 
 ## Resources
+
 - [GitHub Codespaces][codespaces]
 - [Getting started with GitHub Codespaces][codespaces-docs]
 - [Defining dev containers][dev-containers-docs]
