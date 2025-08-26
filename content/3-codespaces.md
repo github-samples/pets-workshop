@@ -3,7 +3,9 @@
 | [← Project management with GitHub Issues][walkthrough-previous] | [Next: Continuous integration and testing →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
 
-One of the biggest challenges organizations face is onboarding new developers to projects. There are libraries to install, services to configure, version issues, obscure error messages... It can literally take days to get everything running before a developer is able to write their first line of code. [GitHub Codespaces][codespaces] is built to streamline this entire process. You can configure a container for development which your developers can access with just a couple of clicks from basically anywhere in the world. The container runs in the cloud, has everything already setup, and ready to go. Instead of days your developers can start writing code in seconds.
+One of the biggest challenges organizations face is onboarding new developers to projects. There are libraries to install, services to configure, version issues, obscure error messages... It can literally take days to get everything running before a developer is able to write their first line of code.
+
+[GitHub Codespaces][codespaces] is built to streamline this entire process. You can configure a container for development which your developers can access with just a couple of clicks - from basically anywhere in the world. The container runs in the cloud, has everything already setup, and ready to go. Instead of days, your developers can start writing code in seconds.
 
 GitHub Codespaces allows you to develop using the cloud-based container and Visual Studio Code in your browser window, meaning no local installation is required; you can do development with a tablet and a keyboard! You can also connect your local instance of [Visual Studio Code][vscode-codespaces].
 
@@ -14,14 +16,16 @@ Let's explore how to create and configure a codespaces for your project, and see
 GitHub provides a [default container][github-universal-container] for all repositories. This container is based on a Linux image, and contains many popular runtimes including Node.js, Python, PHP and .NET. In many scenarios, this default container might be all you need. You also have the ability to configure a custom container for the repository, as you'll see later in this exercise. For now, let's explore how to use the default container.
 
 1. If not already open, open your repository in your browser.
-1. From the **Code** tab (suggest to open a new browser tab) in your repo, access the green **<> Code** dropdown button and from the **Codespaces** tab click **Create codespace on main**.
-1. Allow the Codespace to load; it should take less than 30 seconds because we are using the default image.
+2. From the **Code** tab (suggest to open a new browser tab) in your repo, access the green **<> Code** dropdown button and from the **Codespaces** tab click **Create codespace on main**.
+3. Allow the Codespace to load; it should take less than 30 seconds because we are using the default image.
 
 ## Defining a custom container
 
 One thing that's really great is the [default dev container][github-universal-container-definition] has **.NET 7**, **node**, **python**, **mvn**, and more. But what if you need other tools? Or in our case, we want don't want to have each developer install the **[GitHub Copilot Extension][copilot-extension]**; we want to have everything pre-configured from the start!
 
-Let's create our own dev container! The [dev container is configured][dev-containers-docs] by creating the Docker files Codespaces will use to create and configure the container, and providing any customizations in the `devcontainer.json` file. Customizations provided in `devcontainer.json` can include ports to open, commands to run, and extension to install in Visual Studio Code (either running locally on the desktop or in the browser). This configuration becomes part of the repository. All developers who wish to contribute can then create a new instance of the container based on the configuration you provided.
+Let's create our own dev container!
+
+The [dev container is configured][dev-containers-docs] by creating the Docker files Codespaces will use to create and configure the container, and providing any customizations in the `devcontainer.json` file. Customizations provided in `devcontainer.json` can include ports to open, commands to run, and extension to install in Visual Studio Code (either running locally on the desktop or in the browser). This configuration becomes part of the repository. All developers who wish to contribute can then create a new instance of the container based on the configuration you provided.
 
 1. Access the Command Palette (<kbd>F1</kbd> or clicking ☰ → View → Command Palette), then start typing **dev container**.
 2. Select **Codespaces: Add Development Container Configuration Files...** .
@@ -49,7 +53,7 @@ You have now defined the container to be used by your codespace. This contains t
 
 Creating a development environment isn't solely focused on the services. Developers rely on various extensions and plugins for their [integrated development environments (IDEs)][IDE]. To ensure consistency, you may want to define a set of extensions to automatically install. When using GitHub Codespaces and either a local instance of Visual Studio Code or the browser-based version, you can add a list of [extensions][vscode-extensions] to the **devcontainer.json** file.
 
-Before rebuilding the container, let's add **GitHub.copilot** to the list of extensions.
+Before rebuilding the container, let's add the project-specific extensions our developers will want to the list defined in **devcontainer.json**.
 
 1. Remaining in the codespace, open **devcontainer.json** inside the **.devcontainer** folder.
 2. Locate the following section:
@@ -81,7 +85,12 @@ Before rebuilding the container, let's add **GitHub.copilot** to the list of ext
 	},
     ```
 
-5. Just below the customizations, paste the following code to provide the list of ports which should be made available for development by the codespace:
+## Add forwarded ports
+
+As we're working on the website we'll want to be able to run it and confirm things are working as we expected. Codespaces allows you to [forward ports][codespaces-forward-ports], allowing you to access them, almost as if they were running locally. Let's add the ports for our webapp to the list of ones to be forwarded by the codespace.
+
+1. Return to **devcontainer.json**.
+2. Just below the `customizations` section you utilized a moment ago, paste the following code to provide the list of ports which should be made available for development by the codespace:
 
     ```json
     "forwardPorts": [
@@ -91,7 +100,12 @@ Before rebuilding the container, let's add **GitHub.copilot** to the list of ext
 	],
     ```
 
-6. Just below the list of ports, add the command to run the startup script to the container definition:
+## Startup scripts
+
+You frequently will need to run scripts to finish the configuration of an environment, or to start the required services. To support this, you can define a [`postStartCommand`][vscode-post-start-command] in your **devcontainer.json**. In our case, we want to ensure the app starts to streamline debugging. Let's get that added.
+
+1. Return to **devcontainer.json**.
+2. Just below the `forwardedPorts` section you utilized a moment ago, add the command to run the startup script to the container definition:
 
     ```json
     "postStartCommand": "chmod +x /workspaces/dog-shelter/scripts/start-app.sh && /workspaces/dog-shelter/scripts/start-app.sh",
@@ -163,6 +177,7 @@ Congratulations! You have now defined a custom development environment including
 |:-----------------------------------|------------------------------------------:|
 
 [codespaces]: https://github.com/features/codespaces
+[codespaces-forward-ports]: https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace
 [copilot-extension]: https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
 [codespaces-docs]: https://docs.github.com/en/codespaces/overview
 [codespace-prebuild]: https://docs.github.com/en/codespaces/prebuilding-your-codespaces
@@ -175,5 +190,6 @@ Congratulations! You have now defined a custom development environment including
 [skills-codespaces]: https://github.com/skills/code-with-codespaces
 [vscode-codespaces]: https://docs.github.com/en/codespaces/developing-in-codespaces/using-github-codespaces-in-visual-studio-code
 [vscode-extensions]: https://code.visualstudio.com/docs/editor/extension-marketplace
+[vscode-post-start-command]: https://code.visualstudio.com/remote/advancedcontainers/start-processes
 [walkthrough-previous]: 2-issues.md
 [walkthrough-next]: 4-testing.md
