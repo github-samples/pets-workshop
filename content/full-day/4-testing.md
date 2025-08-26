@@ -57,7 +57,7 @@ Now that we have an overview of the structure of a workflow, let's ask Copilot t
   > [!IMPORTANT]
   > A prescriptive prompt isn't provided as part of the exercise is to become comfortable interacting with GitHub Copilot.
 
-6. Add the generated code to the new file by hovering over the suggested code and selecting the **Insert at cursor** button. The generated code should resemble the following:
+7. Add the generated code to the new file by hovering over the suggested code and selecting the **Insert at cursor** button. The generated code should resemble the following:
 
 ```yml
 name: Server Tests
