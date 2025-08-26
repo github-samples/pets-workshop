@@ -3,7 +3,7 @@
 | [← Securing the development pipeline][walkthrough-previous] | [Next: Cloud-based development with GitHub Codespaces →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
 
-"URL or it didn't happen" is a common mantra at GitHub, which is used to highlight the importance of documenting the development process. Feature requests should have a history; who made the request, what was the rationale, who was involved in the process, what decisions were made, why were they made, was the feature implemented, how was it implemented... All of this information helps provide context to both drive future decisions and avoid repeating old mistakes.
+"URL or it didn't happen" is a common mantra at GitHub, which is used to highlight the importance of documenting the development process. Feature requests should have a history: who made the request, what was the rationale, who was involved in the process, what decisions were made, why were they made, was the feature implemented, how was it implemented... All of this information helps provide context to both drive future decisions and avoid repeating old mistakes.
 
 GitHub provides various features to enable collaboration and project management, including [GitHub Discussions][discussions], [wikis][wikis], [pull requests][about-prs] and [GitHub Issues][issues]. Each of these can help your organization drive the creation process. We're going to focus on GitHub Issues, which is the foundation of project management on GitHub.
 
@@ -21,14 +21,14 @@ The shelter wants to begin pushing new features to the website. They want to sta
 
 ## Creating issues to manage feature requests
 
-Our project needs two main updates. We want to make the updates to support development for our project, and add a new component to the website to display the shelter's hours. Let's create the issues for each of these. In the next few exercises we'll begin making the appropriate updates to our project to resolve these requests.
+Our project needs two main updates. We want to make the updates to support development for our project, and add filtering capabilities for users to find the right dog. Let's create the issues for each of these. In the next few exercises we'll begin making the appropriate updates to our project to resolve these requests.
 
 1. Return to the repository you created at the beginning of this workshop.
-1. Select the **Issues** tab.
-1. Select **New issue**.
-1. If prompted for type, select **Blank issue**.
-1. Select **Create more** at the bottom of the page to streamline the creation process.
-1. Create new issues by adding the information indicated in the table below, selecting **Submit new issue** after creating each one:
+2. Select the **Issues** tab.
+3. Select **New issue**.
+4. If prompted for type, select **Blank issue**.
+5. Select **Create more** at the bottom of the page to streamline the creation process.
+6. Create new issues by adding the information indicated in the table below, selecting **Submit new issue** after creating each one:
 
     | Title                   | Description                                                                    |
     | ----------------------- | ------------------------------------------------------------------------------ |
