@@ -1,21 +1,21 @@
 # Modern DevOps with GitHub
 
-| [← Pets workshop selection][walkthrough-previous] | [Next: Workshop setup →][walkthrough-next] |
+| [Next: Workshop setup →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
 
 [DevOps][devops] is a [portmanteau][portmanteau] of **development** and **operations**. At its core is a desire to bring development practices more inline with operations, and operations practices more inline with development. This fosters better communication and collaboration between teams, breaks down barriers, and gives everyone an investment in ensuring customers are delighted by the software we ship.
 
-This workshop is built to help guide you through some of the most common DevOps tasks on GitHub. You'll explore:
+This workshop is built to help guide you through some of the most common DevOps tasks on GitHub. You will:
 
-- Managing projects with [GitHub Issues][github-issues]
-- Creating a development environment with [GitHub Codespaces][github-codespaces]
-- Using [GitHub Copilot][github-copilot] as your AI pair programmer
-- Securing the development pipeline with [GitHub Advanced Security][github-security]
-- Automating tasks and CI/CD with [GitHub Actions][github-actions]
+- manage a project with [GitHub Issues][github-issues].
+- create a development environment with [GitHub Codespaces][github-codespaces].
+- use [GitHub Copilot][github-copilot] as your AI pair programmer.
+- secure the development pipeline with [GitHub Advanced Security][github-security].
+- automate tasks and CI/CD with [GitHub Actions][github-actions].
 
 ## Prerequisites
 
-The application for the workshop uses is built primarily with Python (Flask and SQLAlchemy) and Astro (using Tailwind and Svelte). While experience with these frameworks and languages is helpful, you'll be using Copilot to help you understand the project and generate the code. As a result, as long as you are familiar with programming you'll be able to complete the exercises!
+The application for the workshop uses is built primarily with Python (Flask and SQLAlchemy) and Astro (using Tailwind and Svelte). Experience with these frameworks and languages is not required for the course, as the primary focus will be around GitHub features.
 
 ## Required resources
 
@@ -23,6 +23,9 @@ To complete this workshop, you will need the following:
 
 - A [GitHub account][github-signup]
 - Access to [GitHub Copilot][github-copilot]
+
+> [!IMPORTANT]
+> This workshop is designed to utilize the free version of GitHub Copilot, the [free compute for Codespaces][codespaces-free], and the functionality provided by GHAS and Actions to public repos.
 
 ## Getting started
 
@@ -37,11 +40,6 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 6. [Add features to your app][code] with GitHub Copilot
 7. [Use the GitHub flow][github-flow] to incorporate changes into your codebase
 8. [Deploy your application][deployment] to Azure to make your application available to users
-
-## Check out these resources to dive in and learn more
-Check out the resources in [**GitHub-Copilot-Resources.md**][GitHub-Copilot-Resources]. 
-
-This resource list has been carefully curated to help you to learn more about GitHub Copilot, how to use it effectively, what is coming in the future and more. There are even YouTube playlists that include the latest videos from the GitHub Developer Relations team and others from GitHub. 
 
 | [← Pets workshop selection][walkthrough-previous] | [Next: Workshop setup →][walkthrough-next] |
 |:-----------------------------------|------------------------------------------:|
@@ -63,5 +61,5 @@ This resource list has been carefully curated to help you to learn more about Gi
 [portmanteau]: https://www.merriam-webster.com/dictionary/portmanteau
 [testing]: ./4-testing.md
 [walkthrough-next]: ./0-setup.md
-[walkthrough-previous]: ../README.md
+[codespaces-free]: https://docs.github.com/en/billing/concepts/product-billing/github-codespaces#free-and-billed-use-by-personal-accounts
 [GitHub-Copilot-Resources]: ../GitHub-Copilot-Resources.md
