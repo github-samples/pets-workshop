@@ -91,6 +91,23 @@ class TestApp(unittest.TestCase):
         self.assertEqual(len(data), 1)
         self.assertEqual(set(data[0].keys()), {'id', 'name', 'breed'})
 
+    @patch('app.db.session.query')
+    def test_get_dog_not_found(self, mock_query):
+        """Test 404 error when dog is not found by ID"""
+        # Arrange
+        mock_query_instance = MagicMock()
+        mock_query.return_value = mock_query_instance
+        mock_query_instance.join.return_value = mock_query_instance
+        mock_query_instance.filter.return_value = mock_query_instance
+        mock_query_instance.first.return_value = None  # Simulate dog not found
+        
+        # Act
+        response = self.app.get('/api/dogs/999')
+        
+        # Assert
+        self.assertEqual(response.status_code, 404)
+        data = json.loads(response.data)
+        self.assertEqual(data['error'], "Dog not found")
 
 if __name__ == '__main__':
     unittest.main()
