@@ -12,6 +12,9 @@ Essential patterns for writing Svelte 5.23+ components with TypeScript in the da
 2. **Dark Theme** - Use slate color palette (`bg-slate-800`, `text-slate-100`, `border-slate-700`)
 3. **Responsive** - Mobile-first with Tailwind responsive prefixes
 4. **Accessibility** - Semantic HTML and ARIA attributes
+5. **Test Identifiers** - Always include `data-testid` attributes for E2E testing
+
+> 📋 **Reference**: See [`test-identifiers.md`](./test-identifiers.md) for complete list of required test IDs
 
 ## Basic Component Structure
 
@@ -37,13 +40,29 @@ Essential patterns for writing Svelte 5.23+ components with TypeScript in the da
     });
 </script>
 
-{#if loading}
-    <!-- Loading state -->
-{:else if error}
-    <!-- Error state -->
-{:else}
-    <!-- Main content -->
-{/if}
+<!-- Always include data-testid for containers -->
+<div data-testid="component-container">
+    <h2 class="text-2xl font-medium mb-6 text-slate-100" data-testid="component-title">
+        {title}
+    </h2>
+    
+    {#if loading}
+        <!-- Loading state with test ID -->
+        <div data-testid="component-loading">
+            <!-- Loading content -->
+        </div>
+    {:else if error}
+        <!-- Error state with test ID -->
+        <div data-testid="component-error">
+            <p data-testid="error-message">{error}</p>
+        </div>
+    {:else}
+        <!-- Main content with test ID -->
+        <div data-testid="component-content">
+            <!-- Content here -->
+        </div>
+    {/if}
+</div>
 ```
 
 ## API Data Fetching
@@ -79,24 +98,27 @@ Essential patterns for writing Svelte 5.23+ components with TypeScript in the da
     onMount(fetchData);
 </script>
 
-<div>
+<div data-testid="api-component-container">
     {#if loading}
-        <div class="animate-pulse bg-slate-800/60 rounded-xl p-6">
+        <div class="animate-pulse bg-slate-800/60 rounded-xl p-6" data-testid="api-component-loading">
             <div class="h-6 bg-slate-700 rounded w-3/4 mb-3"></div>
             <div class="h-4 bg-slate-700 rounded w-1/2"></div>
         </div>
     {:else if error}
-        <div class="bg-red-500/20 border border-red-500/50 text-red-400 rounded-xl p-6">
-            {error}
+        <div class="bg-red-500/20 border border-red-500/50 text-red-400 rounded-xl p-6" data-testid="api-component-error">
+            <p data-testid="error-message">{error}</p>
         </div>
     {:else if apiData.length === 0}
-        <div class="text-center py-12 bg-slate-800/50 rounded-xl border border-slate-700">
-            <p class="text-slate-300">No data available.</p>
+        <div class="text-center py-12 bg-slate-800/50 rounded-xl border border-slate-700" data-testid="api-component-empty">
+            <p class="text-slate-300" data-testid="empty-message">No data available.</p>
         </div>
     {:else}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="api-component-grid">
             {#each apiData as item (item.id)}
-                <!-- Item content -->
+                <div data-testid={`item-${item.id}`} data-item-id={item.id}>
+                    <h3 data-testid={`item-name-${item.id}`}>{item.name}</h3>
+                    <!-- More item content -->
+                </div>
             {/each}
         </div>
     {/if}

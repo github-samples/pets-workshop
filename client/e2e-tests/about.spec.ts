@@ -7,25 +7,31 @@ test.describe('About Page', () => {
     // Check that the page title is correct
     await expect(page).toHaveTitle(/About - Tailspin Shelter/);
     
-    // Check that the main heading is visible
-    await expect(page.getByRole('heading', { name: 'About Tailspin Shelter' })).toBeVisible();
+    // Check that the main elements are visible using test IDs
+    await expect(page.getByTestId('about-page-container')).toBeVisible();
+    await expect(page.getByTestId('about-page-title')).toBeVisible();
+    await expect(page.getByTestId('about-page-title')).toContainText('About Tailspin Shelter');
     
     // Check that content is visible
-    await expect(page.getByText('Nestled in the heart of Seattle')).toBeVisible();
-    await expect(page.getByText('The name "Tailspin" reflects')).toBeVisible();
+    await expect(page.getByTestId('about-page-description-1')).toContainText('Nestled in the heart of Seattle');
+    await expect(page.getByTestId('about-page-description-2')).toContainText('The name "Tailspin" reflects');
     
     // Check the fictional organization note
-    await expect(page.getByText('Tailspin Shelter is a fictional organization')).toBeVisible();
+    await expect(page.getByTestId('fictional-organization-note')).toContainText('Tailspin Shelter is a fictional organization');
   });
 
   test('should navigate back to homepage from about page', async ({ page }) => {
     await page.goto('/about');
     
-    // Click the "Back to Dogs" button
-    await page.getByRole('link', { name: 'Back to Dogs' }).click();
+    // Wait for page to load
+    await expect(page.getByTestId('about-page-container')).toBeVisible();
+    
+    // Click the "Back to Dogs" button using test ID
+    await page.getByTestId('back-to-dogs-button').click();
     
     // Should be redirected to homepage
     await expect(page).toHaveURL('/');
-    await expect(page.getByRole('heading', { name: 'Welcome to Tailspin Shelter' })).toBeVisible();
+    await expect(page.getByTestId('homepage-container')).toBeVisible();
+    await expect(page.getByTestId('homepage-title')).toContainText('Welcome to Tailspin Shelter');
   });
 });

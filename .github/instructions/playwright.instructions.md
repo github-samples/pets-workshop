@@ -9,27 +9,37 @@ Essential patterns for writing effective Playwright tests in the Tailspin Shelte
 ## Core Principles
 
 1. **Test User Workflows** - Focus on complete user journeys, not implementation details
-2. **Use Semantic Locators** - Prefer `getByRole()`, `getByText()`, `getByLabel()` over CSS selectors
-3. **Handle Async Behavior** - Always account for loading states and API calls
+2. **Use Test IDs First** - Always prefer `data-testid` attributes for reliable element identification
+3. **Semantic Locators Second** - Use `getByRole()`, `getByText()`, `getByLabel()` when test IDs aren't available
+4. **Handle Async Behavior** - Always account for loading states and API calls
+
+> 📋 **Reference**: See [`test-identifiers.md`](./test-identifiers.md) for complete list of available test IDs
 
 ## Locator Patterns
 
-### Preferred Approach
+### Preferred Approach (In Order of Priority)
 ```typescript
-// ✅ Semantic locators
-await expect(page.getByRole('heading', { name: 'Welcome to Tailspin Shelter' })).toBeVisible();
-await page.getByRole('link', { name: 'Back to All Dogs' }).click();
-await expect(page.getByText('Find your perfect companion')).toBeVisible();
+// ✅ Test IDs (most reliable)
+await page.getByTestId('dog-card-1').click();
+await expect(page.getByTestId('homepage-title')).toBeVisible();
+await page.getByTestId('back-to-dogs-button').click();
 
-// ✅ Test IDs when needed
-await page.getByTestId('dog-card-123').click();
+// ✅ Semantic locators (when test IDs aren't available)
+await page.getByRole('heading', { name: 'Welcome to Tailspin Shelter' }).click();
+await page.getByRole('link', { name: 'Back to All Dogs' }).click();
+
+// ✅ Combined approach (test ID + semantic validation)
+const dogCard = page.getByTestId('dog-card-1');
+await expect(dogCard.getByTestId('dog-name-1')).toContainText('Buddy');
+await dogCard.click();
 ```
 
 ### Avoid
 ```typescript
-// ❌ Fragile selectors
+// ❌ Fragile CSS selectors
 await page.locator('.bg-slate-800 .p-6 h3').click();
 await page.locator('a').nth(0).click();
+await page.locator('.grid > div:first-child').click();
 ```
 
 ## Essential Test Patterns
@@ -52,12 +62,12 @@ test.describe('Feature Name', () => {
 test('should handle loading content', async ({ page }) => {
   await page.goto('/');
   
-  // Wait for content to load
-  await page.waitForSelector('.grid', { timeout: 10000 });
+  // Wait for content to load using test IDs
+  await page.waitForSelector('[data-testid="dog-list-grid"]', { timeout: 10000 });
   
   // Verify loading is complete
-  await expect(page.locator('.animate-pulse')).not.toBeVisible();
-  await expect(page.getByRole('link', { name: /dog/i }).first()).toBeVisible();
+  await expect(page.getByTestId('dog-list-loading')).not.toBeVisible();
+  await expect(page.getByTestId('dog-card-1')).toBeVisible();
 });
 ```
 
@@ -66,20 +76,21 @@ test('should handle loading content', async ({ page }) => {
 test('should navigate dog details workflow', async ({ page }) => {
   await page.goto('/');
   
-  // Wait for dogs to load
-  await page.waitForSelector('.grid a[href^="/dog/"]', { timeout: 10000 });
+  // Wait for dogs to load using test ID
+  await page.waitForSelector('[data-testid="dog-list-grid"]', { timeout: 10000 });
   
-  // Click first dog
-  const firstDogLink = page.locator('.grid a[href^="/dog/"]').first();
-  await firstDogLink.click();
+  // Click first dog using test ID
+  await page.getByTestId('dog-card-1').click();
   
   // Verify navigation
   await expect(page.url()).toMatch(/\/dog\/\d+/);
   await expect(page).toHaveTitle(/Dog Details/);
+  await expect(page.getByTestId('dog-details-container')).toBeVisible();
   
-  // Navigate back
-  await page.getByRole('link', { name: 'Back to All Dogs' }).click();
+  // Navigate back using test ID
+  await page.getByTestId('back-to-dogs-button').click();
   await expect(page).toHaveURL('/');
+  await expect(page.getByTestId('homepage-container')).toBeVisible();
 });
 ```
 
@@ -95,7 +106,10 @@ test('should handle API errors', async ({ page }) => {
   });
 
   await page.goto('/');
-  await expect(page.getByText(/Failed to fetch/)).toBeVisible({ timeout: 10000 });
+  
+  // Verify error state using test ID
+  await expect(page.getByTestId('dog-list-error')).toBeVisible({ timeout: 10000 });
+  await expect(page.getByTestId('error-message')).toContainText('Failed to fetch');
 });
 ```
 
@@ -106,13 +120,17 @@ test('should handle API errors', async ({ page }) => {
 await expect(page).toHaveTitle(/Expected Title/);
 await expect(page).toHaveURL('/path');
 
-// Element visibility
-await expect(page.getByRole('heading', { name: 'Title' })).toBeVisible();
-await expect(page.getByText('Loading')).not.toBeVisible();
+// Element visibility using test IDs
+await expect(page.getByTestId('homepage-title')).toBeVisible();
+await expect(page.getByTestId('dog-list-loading')).not.toBeVisible();
 
-// Element states
-await expect(page.getByRole('button')).toBeEnabled();
-await expect(page.getByRole('textbox')).toHaveValue('value');
+// Element content using test IDs
+await expect(page.getByTestId('dog-name-1')).toContainText('Buddy');
+await expect(page.getByTestId('error-message')).toContainText('Failed to fetch');
+
+// Element states using test IDs
+await expect(page.getByTestId('submit-button')).toBeEnabled();
+await expect(page.getByTestId('search-input')).toHaveValue('search term');
 ```
 
 ## File Organization
@@ -132,7 +150,9 @@ npm run test:e2e:headed   # See browser
 
 ## Key Tips
 
-- Use `page.waitForSelector()` for dynamic content, not `networkidle`
+- **Use test IDs first**: Always prefer `data-testid` attributes for reliable element identification
+- Use `page.waitForSelector('[data-testid="element"]')` for dynamic content, not `networkidle`
 - Group tests with `test.describe()` and descriptive names
 - Set reasonable timeouts (5-10 seconds)
 - Test real user scenarios, not implementation details
+- Include both happy path and error scenarios in your test suites

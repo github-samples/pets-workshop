@@ -17,13 +17,16 @@ test.describe('API Integration', () => {
 
     await page.goto('/');
     
-    // Check that mocked dogs are displayed
-    await expect(page.getByText('Buddy')).toBeVisible();
-    await expect(page.getByText('Golden Retriever')).toBeVisible();
-    await expect(page.getByText('Luna')).toBeVisible();
-    await expect(page.getByText('Husky')).toBeVisible();
-    await expect(page.getByText('Max')).toBeVisible();
-    await expect(page.getByText('Labrador')).toBeVisible();
+    // Wait for dog list to load
+    await expect(page.getByTestId('dog-list-grid')).toBeVisible({ timeout: 10000 });
+    
+    // Check that mocked dogs are displayed using test IDs
+    await expect(page.getByTestId('dog-name-1')).toContainText('Buddy');
+    await expect(page.getByTestId('dog-breed-1')).toContainText('Golden Retriever');
+    await expect(page.getByTestId('dog-name-2')).toContainText('Luna');
+    await expect(page.getByTestId('dog-breed-2')).toContainText('Husky');
+    await expect(page.getByTestId('dog-name-3')).toContainText('Max');
+    await expect(page.getByTestId('dog-breed-3')).toContainText('Labrador');
   });
 
   test('should handle empty dog list', async ({ page }) => {
@@ -38,8 +41,9 @@ test.describe('API Integration', () => {
 
     await page.goto('/');
     
-    // Check that empty state message is displayed
-    await expect(page.getByText('No dogs available at the moment')).toBeVisible();
+    // Check that empty state message is displayed using test IDs
+    await expect(page.getByTestId('dog-list-empty')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByTestId('empty-message')).toContainText('No dogs available at the moment');
   });
 
   test('should handle network errors', async ({ page }) => {
@@ -50,7 +54,8 @@ test.describe('API Integration', () => {
 
     await page.goto('/');
     
-    // Check that error message is displayed
-    await expect(page.getByText(/Error:/)).toBeVisible({ timeout: 10000 });
+    // Check that error message is displayed using test IDs
+    await expect(page.getByTestId('dog-list-error')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByTestId('error-message')).toContainText('Error:');
   });
 });

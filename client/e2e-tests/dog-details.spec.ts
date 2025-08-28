@@ -4,38 +4,49 @@ test.describe('Dog Details', () => {
   test('should navigate to dog details from homepage', async ({ page }) => {
     await page.goto('/');
     
-    // Wait for dogs to load
-    await page.waitForSelector('.grid a[href^="/dog/"]', { timeout: 10000 });
+    // Wait for dogs to load using test ID
+    await page.waitForSelector('[data-testid="dog-list-grid"]', { timeout: 10000 });
     
-    // Get the first dog link
-    const firstDogLink = page.locator('.grid a[href^="/dog/"]').first();
+    // Get the first dog card using test ID
+    const firstDogCard = page.getByTestId('dog-card-1');
+    await expect(firstDogCard).toBeVisible();
     
     // Get the dog name for verification
-    const dogName = await firstDogLink.locator('h3').textContent();
+    const dogName = await firstDogCard.getByTestId('dog-name-1').textContent();
     
     // Click on the first dog
-    await firstDogLink.click();
+    await firstDogCard.click();
     
     // Should be on a dog details page
-    await expect(page.url()).toMatch(/\/dog\/\d+/);
+    await expect(page.url()).toMatch(/\/dog\/1/);
     
     // Check that the page title is correct
     await expect(page).toHaveTitle(/Dog Details - Tailspin Shelter/);
     
-    // Check for back button
-    await expect(page.getByRole('link', { name: 'Back to All Dogs' })).toBeVisible();
+    // Check for dog details container and back button using test IDs
+    await expect(page.getByTestId('dog-details-container')).toBeVisible();
+    await expect(page.getByTestId('back-to-dogs-button')).toBeVisible();
+    
+    // Verify the dog name matches
+    if (dogName) {
+      await expect(page.getByTestId('dog-details-name')).toContainText(dogName);
+    }
   });
 
   test('should navigate back to homepage from dog details', async ({ page }) => {
     // Go directly to a dog details page (assuming dog with ID 1 exists)
     await page.goto('/dog/1');
     
-    // Click the back button
-    await page.getByRole('link', { name: 'Back to All Dogs' }).click();
+    // Wait for dog details to load
+    await expect(page.getByTestId('dog-details-page')).toBeVisible();
+    
+    // Click the back button using test ID
+    await page.getByTestId('back-to-dogs-button').click();
     
     // Should be redirected to homepage
     await expect(page).toHaveURL('/');
-    await expect(page.getByRole('heading', { name: 'Welcome to Tailspin Shelter' })).toBeVisible();
+    await expect(page.getByTestId('homepage-container')).toBeVisible();
+    await expect(page.getByTestId('homepage-title')).toContainText('Welcome to Tailspin Shelter');
   });
 
   test('should handle invalid dog ID gracefully', async ({ page }) => {
@@ -44,8 +55,16 @@ test.describe('Dog Details', () => {
     
     // The page should still load (even if no dog is found)
     await expect(page).toHaveTitle(/Dog Details - Tailspin Shelter/);
+    await expect(page.getByTestId('dog-details-page')).toBeVisible();
     
     // Back button should still be available
-    await expect(page.getByRole('link', { name: 'Back to All Dogs' })).toBeVisible();
+    await expect(page.getByTestId('back-to-dogs-button')).toBeVisible();
+    
+    // Should show either error state or no data message
+    try {
+      await expect(page.getByTestId('dog-details-error')).toBeVisible({ timeout: 5000 });
+    } catch {
+      await expect(page.getByTestId('dog-details-no-data')).toBeVisible();
+    }
   });
 });

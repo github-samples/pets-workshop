@@ -5,10 +5,10 @@ import "../styles/global.css";
 ---
 
 <Layout title="Tailspin Shelter - Find Your Forever Friend">
-  <div class="py-8">
-    <div class="max-w-3xl mb-10">
-      <h1 class="text-4xl font-bold mb-4 text-slate-100">Welcome to Tailspin Shelter</h1>
-      <p class="text-xl text-slate-300">Find your perfect companion from our wonderful selection of dogs looking for their forever homes.</p>
+  <div class="py-8" data-testid="homepage-container">
+    <div class="max-w-3xl mb-10" data-testid="homepage-header">
+      <h1 class="text-4xl font-bold mb-4 text-slate-100" data-testid="homepage-title">Welcome to Tailspin Shelter</h1>
+      <p class="text-xl text-slate-300" data-testid="homepage-description">Find your perfect companion from our wonderful selection of dogs looking for their forever homes.</p>
     </div>
     
     <DogList client:only="svelte" />

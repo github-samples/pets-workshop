@@ -65,6 +65,7 @@ pets-workshop/
 - **Data Fetching**: Fetch data on the server side when possible
 - **Styling**: Use Tailwind utility classes, avoid custom CSS unless necessary
 - **Routing**: File-based routing through Astro's pages directory
+- **Test Identifiers**: Always include `data-testid` attributes for E2E testing resilience (see [`test-identifiers.md`](.github/instructions/test-identifiers.md))
 
 ### Database Patterns
 - **Models**: Use SQLAlchemy declarative base with proper relationships
@@ -75,6 +76,7 @@ pets-workshop/
 - **E2E Tests**: Playwright tests in `client/e2e-tests/` cover full user workflows
 - **Test Structure**: Organize tests by page/feature (homepage, dog-details, API integration)
 - **Test Commands**: Use `npm run test:e2e` for all tests, `npm run test:e2e:ui` for debugging
+- **Test Identifiers**: Always use `data-testid` attributes for reliable element selection (see [`test-identifiers.md`](.github/instructions/test-identifiers.md))
 - **Server Tests**: Python unittest framework for backend API testing
 - **Test Coverage**: Include tests for user interactions, API responses, and error handling
 

@@ -7,36 +7,38 @@ test.describe('Tailspin Shelter Homepage', () => {
     // Check that the page title is correct
     await expect(page).toHaveTitle(/Tailspin Shelter - Find Your Forever Friend/);
     
-    // Check that the main heading is visible
-    await expect(page.getByRole('heading', { name: 'Welcome to Tailspin Shelter' })).toBeVisible();
+    // Check that the main elements are visible using test IDs
+    await expect(page.getByTestId('homepage-title')).toBeVisible();
+    await expect(page.getByTestId('homepage-description')).toBeVisible();
     
-    // Check that the description is visible
-    await expect(page.getByText('Find your perfect companion from our wonderful selection')).toBeVisible();
+    // Verify content
+    await expect(page.getByTestId('homepage-title')).toContainText('Welcome to Tailspin Shelter');
+    await expect(page.getByTestId('homepage-description')).toContainText('Find your perfect companion');
   });
 
   test('should display dog list section', async ({ page }) => {
     await page.goto('/');
     
     // Check that the "Available Dogs" heading is visible
-    await expect(page.getByRole('heading', { name: 'Available Dogs' })).toBeVisible();
+    await expect(page.getByTestId('available-dogs-heading')).toBeVisible();
+    await expect(page.getByTestId('available-dogs-heading')).toContainText('Available Dogs');
     
     // Wait for dogs to load (either loading state, error, or actual dogs)
-    await page.waitForSelector('.grid', { timeout: 10000 });
+    await page.waitForSelector('[data-testid="dog-list-container"]', { timeout: 10000 });
   });
 
   test('should show loading state initially', async ({ page }) => {
     await page.goto('/');
     
     // Check that loading animation is shown initially
-    // Look for the loading skeleton cards
-    const loadingElements = page.locator('.animate-pulse').first();
+    const loadingElements = page.getByTestId('dog-list-loading');
     
     // Either loading should be visible initially, or dogs should load quickly
     try {
       await expect(loadingElements).toBeVisible({ timeout: 2000 });
     } catch {
       // If loading finishes too quickly, that's fine - check for dog content instead
-      await expect(page.locator('.grid')).toBeVisible();
+      await expect(page.getByTestId('dog-list-grid')).toBeVisible();
     }
   });
 
@@ -52,7 +54,8 @@ test.describe('Tailspin Shelter Homepage', () => {
 
     await page.goto('/');
     
-    // Check that error message is displayed
-    await expect(page.getByText(/Failed to fetch data/)).toBeVisible({ timeout: 10000 });
+    // Check that error message is displayed using test IDs
+    await expect(page.getByTestId('dog-list-error')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByTestId('error-message')).toContainText('Failed to fetch data');
   });
 });
