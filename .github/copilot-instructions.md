@@ -73,6 +73,9 @@ pets-workshop/
 - **Data Seeding**: Use the utilities in `utils/seed_database.py`
 
 ### Testing Patterns
+
+Below are the only types of tests we use in this project. Do not add additional test types unless instructed otherwise.
+
 - **E2E Tests**: Playwright tests in `client/e2e-tests/` cover full user workflows
 - **Test Structure**: Organize tests by page/feature (homepage, dog-details, API integration)
 - **Test Commands**: Use `npm run test:e2e` for all tests, `npm run test:e2e:ui` for debugging
