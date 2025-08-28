@@ -24,10 +24,25 @@ In the [prior exercise][walkthrough-previous], you utilized **ask mode** in GitH
 
 By using agent mode, we'll be able to both create the code and tests, but have Copilot run the tests and correct any mistakes it might find.
 
+## Create the filter and tests
+
+Let's ask Copilot to generate the code to add the feature and tests!
+
+1. Return to your codespace, or reopen it by navigating to your repository and selecting **Code** > **Codespaces** and the name of your codespace.
+2. Open Copilot Chat.
+3. Below the prompt dialog, ensure **Agent** is selected from the mode dropdown on the left.
+4. Use the following prompt to ask Copilot to generate the necessary code and tests to implement filtering:
+
+    ```markdown
+    Update the website to allow for filtering of dogs by breed and adoption status. The page should update as filters are modified. Ensure both unit tests and end to end tests are created, and they all pass. If any tests are failing, make the necessary updates so they pass.
+    ```
+
 ## Summary and next steps
+
 Congratulations! You've worked with GitHub Copilot to add new features to the website - the ability to filter the list of dogs. Let's close out by [creating a pull request with our new functionality][walkthrough-next]!
 
 ## Resources
+
 - [Asking GitHub Copilot questions in your IDE][copilot-questions]
 - [Copilot Edits][copilot-chat-edits]
 - [Copilot Chat cookbook][copilot-chat-cookbook]
