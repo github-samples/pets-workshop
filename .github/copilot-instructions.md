@@ -5,19 +5,24 @@ The Tailspin Shelter is a full-stack web application that showcases a fictional 
 ## Technology Stack
 
 ### Frontend (Client)
+
 - **Framework**: [Astro](https://astro.build/) v5.4+ - Static site generator with server-side rendering
 - **Component Library**: [Svelte](https://svelte.dev/) v5.23+ - For dynamic interactive components
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4.0+ - Utility-first CSS framework
 - **Language**: TypeScript - Strongly typed JavaScript
 - **Adapter**: Node.js adapter for server-side rendering
-- **E2E Testing**: [Playwright](https://playwright.dev/) v1.49+ - End-to-end testing framework
 
 ### Backend (Server)
+
 - **Framework**: [Flask](https://flask.palletsprojects.com/) - Python web framework
 - **Database**: SQLite with [SQLAlchemy](https://www.sqlalchemy.org/) ORM
 - **Language**: Python 3.13+ with type hints
 - **CORS**: Flask-CORS for cross-origin requests
-- **Testing**: Python unittest framework
+
+### Testing
+
+- **Python/Server/Flask**: Python unittest framework
+- **E2E testing**: [Playwright](https://playwright.dev/) v1.49+ - End-to-end testing framework
 
 ## Project Structure
 
@@ -51,7 +56,7 @@ pets-workshop/
 ### Use Scripts, Not Direct Commands
 **IMPORTANT**: Always prefer using the provided scripts in the `scripts/` directory rather than running commands directly:
 - **Testing**: Use `./scripts/run-server-tests.sh` instead of `python -m unittest`
-- **E2E Testing**: Use `npm run test:e2e` in the `client/` directory for Playwright tests
+- **E2E Testing**: Use `./scripts/run-e2e-tests` instead of `npm run tests:e2e`
 - **Environment Setup**: Use `./scripts/setup-environment.sh` for initial setup
 - **Application Start**: Use `./scripts/start-app.sh` to launch the application
 
@@ -65,7 +70,7 @@ pets-workshop/
 - **Data Fetching**: Fetch data on the server side when possible
 - **Styling**: Use Tailwind utility classes, avoid custom CSS unless necessary
 - **Routing**: File-based routing through Astro's pages directory
-- **Test Identifiers**: Always include `data-testid` attributes for E2E testing resilience (see [`test-identifiers.md`](.github/instructions/test-identifiers.md))
+- **Test Identifiers**: Always include `data-testid` attributes for E2E testing resilience (see [`test-identifiers.md`](./instructions/test-identifiers.md))
 
 ### Database Patterns
 - **Models**: Use SQLAlchemy declarative base with proper relationships
@@ -77,11 +82,7 @@ pets-workshop/
 Below are the only types of tests we use in this project. Do not add additional test types unless instructed otherwise.
 
 - **E2E Tests**: Playwright tests in `client/e2e-tests/` cover full user workflows
-- **Test Structure**: Organize tests by page/feature (homepage, dog-details, API integration)
-- **Test Commands**: Use `npm run test:e2e` for all tests, `npm run test:e2e:ui` for debugging
-- **Test Identifiers**: Always use `data-testid` attributes for reliable element selection (see [`test-identifiers.md`](.github/instructions/test-identifiers.md))
-- **Server Tests**: Python unittest framework for backend API testing
-- **Test Coverage**: Include tests for user interactions, API responses, and error handling
+- **Unit tests**: Unit tests for Flask endpoints and utilities, stored in `server/tests`
 
 ## Coding Standards
 
