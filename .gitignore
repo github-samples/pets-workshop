@@ -39,5 +39,6 @@ flask_session/
 .coverage
 htmlcov/
 
-test-results/
-playwright-report/
+# playwright
+client/test-results/
+client/playwright-report/
