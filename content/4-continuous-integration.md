@@ -13,16 +13,17 @@ CI/CD fosters a culture of rapid development, collaboration, and continuous impr
 
 A set of unit tests exist for the Python server for the project. You want to ensure those tests are run whenever someone makes a [pull request][about-prs] (PR). To meet this requirement, you'll need to define a workflow for the project, and ensure there is a [trigger][workflow-triggers] for pull requests to main. Fortunately, [GitHub Copilot][copilot] can aid you in creating the necessary YML file!
 
-## Exploring the test
+## Exploring the test and project
 
-Let's take a look at the tests defined for the project.
-
-> [!NOTE]
-> There are only a few tests defined for this project. Many projects will have hundreds or thousands of tests to ensure reliability.
+Let's take a look at the tests defined for the project, and the supporting script.
 
 1. Return to your codespace, or reopen it by navigating to your repository and selecting **Code** > **Codespaces** and the name of your codespace.
 2. In **Explorer**, navigate to **server** and open **test_app.py**.
-3. Open GitHub Copilot Chat and, in your own words, ask for an explanation of the tests in the file.
+3. Open GitHub Copilot Chat.
+4. Utilizing the dropdowns below the prompt window, ensure **Ask** and **GPT-4.1** are selected for the mode and model respectively.
+5. In your own words, ask for an explanation of the tests in the file.
+6. In **Explorer**, navigate to **scripts** and open **run-server-tests.sh**.
+7. Open GitHub Copilot Chat and, in your own words, ask for an explanation of the script which is used to run the Python tests for our Flask server.
 
 ## Understanding workflows
 
@@ -39,55 +40,50 @@ Creating a YML file can be a little tricky. Fortunately, GitHub Copilot can help
 
 ## Create the workflow file
 
+> [!NOTE]
+> You will notice a workflow already exists to run Playwright tests. These are part of the project to streamline library version updates. For this exercise you can ignore those tests, but we'll refer to them in a later exercise.
+
 Now that we have an overview of the structure of a workflow, let's ask Copilot to generate it for us!
 
-1. Create a new folder under **.github** named **workflows**.
-2. Create a new file named **server-test.yml** and ensure the file is open.
-3. If prompted to install the **GitHub Actions** extension, select **Install**.
-4. Open GitHub Copilot Chat.
-5. Add the test file **test_app.py** to the context by using the `#` in the Chat dialog box and beginning to type **test_app.py**, and pressing <kbd>enter</kbd> when it's highlighted.
-6. Prompt Copilot to create a GitHub Action workflow to run the tests. Use natural language to describe the workflow you're looking to create (to run the tests defined in test_app.py), and that you want it to run on merge (for when new code is pushed), when a PR is made, and on demand.
+1. Return to your codespace.
+2. Ensure **run-server-tests.sh** is the active editor so Copilot will utilize the file for context when performing the task.
+3. Use the following prompt to ask Copilot to create a new GitHub Actions workflow to run the tests, or modify it into your own words:
 
-> [!IMPORTANT]
-> A prescriptive prompt isn't provided as part of the exercise is to become comfortable interacting with GitHub Copilot.
+  Create a new GitHub Actions workflow to run the run-server-tests script for any PR or merge into main. Ensure least privilege is used in the workflow.
 
-7. Add the generated code to the new file by hovering over the suggested code and selecting the **Insert at cursor** button. The generated code should resemble the following:
+3. Copilot will explore the project, and generate the necessary YAML for the workflow. It should look like the example below:
 
 ```yml
 name: Server Tests
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'server/**'
+    branches: [main]
   pull_request:
-    branches: [ main ]
-    paths:
-      - 'server/**'
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  server-test:
+  server-tests:
+    name: Run Server Unit Tests
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f server/requirements.txt ]; then pip install -r server/requirements.txt; fi
-        pip install pytest
-        
-    - name: Run tests
-      working-directory: ./server
-      run: |
-        python -m pytest test_app.py -v
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Make scripts executable
+        run: chmod +x scripts/run-server-tests.sh scripts/setup-environment.sh
+
+      - name: Run server tests
+        run: ./scripts/run-server-tests.sh
 ```
 
 > [!IMPORTANT]
@@ -104,26 +100,26 @@ With the workflow created, let's push it to the repository. Typically you would 
 > All commands are entered using the terminal window in the codespace.
 
 1. Use the open terminal window in your codespace, or open it (if necessary) by pressing <kbd>Ctl</kbd> + <kbd>`</kbd>.
-1. List all issues for the repository by entering the following command in the terminal window:
+2. List all issues for the repository by entering the following command in the terminal window:
 
     ```bash
     gh issue list
     ```
 
-1. Note the issue number for the one titled **Implement testing**.
-1. Stage all files by entering the following command in the terminal window:
+3. Note the issue number for the one titled **Implement testing**.
+4. Stage all files by entering the following command in the terminal window:
 
     ```bash
     git add .
     ```
 
-1. Commit all changes with a message by entering the following command in the terminal window, replacing **<ISSUE_NUMBER>** with the number for the **Implement testing** issue:
+5. Commit all changes with a message by entering the following command in the terminal window, replacing **<ISSUE_NUMBER>** with the number for the **Implement testing** issue:
 
     ```bash
     git commit -m "Resolves #<ISSUE_NUMBER>"
     ```
 
-1. Push all changes to the repository by entering the following command in the terminal window:
+6. Push all changes to the repository by entering the following command in the terminal window:
 
     ```bash
     git push
