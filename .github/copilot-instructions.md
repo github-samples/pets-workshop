@@ -48,7 +48,7 @@ pets-workshop/
 
 ### Use Scripts, Not Direct Commands
 **IMPORTANT**: Always prefer using the provided scripts in the `scripts/` directory rather than running commands directly:
-- **Testing**: Use `./scripts/run-tests.sh` instead of `python -m unittest`
+- **Testing**: Use `./scripts/run-server-tests.sh` instead of `python -m unittest`
 - **Environment Setup**: Use `./scripts/setup-environment.sh` for initial setup
 - **Application Start**: Use `./scripts/start-app.sh` to launch the application
 
