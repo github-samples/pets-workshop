@@ -10,7 +10,7 @@ We've explored how we can use GitHub Copilot to explore our project and to provi
 
 ## Scenario
 
-The website currently lists all dogs in the database. While this was appropriate when the shelter only had a few dogs, as time has gone on the number has grown and it's difficult for people to sift through who's available to adopt. The shelter has asked you to add filters to the website to allow a user to select a breed of dog and only display dogs which are available for adoption.
+The website currently lists just the name and breed of the dog on the landing page. Users would like to see at a glance the adoption status so they don't get their hopes up only to discover a dog isn't available. You'll utilize Copilot to add the feature, as well as generate and run the tests to confirm the updates.
 
 ## Overview of this exercise
 
@@ -34,7 +34,7 @@ Let's ask Copilot to generate the code to add the feature and tests!
 4. Use the following prompt to ask Copilot to generate the necessary code and tests to implement filtering:
 
     ```markdown
-    Update the website to allow for filtering of dogs by breed and adoption status. The page should update as filters are modified. Ensure both unit tests and end to end tests are created, and they all pass. If any tests are failing, make the necessary updates so they pass.
+    Let's update the site to have an adoption status flag for the dogs! Create the necessary tests and ensure they all pass.
     ```
 
 ## Summary and next steps

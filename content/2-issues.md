@@ -21,7 +21,7 @@ The shelter wants to begin pushing new features to the website. They want to sta
 
 ## Creating issues to manage feature requests
 
-Our project needs two main updates. We want to make the updates to support development for our project, and add filtering capabilities for users to find the right dog. Let's create the issues for each of these. In the next few exercises we'll begin making the appropriate updates to our project to resolve these requests.
+Our project needs two main updates. We want to make the updates to support development for our project, and add a flag showing availability for users to find the right dog. Let's create the issues for each of these. In the next few exercises we'll begin making the appropriate updates to our project to resolve these requests.
 
 1. Return to the repository you created at the beginning of this workshop.
 2. Select the **Issues** tab.
@@ -30,11 +30,11 @@ Our project needs two main updates. We want to make the updates to support devel
 5. Select **Create more** at the bottom of the page to streamline the creation process.
 6. Create new issues by adding the information indicated in the table below, selecting **Submit new issue** after creating each one:
 
-    | Title                   | Description                                                                    |
-    | ----------------------- | ------------------------------------------------------------------------------ |
-    | Define codespace        | Create the necessary definitions for the codespace to enable cloud development |
-    | Implement testing       | Create a workflow to automate testing for continuous integration               |
-    | Add filters to dog list | Add the code to allow users to filter for dogs by breed and availability       |
+    | Title                             | Description                                                                                             |
+    | --------------------------------- | ------------------------------------------------------------------------------------------------------- |
+    | Define codespace                  | Create the necessary definitions for the codespace to enable cloud development                          |
+    | Implement testing                 | Create a workflow to automate testing for continuous integration                                        |
+    | Add availability flag to dog list | Add the necessary code to display a flag for the status of each dog, and the tests for the new behavior |
 
 > [!TIP]
 > You can also save an issue by pressing <kbd>Ctl</kbd> - <kbd>Enter</kbd> (or <kbd>Cmd</kbd> - <kbd>Return</kbd> on a Mac) in the title or description fields.
