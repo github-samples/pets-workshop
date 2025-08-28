@@ -10,6 +10,7 @@ The Tailspin Shelter is a full-stack web application that showcases a fictional 
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4.0+ - Utility-first CSS framework
 - **Language**: TypeScript - Strongly typed JavaScript
 - **Adapter**: Node.js adapter for server-side rendering
+- **E2E Testing**: [Playwright](https://playwright.dev/) v1.49+ - End-to-end testing framework
 
 ### Backend (Server)
 - **Framework**: [Flask](https://flask.palletsprojects.com/) - Python web framework
@@ -26,7 +27,8 @@ pets-workshop/
 │   ├── src/components/     # Svelte components (DogList, DogDetails)
 │   ├── src/layouts/        # Astro layout templates
 │   ├── src/pages/          # Astro pages (routing)
-│   └── src/styles/         # Global CSS and Tailwind imports
+│   ├── src/styles/         # Global CSS and Tailwind imports
+│   └── e2e-tests/          # Playwright end-to-end tests
 ├── server/                 # Flask backend API
 │   ├── models/             # SQLAlchemy models (Dog, Breed)
 │   ├── tests/              # Python unit tests
@@ -49,6 +51,7 @@ pets-workshop/
 ### Use Scripts, Not Direct Commands
 **IMPORTANT**: Always prefer using the provided scripts in the `scripts/` directory rather than running commands directly:
 - **Testing**: Use `./scripts/run-server-tests.sh` instead of `python -m unittest`
+- **E2E Testing**: Use `npm run test:e2e` in the `client/` directory for Playwright tests
 - **Environment Setup**: Use `./scripts/setup-environment.sh` for initial setup
 - **Application Start**: Use `./scripts/start-app.sh` to launch the application
 
@@ -67,6 +70,13 @@ pets-workshop/
 - **Models**: Use SQLAlchemy declarative base with proper relationships
 - **Queries**: Prefer SQLAlchemy query syntax over raw SQL
 - **Data Seeding**: Use the utilities in `utils/seed_database.py`
+
+### Testing Patterns
+- **E2E Tests**: Playwright tests in `client/e2e-tests/` cover full user workflows
+- **Test Structure**: Organize tests by page/feature (homepage, dog-details, API integration)
+- **Test Commands**: Use `npm run test:e2e` for all tests, `npm run test:e2e:ui` for debugging
+- **Server Tests**: Python unittest framework for backend API testing
+- **Test Coverage**: Include tests for user interactions, API responses, and error handling
 
 ## Coding Standards
 
