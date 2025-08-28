@@ -35,6 +35,7 @@ The [dev container is configured][dev-containers-docs] by creating the Docker fi
 6. Select the following features to add into your container:
     - **Azure CLI**
     - **GitHub CLI**
+    - **Playwright**
     - **Python**
 
 > [!NOTE]
