@@ -110,7 +110,6 @@ When working with this codebase:
 1. Always maintain the dark theme aesthetic
 2. Use the provided scripts for common operations
 3. Follow the established patterns for API responses and component structure
+4. Utilize the tests to validate app behavior; don't launch the app or run `curl` commands to do so
 4. Ensure type safety in both Python and TypeScript code
-5. Consider the educational context when suggesting improvements
-6. Test changes using the appropriate testing frameworks
-7. Keep code readable and well-documented for learning purposes
+5. Test changes using the appropriate testing frameworks
