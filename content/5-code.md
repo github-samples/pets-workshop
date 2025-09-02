@@ -1,6 +1,6 @@
 # Coding with GitHub Copilot
 
-| [← Helping GitHub Copilot understand context][walkthrough-previous] | [Next: GitHub flow →][walkthrough-next] |
+| [← Continuous integration and testing][previous] | [Next: GitHub flow →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 To truly experience the newly created workflow in action, and eventually the GitHub flow (which we'll see in the next exercise) we're going to add a small feature to our website. You'll do this by asking [GitHub Copilot][github-copilot] to generate the required code - and tests.
@@ -18,7 +18,7 @@ To streamline the creation of both the feature and required infrastructure you'l
 
 ## GitHub Copilot agent mode
 
-In the [prior exercise][walkthrough-previous], you utilized **ask mode** in GitHub Copilot. Ask mode is focused on "single-turn" operations, where you ask a question, receive an answer, and then repeat the flow as needed. Ask mode is great for generating individual files, learning about your project, and generic code-related questions.
+In the [prior exercise][previous], you utilized **ask mode** in GitHub Copilot. Ask mode is focused on "single-turn" operations, where you ask a question, receive an answer, and then repeat the flow as needed. Ask mode is great for generating individual files, learning about your project, and generic code-related questions.
 
 [**Agent mode**][agent-mode] allows Copilot to act like a peer programmer, both generating code suggestions and performing tasks on your behalf. Agent mode will explore your project, build an approach of how to resolve a problem, generate the code, perform supporting operations like running tests, and even self-heal should it find any problems.
 
@@ -73,7 +73,7 @@ With the newly generated code in place, let's take a moment to ensure the site h
 
 ## Summary and next steps
 
-Congratulations! You've worked with GitHub Copilot to a new flag to the site. Now it's time to take that feature and kickoff the rest of the DevOps flow. Let's close out by [creating a pull request with our new functionality][walkthrough-next]!
+Congratulations! You've worked with GitHub Copilot to a new flag to the site. Now it's time to take that feature and kickoff the rest of the DevOps flow. Let's close out by [creating a pull request with our new functionality][next]!
 
 ## Resources
 
@@ -81,15 +81,16 @@ Congratulations! You've worked with GitHub Copilot to a new flag to the site. No
 - [Copilot Edits][copilot-chat-edits]
 - [Copilot Chat cookbook][copilot-chat-cookbook]
 
-| [← Helping GitHub Copilot understand context][walkthrough-previous] | [Next: GitHub flow →][walkthrough-next] |
+| [← Continuous integration and testing][previous] | [Next: GitHub flow →][next] |
 |:-----------------------------------|------------------------------------------:|
 
-[walkthrough-previous]: 5-context.md
-[walkthrough-next]: 7-github-flow.md
-[github-copilot]: https://docs.github.com/en/copilot/get-started/what-is-github-copilot
-[agents-in-sdlc]: https://github.com/github-samples/agents-in-sdlc
-[github-samples]: https://github.com/github-samples/
+[next]: ./6-github-flow.md
+[previous]: ./4-continuous-integration.md
+
 [agent-mode]: https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode
+[agents-in-sdlc]: https://github.com/github-samples/agents-in-sdlc
 [copilot-chat-cookbook]: https://docs.github.com/en/copilot/copilot-chat-cookbook
 [copilot-chat-edits]: https://code.visualstudio.com/docs/copilot/copilot-edits
 [copilot-questions]: https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/asking-github-copilot-questions-in-your-ide
+[github-copilot]: https://docs.github.com/en/copilot/get-started/what-is-github-copilot
+[github-samples]: https://github.com/github-samples/

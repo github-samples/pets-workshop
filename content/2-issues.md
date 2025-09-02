@@ -1,6 +1,6 @@
 # Project management with GitHub Issues
 
-| [← Securing the development pipeline][walkthrough-previous] | [Next: Cloud-based development with GitHub Codespaces →][walkthrough-next] |
+| [← Securing the development pipeline][previous] | [Next: Cloud-based development with GitHub Codespaces →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 "URL or it didn't happen" is a common mantra at GitHub, which is used to highlight the importance of documenting the development process. Feature requests should have a history: who made the request, what was the rationale, who was involved in the process, what decisions were made, why were they made, was the feature implemented, how was it implemented... All of this information helps provide context to both drive future decisions and avoid repeating old mistakes.
@@ -55,7 +55,7 @@ You've now defined all the issues for the workshop! You'll use these issues to h
 
 ## Summary and next steps
 
-GitHub Issues are the core to project management on GitHub. Their flexibility allows your organization to determine the best course of action to support your development lifecycle's methodology. With your issues created, it's time to turn your attention to the first big change to the project, [defining a codespace][walkthrough-next].
+GitHub Issues are the core to project management on GitHub. Their flexibility allows your organization to determine the best course of action to support your development lifecycle's methodology. With your issues created, it's time to turn your attention to the first big change to the project, [defining a codespace][next].
 
 ## Resources
 
@@ -63,15 +63,16 @@ GitHub Issues are the core to project management on GitHub. Their flexibility al
 - [Communicate using markdown][skills-markdown]
 - [GitHub Projects][projects-docs]
 
-| [← Securing the development pipeline][walkthrough-previous] | [Next: Cloud-based development with GitHub Codespaces →][walkthrough-next] |
+| [← Securing the development pipeline][previous] | [Next: Cloud-based development with GitHub Codespaces →][next] |
 |:-----------------------------------|------------------------------------------:|
 
-[discussions]: https://github.com/features/discussions
-[wikis]: https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis
+[next]: ./3-codespaces.md
+[previous]: ./1-code-scanning.md
+
 [about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[discussions]: https://github.com/features/discussions
 [issues]: https://github.com/features/issues
 [issues-docs]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
 [projects-docs]: https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/quickstart-for-projects
 [skills-markdown]: https://github.com/skills/communicate-using-markdown
-[walkthrough-next]: 3-codespaces.md
-[walkthrough-previous]: 1-code-scanning.md
+[wikis]: https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis

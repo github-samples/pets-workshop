@@ -1,6 +1,6 @@
 # GitHub flow
 
-| [← Add new functionality][walkthrough-previous] | [Next: Deploy the application →][walkthrough-next] |
+| [← Coding with GitHub Copilot][previous] | [Next: Deploy the application →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 The [GitHub flow][github-flow] is a lightweight, [branch-based][about-branches] workflow. It's designed to allow for free testing and exploration of ideas and novel approaches which are then reviewed and, if accepted, brought into the codebase. At a high level, the GitHub flow follows this pattern:
@@ -19,7 +19,7 @@ The GitHub flow is designed to work as a cycle, where contributors continuously 
 
 ## Scenario
 
-With the code changes created in the [prior exercise][walkthrough-previous], it's time to walk through the GitHub flow to create a pull request and incorporate the updates into the codebase. While the changes have already been made (meaning we are slightly out of order from the "traditional" flow), you can still perform the steps to explore.
+With the code changes created in the [prior exercise][previous], it's time to walk through the GitHub flow to create a pull request and incorporate the updates into the codebase. While the changes have already been made (meaning we are slightly out of order from the "traditional" flow), you can still perform the steps to explore.
 
 ## Creating a branch
 
@@ -87,7 +87,7 @@ Congratulations! You've now used the GitHub flow to suggest changes, perform a r
 
 ## Summary and next steps
 
-The GitHub flow is a workflow for managing changes and incorporating new features into a codebase. GitHub flow gives you the freedom to explore and experiment, while ensuring all code follows a validation process before being merged. Let's get our [application deployed][walkthrough-next].
+The GitHub flow is a workflow for managing changes and incorporating new features into a codebase. GitHub flow gives you the freedom to explore and experiment, while ensuring all code follows a validation process before being merged. Let's get our [application deployed][next].
 
 ## Resources
 
@@ -95,20 +95,20 @@ The GitHub flow is a workflow for managing changes and incorporating new feature
 - [GitHub Skills: Review pull requests][skills-review-prs]
 - [GitHub Skills: Release based workflow][skills-release-workflow]
 
-| [← Add new functionality][walkthrough-previous] | [Next: Deploy the application →][walkthrough-next] |
+| [← Coding with GitHub Copilot][previous] | [Next: Deploy the application →][next] |
 |:-----------------------------------|------------------------------------------:|
 
+[next]: ./7-deployment.md
+[previous]: ./5-code.md
 [issues-exercise]: ./2-issues.md
 [security-exercise]: ./1-code-scanning.md
-[testing-exercise]: ./4-testing.md
-[walkthrough-next]: ./8-deployment.md
-[walkthrough-previous]: ./6-code.md
+[testing-exercise]: ./4-continuous-integration.md
 
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [cicd-resources]: https://resources.github.com/ci-cd/
-[github-codespaces]: https://github.com/features/codespaces
 [github-cli]: https://cli.github.com/
+[github-codespaces]: https://github.com/features/codespaces
 [github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
 [skills-release-workflow]: https://github.com/skills/release-based-workflow
 [skills-review-prs]: https://github.com/skills/review-pull-requests

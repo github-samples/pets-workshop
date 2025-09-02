@@ -1,6 +1,6 @@
 # Cloud-based development with GitHub Codespaces
 
-| [← Project management with GitHub Issues][walkthrough-previous] | [Next: Continuous integration and testing →][walkthrough-next] |
+| [← Project management with GitHub Issues][previous] | [Next: Continuous integration and testing →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 One of the biggest challenges organizations face is onboarding new developers to projects. There are libraries to install, services to configure, version issues, obscure error messages... It can literally take days to get everything running before a developer is able to write their first line of code.
@@ -129,7 +129,7 @@ Whenever someone uses the codespace you defined they'll have an environment with
 
 ## Interacting with the repository
 
-Custom containers for GitHub Codespaces become part of the source code for the repository. Thus they are maintained through standard source control, and will follow the repository as it's forked in the future. This allows this definition to be shared across all developers contributing to the project. Let's upload our new configuration, closing the [issue you created][walkthrough-previous] for defining a development environment.
+Custom containers for GitHub Codespaces become part of the source code for the repository. Thus they are maintained through standard source control, and will follow the repository as it's forked in the future. This allows this definition to be shared across all developers contributing to the project. Let's upload our new configuration, closing the [issue you created][previous] for defining a development environment.
 
 > [!IMPORTANT]
 > For purposes of this exercise we are pushing code updates directly to `main`, our default branch. Normally you would follow the [GitHub flow][github-flow], which we will do in a [later exercise][github-flow-exercise].
@@ -165,7 +165,7 @@ Custom containers for GitHub Codespaces become part of the source code for the r
 
 ## Summary and next steps
 
-Congratulations! You have now defined a custom development environment including all services and extensions. This eliminates the initial setup hurdle normally required when contributing to a project. Let's use this codespace to [implement testing and continuous integration][walkthrough-next] for the project.
+Congratulations! You have now defined a custom development environment including all services and extensions. This eliminates the initial setup hurdle normally required when contributing to a project. Let's use this codespace to [implement testing and continuous integration][next] for the project.
 
 ## Resources
 
@@ -174,17 +174,20 @@ Congratulations! You have now defined a custom development environment including
 - [Defining dev containers][dev-containers-docs]
 - [GitHub Skills: Code with Codespaces][skills-codespaces]
 
-| [← Project management with GitHub Issues][walkthrough-previous] | [Next: Continuous integration and testing →][walkthrough-next] |
+| [← Project management with GitHub Issues][previous] | [Next: Continuous integration and testing →][next] |
 |:-----------------------------------|------------------------------------------:|
 
+[next]: ./4-continuous-integration.md
+[previous]: ./2-issues.md
+[github-flow-exercise]: ./6-github-flow.md
+
+[codespace-prebuild]: https://docs.github.com/en/codespaces/prebuilding-your-codespaces
 [codespaces]: https://github.com/features/codespaces
+[codespaces-docs]: https://docs.github.com/en/codespaces/overview
 [codespaces-forward-ports]: https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace
 [copilot-extension]: https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
-[codespaces-docs]: https://docs.github.com/en/codespaces/overview
-[codespace-prebuild]: https://docs.github.com/en/codespaces/prebuilding-your-codespaces
 [dev-containers-docs]: https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers
 [github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
-[github-flow-exercise]: ./7-github-flow.md
 [github-universal-container]: https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#using-the-default-dev-container-configuration
 [github-universal-container-definition]: https://github.com/devcontainers/images/blob/main/src/universal/.devcontainer/Dockerfile
 [IDE]: https://en.wikipedia.org/wiki/Integrated_development_environment
@@ -192,5 +195,3 @@ Congratulations! You have now defined a custom development environment including
 [vscode-codespaces]: https://docs.github.com/en/codespaces/developing-in-codespaces/using-github-codespaces-in-visual-studio-code
 [vscode-extensions]: https://code.visualstudio.com/docs/editor/extension-marketplace
 [vscode-post-start-command]: https://code.visualstudio.com/remote/advancedcontainers/start-processes
-[walkthrough-previous]: 2-issues.md
-[walkthrough-next]: 4-testing.md

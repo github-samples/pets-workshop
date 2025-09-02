@@ -1,7 +1,7 @@
 # Deploying the project to the cloud
 
-| [← GitHub flow][walkthrough-previous] | [Next: Pets workshop selection →][walkthrough-next] |
-|:-----------------------------------|------------------------------------------:|
+| [← GitHub flow][previous] |
+|:-----------------------------------|
 
 The CD portion of CI/CD is continuous delivery or continuous deployment. In a nutshell, it's about taking the product you're building and putting it somewhere to be accessed by the people who need it. There's numerous ways to do this, and the process can become rather involved. We're going to focus on taking our application and deploying it to Azure.
 
@@ -197,14 +197,13 @@ Work with the workshop leaders as needed to ask questions and get guidance as yo
 - [Deploying with GitHub Actions][actions-deploy]
 - [What is the Azure Developer CLI?][azd-docs]
 
-| [← GitHub flow][walkthrough-previous] | [Next: Pets workshop selection →][walkthrough-next] |
-|:-----------------------------------|------------------------------------------:|
+| [← GitHub flow][previous] |
+|:-----------------------------------|
+
+[previous]: ./6-github-flow.md
 
 [actions-deploy]: https://docs.github.com/en/actions/use-cases-and-examples/deploying/deploying-with-github-actions
 [azd-docs]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview?tabs=linux
 [azure-copilot-extension]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azure-github-copilot
-[bicep-docs]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep
-[extensions-copilot-chat]: ./5-context.md
+[bicep-docs]: https://learn.microsoft.com/en/azure/azure-resource-manager/bicep/overview?tabs=bicep
 [oidc-docs]: https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect
-[walkthrough-previous]: 7-github-flow.md
-[walkthrough-next]: ../README.md

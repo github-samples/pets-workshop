@@ -1,6 +1,6 @@
 # Continuous integration and testing
 
-| [← Cloud-based development with GitHub Codespaces][walkthrough-previous] | [Next: Helping GitHub Copilot understand context →][walkthrough-next] |
+| [← Cloud-based development with GitHub Codespaces][previous] | [Next: Coding with GitHub Copilot →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 Chances are you've heard the abbreviation CI/CD, which stands for continuous integration and continuous delivery (or sometimes continuous deployment). CI is centered on incorporating new code into the existing codebase, and typically includes running tests and performing builds. CD focuses on the next logical step, taking the now validated code and generating the necessary outputs to be pushed to the cloud or other destinations. This is probably the most focused upon component of DevOps.
@@ -141,7 +141,7 @@ You've now seen a workflow, and explore the details of a run!
 
 ## Summary and next steps
 
-Congratulations! You've implemented automated testing, a standard part of continuous integration, which is critical to successful DevOps. Automating these processes ensures consistency and reduces the workload required for developers and administrators. You have created a workflow to run tests on any new code for your codebase. Let's explore [context with GitHub Copilot chat][walkthrough-next].
+Congratulations! You've implemented automated testing, a standard part of continuous integration, which is critical to successful DevOps. Automating these processes ensures consistency and reduces the workload required for developers and administrators. You have created a workflow to run tests on any new code for your codebase. Let's explore [coding with GitHub Copilot][next].
 
 ### Resources
 
@@ -150,19 +150,20 @@ Congratulations! You've implemented automated testing, a standard part of contin
 - [About continuous integration][about-ci]
 - [GitHub Skills: Test with Actions][skills-test-actions]
 
-| [← Cloud-based development with GitHub Codespaces][walkthrough-previous] | [Next: Helping GitHub Copilot understand context →][walkthrough-next] |
+| [← Cloud-based development with GitHub Codespaces][previous] | [Next: Coding with GitHub Copilot →][next] |
 |:-----------------------------------|------------------------------------------:|
+
+[next]: ./5-code.md
+[previous]: ./3-codespaces.md
+[github-flow-exercise]: ./6-github-flow.md
+[issues-exercise]: ./2-issues.md
 
 [about-ci]: https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
 [about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [actions-marketplace]: https://github.com/marketplace?type=actions
-[workflow-triggers]: https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
 [copilot]: https://gh.io/copilot
 [copilot-slash-commands]: https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet
 [github-actions]: https://github.com/features/actions
 [github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
-[github-flow-exercise]: ./7-github-flow.md
-[issues-exercise]: ./2-issues.md
 [skills-test-actions]: https://github.com/skills/test-with-actions
-[walkthrough-previous]: 3-codespaces.md
-[walkthrough-next]: 5-context.md
+[workflow-triggers]: https://docs.github.com/en/actions/reference/events-that-trigger-workflows

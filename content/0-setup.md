@@ -1,6 +1,6 @@
 # Workshop setup
 
-| [← Modern DevOps with GitHub][walkthrough-previous] | [Next: Enable Code Scanning →][walkthrough-next] |
+| [← Modern DevOps with GitHub][previous] | [Next: Enable Code Scanning →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 To complete this workshop you will need to create a repository with a copy of the contents of this repository. While this can be done by [forking a repository][fork-repo], the goal of a fork is to eventually merge code back into the original (or upstream) source. In our case we want a separate copy as we don't intend to merge our changes. This is accomplished through the use of a [template repository][template-repo]. Template repositories are a great way to provide starters for your organization, ensuring consistency across projects.
@@ -22,13 +22,14 @@ Let's create the repository you'll use for your workshop.
 In a few moments a new repository will be created from the template for this workshop!
 
 ## Summary and next steps
-You've now created the repository you'll use for this workshop! Next let's [enable Code Scanning][walkthrough-next] to secure the code we write.
+You've now created the repository you'll use for this workshop! Next let's [enable Code Scanning][next] to secure the code we write.
 
-| [← Modern DevOps with GitHub][walkthrough-previous] | [Next: Enable Code Scanning →][walkthrough-next] |
+| [← Modern DevOps with GitHub][previous] | [Next: Enable Code Scanning →][next] |
 |:-----------------------------------|------------------------------------------:|
 
+[next]: ./1-code-scanning.md
+[previous]: ./README.md
+
 [fork-repo]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[template-repo]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository
 [repo-root]: /
-[walkthrough-previous]: README.md
-[walkthrough-next]: 1-code-scanning.md
+[template-repo]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository

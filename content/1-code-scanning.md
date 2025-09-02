@@ -1,6 +1,6 @@
 # Securing the development pipeline
 
-| [← Workshop setup][walkthrough-previous] | [Next: Project management with GitHub Issues →][walkthrough-next] |
+| [← Workshop setup][previous] | [Next: Project management with GitHub Issues →][next] |
 |:-----------------------------------|------------------------------------------:|
 
 Ensuring code security is imperative in today's environment. When we think about how we create code today, there's three main areas to focus on:
@@ -84,7 +84,7 @@ A background process starts, and will configure a workflow for analyzing your co
 
 ## Summary and next steps
 
-In this exercise, you enabled GitHub Advanced Security. You enabled Dependabot to check the libraries your project takes dependencies on, secret scanning to look for keys and tokens, and code scanning to examine your source code. These tools help ensure your application is secure. Next it's time to [file an issue][walkthrough-next] to add feature requests.
+In this exercise, you enabled GitHub Advanced Security. You enabled Dependabot to check the libraries your project takes dependencies on, secret scanning to look for keys and tokens, and code scanning to examine your source code. These tools help ensure your application is secure. Next it's time to [file an issue][next] to add feature requests.
 
 ### Additional resources
 
@@ -92,17 +92,18 @@ In this exercise, you enabled GitHub Advanced Security. You enabled Dependabot t
 - [GitHub Skills: Secure your repository's supply chain][skills-supply-chain]
 - [GitHub Skills: Secure code game][skills-secure-code]
 
-| [← Workshop setup][walkthrough-previous] | [Next: Project management with GitHub Issues →][walkthrough-next] |
+| [← Workshop setup][previous] | [Next: Project management with GitHub Issues →][next] |
 |:-----------------------------------|------------------------------------------:|
 
-[advanced-security]: https://github.com/features/security
-[advanced-security-docs]: https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security
+[next]: ./2-issues.md
+[previous]: ./0-setup.md
+
 [about-code-scanning]: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning
 [about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[advanced-security]: https://github.com/features/security
+[advanced-security-docs]: https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security
 [dependabot-quickstart]: https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide
 [github-actions]: https://github.com/features/actions
-[supported-secrets]: https://docs.github.com/en/code-security/secret-scanning/secret-scanning-patterns#supported-secrets
-[skills-supply-chain]: https://github.com/skills/secure-repository-supply-chain
 [skills-secure-code]: https://github.com/skills/secure-code-game
-[walkthrough-previous]: 0-setup.md
-[walkthrough-next]: 2-issues.md
+[skills-supply-chain]: https://github.com/skills/secure-repository-supply-chain
+[supported-secrets]: https://docs.github.com/en/code-security/secret-scanning/secret-scanning-patterns#supported-secrets
