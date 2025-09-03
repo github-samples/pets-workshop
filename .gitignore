@@ -38,3 +38,7 @@ instance/
 flask_session/
 .coverage
 htmlcov/
+
+# playwright
+client/test-results/
+client/playwright-report/

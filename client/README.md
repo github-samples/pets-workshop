@@ -43,6 +43,20 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 🧪 Testing
+
+For end-to-end testing, we use Playwright. All test commands should be run from the **project root**:
+
+| Command                        | Action                                              |
+| :----------------------------- | :-------------------------------------------------- |
+| `./scripts/run-e2e-tests.sh`   | Runs all Playwright e2e tests (recommended)        |
+| `npm run test:e2e`             | Runs all e2e tests (from client directory)         |
+| `npm run test:e2e:ui`          | Opens Playwright UI for interactive testing        |
+| `npm run test:e2e:debug`       | Runs tests in debug mode                           |
+| `npm run test:e2e:headed`      | Runs tests with browser UI visible                 |
+
+**Note:** The script `./scripts/run-e2e-tests.sh` is the recommended way to run tests as it handles environment setup automatically.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

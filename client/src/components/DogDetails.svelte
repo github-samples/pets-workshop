@@ -49,48 +49,48 @@
 </script>
 
 {#if loading}
-    <div class="animate-pulse bg-slate-800/60 backdrop-blur-sm rounded-xl overflow-hidden p-6">
+    <div class="animate-pulse bg-slate-800/60 backdrop-blur-sm rounded-xl overflow-hidden p-6" data-testid="dog-details-loading">
         <div class="h-8 bg-slate-700 rounded w-1/2 mb-6"></div>
         <div class="h-4 bg-slate-700 rounded w-3/4 mb-3"></div>
         <div class="h-4 bg-slate-700 rounded w-1/2 mb-3"></div>
         <div class="h-4 bg-slate-700 rounded w-full mb-3"></div>
     </div>
 {:else if error}
-    <div class="bg-red-500/20 border border-red-500/50 text-red-400 rounded-xl p-6">
-        {error}
+    <div class="bg-red-500/20 border border-red-500/50 text-red-400 rounded-xl p-6" data-testid="dog-details-error">
+        <p data-testid="dog-details-error-message">{error}</p>
     </div>
 {:else if dogData}
-    <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden">
+    <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden" data-testid="dog-details-container" data-dog-id={dogData.id}>
         <div class="p-6">
             <div class="flex justify-between items-start">
-                <h1 class="text-3xl font-bold text-slate-100 mb-2">{dogData.name}</h1>
+                <h1 class="text-3xl font-bold text-slate-100 mb-2" data-testid="dog-details-name">{dogData.name}</h1>
                 {#if dogData.status === 'AVAILABLE'}
-                    <span class="bg-green-500/20 text-green-400 text-sm px-3 py-1 rounded-full">Available</span>
+                    <span class="bg-green-500/20 text-green-400 text-sm px-3 py-1 rounded-full" data-testid="dog-status-available">Available</span>
                 {:else if dogData.status === 'PENDING'}
-                    <span class="bg-amber-500/20 text-amber-400 text-sm px-3 py-1 rounded-full">Pending Adoption</span>
+                    <span class="bg-amber-500/20 text-amber-400 text-sm px-3 py-1 rounded-full" data-testid="dog-status-pending">Pending Adoption</span>
                 {:else}
-                    <span class="bg-red-500/20 text-red-400 text-sm px-3 py-1 rounded-full">Adopted</span>
+                    <span class="bg-red-500/20 text-red-400 text-sm px-3 py-1 rounded-full" data-testid="dog-status-adopted">Adopted</span>
                 {/if}
             </div>
             
-            <div class="grid grid-cols-2 gap-4 mb-6 mt-4">
+            <div class="grid grid-cols-2 gap-4 mb-6 mt-4" data-testid="dog-details-info">
                 <div class="flex items-center">
-                    <p class="text-slate-300">Breed: {dogData.breed}</p>
+                    <p class="text-slate-300" data-testid="dog-details-breed">Breed: {dogData.breed}</p>
                 </div>
                 <div class="flex items-center">
-                    <p class="text-slate-300">Age: {dogData.age} {dogData.age === 1 ? 'year' : 'years'}</p>
+                    <p class="text-slate-300" data-testid="dog-details-age">Age: {dogData.age} {dogData.age === 1 ? 'year' : 'years'}</p>
                 </div>
                 <div class="flex items-center">
-                    <p class="text-slate-300">Gender: {dogData.gender}</p>
+                    <p class="text-slate-300" data-testid="dog-details-gender">Gender: {dogData.gender}</p>
                 </div>
             </div>
             
-            <h2 class="text-lg font-semibold text-slate-200 mb-2">About {dogData.name}</h2>
-            <p class="text-slate-400">{dogData.description}</p>
+            <h2 class="text-lg font-semibold text-slate-200 mb-2" data-testid="dog-details-about-heading">About {dogData.name}</h2>
+            <p class="text-slate-400" data-testid="dog-details-description">{dogData.description}</p>
         </div>
     </div>
 {:else}
-    <div class="bg-slate-800/60 backdrop-blur-sm rounded-xl p-6">
-        <p class="text-slate-400">No dog information available</p>
+    <div class="bg-slate-800/60 backdrop-blur-sm rounded-xl p-6" data-testid="dog-details-no-data">
+        <p class="text-slate-400" data-testid="dog-details-no-data-message">No dog information available</p>
     </div>
 {/if}

@@ -5,28 +5,28 @@ import "../styles/global.css";
 ---
 
 <Layout title="About - Tailspin Shelter">
-  <section class="max-w-5xl mx-auto px-4 py-8">
+  <section class="max-w-5xl mx-auto px-4 py-8" data-testid="about-page-container">
     <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700 rounded-xl shadow-lg p-8 transition-colors duration-300">
-      <h2 class="text-blue-400 text-4xl mb-8 pb-3 border-b border-slate-600 font-bold">About Tailspin Shelter</h2>
+      <h2 class="text-blue-400 text-4xl mb-8 pb-3 border-b border-slate-600 font-bold" data-testid="about-page-title">About Tailspin Shelter</h2>
       
-      <div class="space-y-6">
-        <p class="text-lg leading-relaxed text-slate-300">
+      <div class="space-y-6" data-testid="about-page-content">
+        <p class="text-lg leading-relaxed text-slate-300" data-testid="about-page-description-1">
           Nestled in the heart of Seattle, Tailspin Shelter is a warm, welcoming haven for dogs of all breeds and backgrounds. Founded in 2015 by a small group of dog lovers and rescue advocates, our mission is to give every dog a second chance at a happy, healthy life. Whether it's finding forever homes, providing medical care, or offering behavioral training, our dedicated team works tirelessly to ensure each dog's journey has a joyful destination. Inspired by Seattle's vibrant and compassionate community, we've grown from a small foster network into a full-service shelter and adoption center.
         </p>
         
-        <p class="text-lg leading-relaxed text-slate-300">
+        <p class="text-lg leading-relaxed text-slate-300" data-testid="about-page-description-2">
           The name "Tailspin" reflects both the whirlwind of emotions dogs often experience when they first arrive — and the joyful, spinning tails we see when they find their perfect match. For us, a "tailspin" is a reminder of the transformations we witness daily: from uncertainty and fear to trust, love, and boundless energy. It's this journey that fuels our work and reminds us why we do what we do. Every wagging tail is a testament to resilience and hope.
         </p>
       </div>
       
-      <div class="mt-10 bg-slate-700/50 border-l-4 border-blue-500 p-5 rounded-r-lg">
-        <p class="text-sm text-slate-300 italic">
+      <div class="mt-10 bg-slate-700/50 border-l-4 border-blue-500 p-5 rounded-r-lg" data-testid="about-page-note">
+        <p class="text-sm text-slate-300 italic" data-testid="fictional-organization-note">
           <span class="font-medium text-blue-400">Note:</span> Tailspin Shelter is a fictional organization, created for this workshop.
         </p>
       </div>
       
-      <div class="mt-12 flex justify-center">
-        <a href="/" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/20 flex items-center">
+      <div class="mt-12 flex justify-center" data-testid="about-page-navigation">
+        <a href="/" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/20 flex items-center" data-testid="back-to-dogs-button">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
           </svg>

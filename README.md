@@ -6,6 +6,24 @@ This repository contains the project for two guided workshops to explore various
 
 > **[Get started learning about development with GitHub!](./content/README.md)**
 
+## Development
+
+### Quick Start
+
+To run the application:
+
+```bash
+./scripts/start-app.sh
+```
+
+This will start both the Flask backend (port 5100) and Astro frontend (port 4321).
+
+### Project Structure
+
+- `client/` - Astro frontend with Svelte components
+- `server/` - Flask backend with SQLAlchemy models  
+- `scripts/` - Development and testing scripts
+
 ## License 
 
 This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) for the full terms.

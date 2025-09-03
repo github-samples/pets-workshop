@@ -2,6 +2,7 @@
 
 # Define color codes
 GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Store initial directory
@@ -9,23 +10,32 @@ INITIAL_DIR=$(pwd)
 
 # Check if we're in scripts directory and navigate accordingly
 if [[ $(basename $(pwd)) == "scripts" ]]; then
+    SCRIPT_DIR=$(pwd)
     cd ..
+else
+    SCRIPT_DIR="./scripts"
+fi
+
+# Check if environment is already set up, if not, run setup
+if [[ ! -d "server/venv" ]] || [[ ! -d "client/node_modules" ]]; then
+    echo -e "${YELLOW}Environment not set up. Running setup script...${NC}"
+    if ! bash "$SCRIPT_DIR/setup-environment.sh"; then
+        echo "Setup failed. Exiting."
+        cd "$INITIAL_DIR"
+        exit 1
+    fi
 fi
 
 echo "Starting API (Flask) server..."
 
-# Check OS and use appropriate Python command
+# Activate virtual environment
 if [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "win32" ]]; then
     # Windows
-    py -m venv venv
-    source venv/Scripts/activate || . venv/Scripts/activate
+    source server/venv/Scripts/activate || . server/venv/Scripts/activate
 else
     # macOS/Linux
-    python3 -m venv venv
-    source venv/bin/activate || . venv/bin/activate
+    source server/venv/bin/activate || . server/venv/bin/activate
 fi
-
-pip install -r server/requirements.txt
 cd server || {
     echo "Error: server directory not found"
     cd "$INITIAL_DIR"
@@ -50,7 +60,8 @@ cd ../client || {
     cd "$INITIAL_DIR"
     exit 1
 }
-npm install
+
+# npm packages should already be installed by setup script
 npm run dev -- --no-clearScreen &
 
 # Store the SvelteKit server process ID

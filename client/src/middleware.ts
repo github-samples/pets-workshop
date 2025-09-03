@@ -5,15 +5,11 @@ const API_SERVER_URL = process.env.API_SERVER_URL || 'http://localhost:5100';
 
 // Middleware to handle API requests
 export const onRequest = defineMiddleware(async (context, next) => {
-  console.log('Request URL:', context.request.url);
   
   // Guard clause: if not an API request, pass through to regular Astro handling
   if (!context.request.url.includes('/api/')) {
     return await next();
   }
-  
-  // API request handling
-  console.log('Forwarding request to server:', API_SERVER_URL);
   
   const url = new URL(context.request.url);
   const apiPath = url.pathname + url.search;
