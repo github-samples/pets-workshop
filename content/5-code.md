@@ -89,8 +89,8 @@ Congratulations! You've worked with GitHub Copilot to a new flag to the site. No
 
 [agent-mode]: https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode
 [agents-in-sdlc]: https://github.com/github-samples/agents-in-sdlc
-[copilot-chat-cookbook]: https://docs.github.com/en/copilot/copilot-chat-cookbook
+[copilot-chat-cookbook]: https://docs.github.com/copilot/copilot-chat-cookbook
 [copilot-chat-edits]: https://code.visualstudio.com/docs/copilot/copilot-edits
-[copilot-questions]: https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/asking-github-copilot-questions-in-your-ide
-[github-copilot]: https://docs.github.com/en/copilot/get-started/what-is-github-copilot
+[copilot-questions]: https://docs.github.com/copilot/using-github-copilot/copilot-chat/asking-github-copilot-questions-in-your-ide
+[github-copilot]: https://docs.github.com/copilot/get-started/what-is-github-copilot
 [github-samples]: https://github.com/github-samples/

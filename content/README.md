@@ -52,7 +52,7 @@ Ready to get started? Let's go! The workshop scenario imagines you as a develope
 [issues]: ./2-issues.md
 [testing]: ./4-continuous-integration.md
 
-[codespaces-free]: https://docs.github.com/en/billing/concepts/product-billing/github-codespaces#free-and-billed-use-by-personal-accounts
+[codespaces-free]: https://docs.github.com/billing/concepts/product-billing/github-codespaces#free-and-billed-use-by-personal-accounts
 [devops]: https://en.wikipedia.org/wiki/DevOps
 [github-actions]: https://github.com/features/actions
 [github-codespaces]: https://github.com/features/codespaces

@@ -202,8 +202,8 @@ Work with the workshop leaders as needed to ask questions and get guidance as yo
 
 [previous]: ./6-github-flow.md
 
-[actions-deploy]: https://docs.github.com/en/actions/use-cases-and-examples/deploying/deploying-with-github-actions
-[azd-docs]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview?tabs=linux
+[actions-deploy]: https://docs.github.com/actions/use-cases-and-examples/deploying/deploying-with-github-actions
+[azd-docs]: https://learn.microsoft.com/azure/developer/azure-developer-cli/overview?tabs=linux
 [azure-copilot-extension]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azure-github-copilot
-[bicep-docs]: https://learn.microsoft.com/en/azure/azure-resource-manager/bicep/overview?tabs=bicep
-[oidc-docs]: https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+[bicep-docs]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/overview?tabs=bicep
+[oidc-docs]: https://docs.github.com/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect

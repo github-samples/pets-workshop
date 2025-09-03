@@ -181,17 +181,17 @@ Congratulations! You have now defined a custom development environment including
 [previous]: ./2-issues.md
 [github-flow-exercise]: ./6-github-flow.md
 
-[codespace-prebuild]: https://docs.github.com/en/codespaces/prebuilding-your-codespaces
+[codespace-prebuild]: https://docs.github.com/codespaces/prebuilding-your-codespaces
 [codespaces]: https://github.com/features/codespaces
-[codespaces-docs]: https://docs.github.com/en/codespaces/overview
-[codespaces-forward-ports]: https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace
+[codespaces-docs]: https://docs.github.com/codespaces/overview
+[codespaces-forward-ports]: https://docs.github.com/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace
 [copilot-extension]: https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
 [dev-containers-docs]: https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers
-[github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
+[github-flow]: https://docs.github.com/get-started/quickstart/github-flow
 [github-universal-container]: https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#using-the-default-dev-container-configuration
 [github-universal-container-definition]: https://github.com/devcontainers/images/blob/main/src/universal/.devcontainer/Dockerfile
 [IDE]: https://en.wikipedia.org/wiki/Integrated_development_environment
 [skills-codespaces]: https://github.com/skills/code-with-codespaces
-[vscode-codespaces]: https://docs.github.com/en/codespaces/developing-in-codespaces/using-github-codespaces-in-visual-studio-code
+[vscode-codespaces]: https://docs.github.com/codespaces/developing-in-codespaces/using-github-codespaces-in-visual-studio-code
 [vscode-extensions]: https://code.visualstudio.com/docs/editor/extension-marketplace
 [vscode-post-start-command]: https://code.visualstudio.com/remote/advancedcontainers/start-processes

@@ -30,6 +30,6 @@ You've now created the repository you'll use for this workshop! Next let's [enab
 [next]: ./1-code-scanning.md
 [previous]: ./README.md
 
-[fork-repo]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
+[fork-repo]: https://docs.github.com/get-started/quickstart/fork-a-repo
 [repo-root]: /
-[template-repo]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository
+[template-repo]: https://docs.github.com/repositories/creating-and-managing-repositories/creating-a-template-repository

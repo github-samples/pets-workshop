@@ -98,12 +98,12 @@ In this exercise, you enabled GitHub Advanced Security. You enabled Dependabot t
 [next]: ./2-issues.md
 [previous]: ./0-setup.md
 
-[about-code-scanning]: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning
-[about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[about-code-scanning]: https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning
+[about-prs]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [advanced-security]: https://github.com/features/security
-[advanced-security-docs]: https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security
-[dependabot-quickstart]: https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide
+[advanced-security-docs]: https://docs.github.com/get-started/learning-about-github/about-github-advanced-security
+[dependabot-quickstart]: https://docs.github.com/code-security/getting-started/dependabot-quickstart-guide
 [github-actions]: https://github.com/features/actions
 [skills-secure-code]: https://github.com/skills/secure-code-game
 [skills-supply-chain]: https://github.com/skills/secure-repository-supply-chain
-[supported-secrets]: https://docs.github.com/en/code-security/secret-scanning/secret-scanning-patterns#supported-secrets
+[supported-secrets]: https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets

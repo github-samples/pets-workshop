@@ -69,10 +69,10 @@ GitHub Issues are the core to project management on GitHub. Their flexibility al
 [next]: ./3-codespaces.md
 [previous]: ./1-code-scanning.md
 
-[about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[about-prs]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [discussions]: https://github.com/features/discussions
 [issues]: https://github.com/features/issues
-[issues-docs]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
-[projects-docs]: https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/quickstart-for-projects
+[issues-docs]: https://docs.github.com/issues/tracking-your-work-with-issues/about-issues
+[projects-docs]: https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/quickstart-for-projects
 [skills-markdown]: https://github.com/skills/communicate-using-markdown
-[wikis]: https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis
+[wikis]: https://docs.github.com/communities/documenting-your-project-with-wikis/about-wikis

@@ -104,11 +104,11 @@ The GitHub flow is a workflow for managing changes and incorporating new feature
 [security-exercise]: ./1-code-scanning.md
 [testing-exercise]: ./4-continuous-integration.md
 
-[about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
-[about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[about-branches]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
+[about-prs]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [cicd-resources]: https://resources.github.com/ci-cd/
 [github-cli]: https://cli.github.com/
 [github-codespaces]: https://github.com/features/codespaces
-[github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
+[github-flow]: https://docs.github.com/get-started/quickstart/github-flow
 [skills-release-workflow]: https://github.com/skills/release-based-workflow
 [skills-review-prs]: https://github.com/skills/review-pull-requests

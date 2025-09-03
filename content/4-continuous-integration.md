@@ -158,12 +158,12 @@ Congratulations! You've implemented automated testing, a standard part of contin
 [github-flow-exercise]: ./6-github-flow.md
 [issues-exercise]: ./2-issues.md
 
-[about-ci]: https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
-[about-prs]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[about-ci]: https://docs.github.com/actions/automating-builds-and-tests/about-continuous-integration
+[about-prs]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 [actions-marketplace]: https://github.com/marketplace?type=actions
 [copilot]: https://gh.io/copilot
-[copilot-slash-commands]: https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet
+[copilot-slash-commands]: https://docs.github.com/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet
 [github-actions]: https://github.com/features/actions
-[github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
+[github-flow]: https://docs.github.com/get-started/quickstart/github-flow
 [skills-test-actions]: https://github.com/skills/test-with-actions
-[workflow-triggers]: https://docs.github.com/en/actions/reference/events-that-trigger-workflows
+[workflow-triggers]: https://docs.github.com/actions/reference/events-that-trigger-workflows
