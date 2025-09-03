@@ -37,7 +37,7 @@ To ensure the tests run whenever a PR is made you'll define a workflow for the p
 Creating a YML file can be a little tricky. Fortunately, GitHub Copilot can help streamline the process! Before we work with Copilot to create the file, let's explore some core sections of a workflow:
 
 - `name`: Provides a name for the workflow, which will display in the logs.
-- `on`: Defines what will cause the workflow to run. Some common triggers include `pull_request` (when a PR is made), `merge` (when code is merged into a branch), and `workflow_dispatch` (manual run).
+- `on`: Defines what will trigger the workflow to run. Some common triggers include `pull_request` (when a PR is made), `merge` (when code is merged into a branch), and `workflow_dispatch` (manual run).
 - `jobs`: Defines a series of jobs for this workflow. Each job is considered a unit of work and has a name.
     - **name**: Name and container for the job.
     - `runs-on`: Where the operations for the job will be performed.

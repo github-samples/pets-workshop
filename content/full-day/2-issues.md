@@ -5,7 +5,7 @@
 
 "URL or it didn't happen" is a common mantra at GitHub, which is used to highlight the importance of documenting the development process. Feature requests should have a history; who made the request, what was the rationale, who was involved in the process, what decisions were made, why were they made, was the feature implemented, how was it implemented... All of this information helps provide context to both drive future decisions and avoid repeating old mistakes.
 
-GitHub provides various features to enable collaboration and project management, including [GitHub Discussions][discussions], [wikis][wikis], [pull requests][about-prs] and [GitHub Issues][issues]. Each of these can help your organization drive the creation process. We're going to focus on GitHub Issues, which is the foundation of project management on GitHub.
+GitHub provides various features to enable collaboration and project management, including [GitHub Discussions][discussions], [wikis][wikis], [pull requests][about-prs] and [GitHub Issues][issues]. Each of these can help your organization drive the creation process. We're going to focus on GitHub Issues, which is the foundation of project management on GitHub. Issues can also be linked to [milestones](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/about-milestones) and [Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), helping organize them into a broad roadmap.
 
 At their core, issues document some form of an action. They can be a request for a feature, a bug report, or another operation taken by the team. There's no prescribed methodology for using GitHub Issues, allowing your team to determine the best way to manage and drive your projects. A common flow teams will implement on issues is:
 
@@ -14,6 +14,18 @@ At their core, issues document some form of an action. They can be a request for
 1. Create a pull request with a proposed implementation of the request.
 1. Further discuss and review the pull request.
 1. Once everyone is satisfied and has signed off, merge the pull request and close the issue.
+
+Issues can sometimes seem too big, or often we experience 'scope-creep' in a task. Issues can be broken down into [sub-issues](https://docs.github.com/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues) that allow smaller issues to be linked together, especially when working on dependencies. For example, you might have a feature request that includes a list of subtasks that make the task a bit too large for your sprint or for the work required. Using sub-issues allows you to cleanly define all dependent tasks into more manageable items of work.
+
+To further track work in an issue, the right-hand sidebar of any issue is where you can manage metadata and organizational details. You can assign the issue to yourself or various team members, apply labels for categorization (i.e "bug", "enhancement", "documentation"), allowing you to link your issue to a milestone, connect it to a GitHub Project board, or mark it as part of an epic/initiative. If there are linked discussions or pull requests you can track them from this panel. This side panel makes it easier to triage issues and keep them aligned with the project's workflow.
+
+GitHub Issues also come with some very handy shortcuts and productivity hacks:
+
+- Typing `#` in a comment or description lets you reference another issue or pull request by number.
+- Use Markdown to format text, add checklists (- [ ]), code snippets, or images.
+- Pressing `g` then `i` quickly takes you to the Issues tab from anywhere in a repository.
+- Typing `@username` mentions someone, notifying them directly.
+- Filter issues in the search bar with queries like `is:open label:bug assignee:@me` to quickly find relevant ones.
 
 ## Scenario
 
