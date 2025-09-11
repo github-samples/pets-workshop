@@ -1,7 +1,7 @@
 import os
 from typing import Dict, List, Any, Optional
 from flask import Flask, jsonify, Response, request
-from models import init_db, db, Dog, Breed
+from server.models import init_db, db, Dog, Breed
 
 # Get the server directory path
 base_dir: str = os.path.abspath(os.path.dirname(__file__))
@@ -32,7 +32,7 @@ def get_dogs() -> Response:
     
     # Apply availability filter if requested
     if available_only:
-        from models.dog import AdoptionStatus
+        from server.models.dog import AdoptionStatus
         query = query.filter(Dog.status == AdoptionStatus.AVAILABLE)
     
     dogs_query = query.all()

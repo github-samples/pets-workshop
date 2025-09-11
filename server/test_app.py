@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
 import json
-from app import app  # Changed from relative import to absolute import
+from server.app import app  # Changed to absolute import for running from project root
 
 # filepath: server/test_app.py
 class TestApp(unittest.TestCase):
@@ -38,7 +38,7 @@ class TestApp(unittest.TestCase):
         breed.name = name
         return breed
 
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_dogs_success(self, mock_query):
         """Test successful retrieval of multiple dogs"""
         # Arrange
@@ -72,7 +72,7 @@ class TestApp(unittest.TestCase):
         # Verify query was called
         mock_query.assert_called_once()
         
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_dogs_empty(self, mock_query):
         """Test retrieval when no dogs are available"""
         # Arrange
@@ -86,7 +86,7 @@ class TestApp(unittest.TestCase):
         data = json.loads(response.data)
         self.assertEqual(data, [])
         
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_dogs_structure(self, mock_query):
         """Test the response structure for a single dog"""
         # Arrange
@@ -102,7 +102,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(len(data), 1)
         self.assertEqual(set(data[0].keys()), {'id', 'name', 'breed', 'status'})
 
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_dogs_breed_filter(self, mock_query):
         """Test filtering dogs by breed"""
         # Arrange
@@ -120,7 +120,7 @@ class TestApp(unittest.TestCase):
         for dog in data:
             self.assertEqual(dog['breed'], 'Beagle')
 
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_dogs_available_filter(self, mock_query):
         """Test filtering dogs by availability"""
         # Arrange
@@ -136,7 +136,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(len(data), 1)
         self.assertEqual(data[0]['status'], 'AVAILABLE')
 
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_dogs_combined_filters(self, mock_query):
         """Test filtering dogs by both breed and availability"""
         # Arrange
@@ -153,7 +153,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(data[0]['breed'], 'Beagle')
         self.assertEqual(data[0]['status'], 'AVAILABLE')
 
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_breeds_success(self, mock_query):
         """Test successful retrieval of breed list"""
         # Arrange
@@ -176,7 +176,7 @@ class TestApp(unittest.TestCase):
         self.assertIn("Labrador", data)
         self.assertIn("Beagle", data)
 
-    @patch('app.db.session.query')
+    @patch('server.app.db.session.query')
     def test_get_breeds_empty(self, mock_query):
         """Test retrieval when no breeds are available"""
         # Arrange
