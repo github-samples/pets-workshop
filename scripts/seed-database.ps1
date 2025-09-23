@@ -1,4 +1,4 @@
-#!/bin/pwsh
+#!/usr/bin/env pwsh
 
 # Source common utilities
 . "$PSScriptRoot/common.ps1"

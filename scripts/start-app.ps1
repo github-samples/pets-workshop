@@ -1,4 +1,5 @@
-# Source common utilities
+#!/usr/bin/env pwsh
+
 . "$PSScriptRoot/common.ps1"
 
 # Store initial directory
