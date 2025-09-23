@@ -1,80 +1,74 @@
-# Define color codes for PowerShell
-$Green = [System.ConsoleColor]::Green
-$DefaultColor = [System.ConsoleColor]::White
+# Source common utilities
+. "$PSScriptRoot/common.ps1"
 
 # Store initial directory
 $InitialDir = Get-Location
 
-# Check if we're in scripts directory and navigate accordingly
-if ((Split-Path -Path (Get-Location) -Leaf) -eq "scripts") {
-    Set-Location ..
-}
+# Navigate to project root if needed
+Set-ProjectRoot
 
 Write-Host "Starting API (Flask) server..."
 
-# Create and activate virtual environment
-if (-not (Test-Path venv)) {
-    python -m venv venv
-}
-if ($IsWindows) {
-    & ./venv/Scripts/Activate.ps1
-} else {
-    & bash -c "source ./venv/bin/activate"
+# Get project root and initialize virtual environment
+$ProjectRoot = Get-ProjectRoot
+
+if (-not (Initialize-VirtualEnvironment -ProjectRoot $ProjectRoot)) {
+    Write-Error "Failed to initialize virtual environment"
+    Set-Location $InitialDir
+    exit 1
 }
 
-Set-Location server -ErrorAction Stop
-pip install -r requirements.txt
-Set-Location ..
-$env:FLASK_DEBUG = 1
-$env:FLASK_PORT = 5100
+# Install Python dependencies
+if (-not (Install-PythonDependencies -ProjectRoot $ProjectRoot)) {
+    Write-Warning "Failed to install Python dependencies"
+    Set-Location $InitialDir
+    exit 1
+}
+
+# Setup Flask environment
+Set-FlaskEnvironment
 
 
 # Start Python server
-$pythonProcess = Start-Process python `
-    -WorkingDirectory (Join-Path $PSScriptRoot "..\server") `
-    -ArgumentList "app.py" `
-    -PassThru `
-    -NoNewWindow
+$serverWorkingDir = Join-Path $ProjectRoot "server"
+$pythonProcess = Start-ManagedProcess -FilePath "python" -WorkingDirectory $serverWorkingDir -ArgumentList @("app.py") -ProcessName "Flask server"
 
-Write-Host "Starting client (Astro)..."
-Set-Location client -ErrorAction Stop
-npm install
-cd ..
-if ($IsWindows) {
-    $npcCmd = "npm.cmd"
-} else {
-    $npcCmd = "npm"
+if (-not $pythonProcess) {
+    Write-Error "Failed to start Flask server"
+    Set-Location $InitialDir
+    exit 1
 }
 
-$clientProcess = Start-Process "$npcCmd" `
-    -WorkingDirectory (Join-Path $PSScriptRoot "..\client") `
-    -ArgumentList "run", "dev", "--", "--no-clearScreen" `
-    -PassThru `
-    -NoNewWindow
+Write-Host "Starting client (Astro)..."
+
+# Install Node.js dependencies and start client
+$clientDir = Join-Path $ProjectRoot "client"
+if (-not (Install-NodeDependencies -Directory $clientDir)) {
+    Write-Warning "Failed to install Node.js dependencies"
+}
+
+$npmCmd = Get-NpmCommand
+$clientProcess = Start-ManagedProcess -FilePath $npmCmd -WorkingDirectory $clientDir -ArgumentList @("run", "dev", "--", "--no-clearScreen") -ProcessName "Astro client"
+
+if (-not $clientProcess) {
+    Write-Error "Failed to start Astro client"
+    Stop-ManagedProcesses -Processes @($pythonProcess) -InitialDirectory $InitialDir
+    exit 1
+}
 
 # Sleep for 5 seconds
 Start-Sleep -Seconds 5
 
 # Display the server URLs
-Write-Host "`nServer (Flask) running at: http://localhost:5100" -ForegroundColor $Green
-Write-Host "Client (Astro) server running at: http://localhost:4321`n" -ForegroundColor $Green
+Write-Host ""
+Write-Success "Server (Flask) running at: http://localhost:5100"
+Write-Success "Client (Astro) server running at: http://localhost:4321"
+Write-Host ""
 Write-Host "Ctrl+C to stop the servers"
 
 # Function to handle cleanup
 function Cleanup {
-    Write-Host "Shutting down servers..."
-    
-    # Kill processes and their child processes
-    if ($pythonProcess) { Stop-Process -Id $pythonProcess.Id -Force -ErrorAction SilentlyContinue }
-    if ($clientProcess) { Stop-Process -Id $clientProcess.Id -Force -ErrorAction SilentlyContinue }
-
-    # Deactivate virtual environment if it exists
-    if (Test-Path Function:\deactivate) {
-        deactivate
-    }
-
-    # Return to initial directory
-    Set-Location $InitialDir
+    Stop-ManagedProcesses -Processes @($pythonProcess, $clientProcess) -InitialDirectory $InitialDir
     exit
 }
 
