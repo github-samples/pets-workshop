@@ -20,13 +20,13 @@ function Initialize-VirtualEnvironment {
         Write-Host "Creating virtual environment..."
         python -m venv $VenvPath
     }
-    
+   
     # Activate virtual environment
     try {
         if ($IsWindows) {
             & "$VenvPath/Scripts/Activate.ps1"
         } else {
-            & bash -c 'source "'+$VenvPath+'/bin/activate"'
+            & bash -c "source '$VenvPath/bin/activate'"
         }
         Write-Host "Virtual environment activated"
         return $true
