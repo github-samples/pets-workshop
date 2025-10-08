@@ -10,7 +10,7 @@ The shelter's application currently uses SQLite, which works great for developme
 
 Agent mode is an advanced feature of GitHub Copilot that allows it to work more autonomously on your behalf. Unlike regular chat or edits mode, Agent mode can:
 
-- Independently decide which files need to be modified
+- Autonomously decide which files need to be modified
 - Create new files as needed
 - Install dependencies and make configuration changes
 - Work iteratively to solve complex problems
@@ -25,7 +25,7 @@ When you activate Agent mode, Copilot becomes your coding partner that can handl
 Let's use Agent mode to modify our backend to support multiple database systems.
 
 > [!NOTE]
-> While we suggest using Claude Sonnet 4.5 for this exercise, you're free to experiment with other models if you'd like to see how different models approach the same task.
+> While we recommend using Claude Sonnet 4.5 for this exercise, you're free to experiment with other models if you'd like to see how different models approach the same task.
 
 1. []  Return to Visual Studio Code.
 1. []  Close any tabs you may have open in your VS Code to ensure Copilot has a clean context.
@@ -51,22 +51,25 @@ Let's use Agent mode to modify our backend to support multiple database systems.
 As the agent works, you'll see it taking various actions. Watch the terminal window and the VS Code interface to observe:
 
 - The agent analyzing the codebase to understand the current database implementation
-- The agent will most likely ask for your permission to execute code, examine his request(s) and authorize it
+- The agent will most likely ask for your permission to execute code - carefully examine the request(s) and authorize them if appropriate
 - Installation of new Python packages (like `psycopg2` for PostgreSQL or `pyodbc` for SQL Server)
 - Code changes being made across multiple files
 - The agent's reasoning about each step it's taking
+- On top of the chat window there is a **Todos** list, which is the list of things the agent is performing, the list has a **(x/y)** format indicating the number of completed tasks versus the total tasks. You can expand the list and see it being updated in real time. It is a great way to observe how the agent is approaching the task at hand and it's progress.
+
+![Todos list in chat window](./images/copilot-todos-list.png)
 
 > [!TIP]
 > The terminal window will show you the commands the agent is running, including any package installations. The editor will highlight changes as they're made, similar to the diff view you saw with Copilot Edits.
 
 ## Expected changes
 
-The agent should make modifications to at least two key files:
+Copilot should make modifications to at least two key files:
 
 - **server/app.py** - Updates to the database initialization to support multiple database types
 - **server/seed_database.py** - Changes to the seeding logic to work with different database systems
 
-The agent will typically:
+Copilot will typically:
 
 1. Add logic to check for environment variables (**MS_SQL_CONN_STRING** or **PGSQL_CONN_STRING**)
 2. Configure SQLAlchemy to use the appropriate database connection based on available environment variables
@@ -81,7 +84,7 @@ The agent will typically:
 
 **If you notice** that the changes to **server/seed_database.py** were not made because it's not on the **changed files** list at the bottom of Copilot Chat window, you can prompt the agent with a more specific prompt. 
 
-![List of changed files](images/4-cloudify-backend.md)
+![List of changed files](images/4-changed-files-agent-mode.png)
 
 If the changes were made skip to the next section, otherwise continue. This is the cost we pay for being ambiguous on our prompt.
 
@@ -111,6 +114,10 @@ Once the agent completes its work:
     ```
 
 5. []  If all tests pass and the application works correctly, select **Keep** to keep the changes.
+
+> [!TIP]
+> If you need to revert changes and take a different direction, you can click **Undo** to roll back the most recent set of changes. If you've used multiple prompts, you can also revert to earlier states by restoring a snapshot from the chat history.
+> ![alt text](./images/restore-snapshot.png)
 
 > [!NOTE]
 > While we're not actually connecting to SQL Server or PostgreSQL in this exercise, the code is now ready to support them when those environment variables are provided in a cloud deployment.
