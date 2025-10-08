@@ -1,39 +1,38 @@
 # Working with Infrastructure as Code (IaC) using GitHub Copilot
 
-GitHub Copilot for the MSSQL extension brings AI-powered assistance directly into your SQL development workflow within Visual Studio Code. This integration enables developers to work more efficiently with SQL Server, Azure SQL, and Microsoft Fabric databases by:
+Infrastructure as Code (IaC) enables teams to define, provision, and manage cloud infrastructure using code, bringing the benefits of version control, automation, and repeatability to infrastructure management.
 
-- **Writing and optimizing queries** - Generate SQL queries from natural language descriptions and receive AI-recommended improvements for performance
-- **Exploring and designing schemas** - Understand, design, and evolve database schemas using intelligent, code-first guidance with contextual suggestions for relationships and constraints
-- **Understanding existing code** - Get natural language explanations of stored procedures, views, and functions to help you understand business logic quickly
-- **Generating test data** - Create realistic, schema-aware sample data to support testing and development environments
-- **Analyzing security** - Receive recommendations to avoid SQL injection, excessive permissions, and other security vulnerabilities
-- **Accelerating development** - Scaffold backend components and data access layers based on your database context
+Tools like Terraform and Bicep make it easier to describe and deploy cloud resources declaratively — but writing and maintaining IaC files can still be time-consuming and error-prone.
 
-This powerful combination allows you to focus on solving problems rather than memorizing SQL syntax, making database development more intuitive and productive.
+This is where GitHub Copilot shines. Why Use GitHub Copilot for IaC?
+
+GitHub Copilot can help you write, refactor, and understand IaC templates faster. By leveraging natural language prompts and contextual awareness, Copilot can:
+
+- **Generate infrastructure templates from plain-language descriptions** - Simply describe the resource you need — for example, “create an Azure storage account with a private endpoint” — and Copilot will suggest the Terraform or Bicep code to do it.
+- **Reduce syntax errors and boilerplate** - Copilot understands the structure and schema of Terraform and Bicep resources, minimizing typos and repetitive declarations.
+- **Speed up resource creation** - It can quickly scaffold complete configurations, including providers, variables, modules, and outputs.
+- **Improve readability and maintainability** - Copilot can add comments, generate variable documentation, and suggest consistent naming conventions.
+- **Support iterative learning and experimentation** - Instead of memorizing every resource property, you can explore and refine configurations interactively within your editor.
+
+GitHub Copilot doesn’t replace understanding Terraform or Bicep — it enhances your workflow by reducing friction and helping you focus on design and intent rather than syntax.
 
 ## Scenario
 
-Now that your application supports multiple database systems including SQL Server, you want to explore how GitHub Copilot can help you interact with your SQL Server database directly from VS Code. You'll use the GitHub Copilot for MSSQL extension to generate queries and explore your data using natural language.
+You application has a database, a website and an API. While everything is hosted locally in our repo, we want to deploy it to Azure and create an automated way to deploy our Infrastructure as Code. Making our application less prone to human deployment errors and introducing continuous integration/continuous delivery (CI/CD) into our ways of working. We will create either a Bicep or Terraform configuration file and a GitHub Actions workflow to deploy to Azure. You can choose to build a Terraform configuration file or a Bicep file (or both!), navigate to the section below that you prefer to try!
+
+[!NOTE] The same workflow can apply to other cloud providers - Copilot can suggest Terraform code for AWS, GCP, and more. 
 
 ## Prerequisites
 
 Good news! We've already set up everything you need for this exercise:
 
-- SQL Server Express is installed and running locally 
-  - With pets database populated with data
-- The **GitHub Copilot for MSSQL** extension is installed in VS Code
-- A SQL Server connection has been pre-registered in your environment
+- GitHub Copilot enabled in your IDE 
+- HashiCorp Terraform (for .tf files) extension in VSCode
+- Bicep (for .bicep files) extension in VSCode
 
-You're ready to connect and start querying right away!
+## Creating a new Terraform Configuration with Copilot
 
-## Understanding GitHub Copilot for MSSQL
+Now that your environment is ready, let’s use GitHub Copilot to help you create your first Terraform configuration file.
 
-The GitHub Copilot for MSSQL extension brings AI-powered assistance to your database work. It can:
-
-- Generate SQL queries from natural language descriptions
-- Explain existing queries in plain English
-- Suggest query optimizations and best practices
-- Help explore database schemas and relationships
-- Convert natural language questions into executable SQL
-
-This integration makes working with databases more intuitive, especially when you're exploring unfamiliar schemas or need to write complex queries 
+Terraform enables you to define your infrastructure declaratively — specifying what you want, not how to build it.
+Copilot enhances this experience by suggesting Terraform code directly in your editor as you describe your desired infrastructure in natural language.
