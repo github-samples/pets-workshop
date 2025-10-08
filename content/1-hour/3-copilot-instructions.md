@@ -123,7 +123,7 @@ For example, this repository includes:
 - **bicep-code-best-practices.instructions.md** - Automatically applies when working with `*.bicep` files to ensure consistent Infrastructure as Code practices for Azure Bicep
 - **terraform-azure.instructions.md** - Automatically applies when working with Terraform files (`*.tf`, `*.tfvars`, etc.) to follow best practices when deploying to Azure
 
-Take some seconds to examine those files, they have been sourced from [[github/awesome-copilot][awesome-copilot].
+Take some seconds to examine those files, they have been sourced from [github/awesome-copilot][awesome-copilot].
 
 This approach keeps your main instructions file concise while providing deep, specialized guidance when needed. It's particularly useful for polyglot projects or teams working with multiple technologies and deployment targets.
 
