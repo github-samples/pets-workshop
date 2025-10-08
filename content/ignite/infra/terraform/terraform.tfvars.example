@@ -1,0 +1,28 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and update with your values
+
+# Basic Configuration
+resource_prefix = "petswrkshp"
+location        = "East US"
+environment     = "dev"
+
+# SQL Server Configuration
+sql_admin_username = "sqladmin"
+sql_admin_password = "YourSecureP@ssw0rd123!" # Change this to a secure password
+
+# App Service Configuration
+app_service_sku = "B1"          # Basic tier for development
+sql_database_sku = "Basic"      # Basic tier for development
+
+# Static Web App Configuration
+static_web_app_location = "East US 2"
+static_web_app_sku = "Free"
+
+# Resource Tags
+tags = {
+  Environment = "dev"
+  Project     = "PetsWorkshop"
+  ManagedBy   = "Terraform"
+  Owner       = "DevTeam"
+  CostCenter  = "Engineering"
+}
