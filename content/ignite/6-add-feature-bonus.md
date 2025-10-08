@@ -1,20 +1,22 @@
-# Add the filter feature
+# Bonus content
+
+## Add the filter feature
 
 We've explored how we can use GitHub Copilot to explore our project and to provide context to ensure the suggestions we receive are to the quality we expect. Now let's turn our attention to putting all this prep work into action by generating new code! We'll use GitHub Copilot to aid us in adding functionality to our website.
 
-## Scenario
+### Scenario
 
 The website currently lists all dogs in the database. While this was appropriate when the shelter only had a few dogs, as time has gone on the number has grown and it's difficult for people to sift through who's available to adopt. 
 
 The shelter has asked you to add filters to the website to allow a user to select a breed of dog and only display dogs which are available for adoption.
 
-## Copilot Edits
+### Copilot Edits
 
 Previously we utilized Copilot chat, which is great for working with an individual file or asking questions about our code. However, many updates necessitate changes to multiple files throughout a codebase. Even a seemingly basic change to a webpage likely requires updating HTML, CSS and JavaScript files. Copilot Edits allows you to modify multiple files at once.
 
 With Copilot Edits, you will add the files which need to be updated to the context. Once you provide the prompt, Copilot Edits will begin the updates across all files in the context. It also has the ability to create new files or add files to the context as it deems appropriate.
 
-## Add the filters to the dog list page
+### Add the filters to the dog list page
 
 Adding the filters to the page will require updating a minimum of two files - the Flask backend and the Svelte frontend. Fortunately, Copilot Edits can update multiple files! Let's get our page updated with the help of Copilot Edits.
 
@@ -48,7 +50,7 @@ Adding the filters to the page will require updating a minimum of two files - th
 
 Copilot begins generating the suggestions!
 
-## Reviewing the suggestions
+### Reviewing the suggestions
 
 Unlike our prior examples where we worked with an individual file, we're now working with changes across multiple files - and maybe multiple sections of multiple files. Fortunately, Copilot Edits has functionality to help streamline this process.
 
@@ -89,24 +91,9 @@ And
 > A [simple one](https://github.com/github-samples/pets-workshop/tree/msbuild-25/content/prompts/add-feature-simple.md), that is simple, with some ambiguity that leaves some space for interpretation but it gets the job done. Another one which is more [verbose](https://github.com/github-samples/pets-workshop/tree/msbuild-25/content/prompts/add-feature-verbose.md) and leaves not a lot of space for interpretation.
 > Take a look at the differences and see which one you like better.
 
-## Summary
+### Summary
 
 You've worked with GitHub Copilot to add new features to the website - the ability to filter the list of dogs. With the help of Copilot Edits, you updated multiple files across the project, and iteratively built the desired functionality.
-
-## Workshop review
-
-Over the course of the workshop you explored the core functionality of GitHub Copilot. You saw how to use code completion to get inline suggestions, chat participants to explore your project, Copilot instructions to add context, and Copilot Edits to update multiple files. But there is a lot more in GitHub Copilot (just to name a few):
-- [Agent mode][copilot-agent]
-- [MCP Servers support][MCP-server]
-- [Extend Copilot][Extensibility-VS-Code]
-- Copilot features available in GitHub
-  - [GitHub Copilot code review][code-review]
-  - [Extensions][copilot-extensions]
-  - [Answers about issues, PRs, discussions, files, commits, etc][asking-github-copilot-questions]
-
-There is no one right way to use GitHub Copilot. Continue to explore and try different prompts to discover what works best for your workflow and how GitHub Copilot can aid your productivity.
-
-We have a bonus section for you, if you want to continue your explorations.
 
 ## Resources
 
