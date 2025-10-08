@@ -20,6 +20,34 @@ When you activate Agent mode, Copilot becomes your coding partner that can handl
 
 ![How agent mode works](./images/copilot-agent-mode-how-it-works.png)
 
+## Adding Copilot Instructions
+
+Copilot instructions is a markdown file is placed in your **.github** folder. It becomes part of your project, and in turn is available to all contributors to your codebase. You can use this file to indicate various coding standards you wish to follow, the technologies your project uses, or anything else important for Copilot Chat to understand when generating suggestions.
+
+> [!IMPORTANT]
+> The *copilot-instructions.md* file is included in **every** call to GitHub Copilot Chat, and will be part of the context sent to Copilot. Because there is always a limited set of tokens an LLM can operate on, a large Copilot instructions file can obscure relevant information. As such, you should limit your Copilot instructions file to project-wide information, providing an overview of what you're building and how you're building it. If you need to provide more specific information for particular tasks, you can create [prompt files](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot?tool=vscode#about-prompt-files).
+
+Here are some guidelines to consider when creating a Copilot instructions file:
+
+- The Copilot instructions file becomes part of the project, meaning it will apply to every developer; anything indicated in the file should be globally applicable.
+- The file is markdown, so you can take advantage of that fact by grouping content together to improve readability.
+- Provide an overview of **what** you are building and **how** you are building it, including:
+    - languages, frameworks and libraries in use.
+    - required assets to be generated (such as unit tests) and where they should be placed.
+    - any language specific rules such as:
+        - utilize [type hints][type-hints] in Python.
+        - use [arrow functions][arrow-functions] rather than the **function** keyword in TypeScript.
+- If you notice GitHub Copilot consistently provides an unexpected suggestion (e.g. using class components for React), add those notes to the instructions file.
+
+Let's make Copilot do all the hard work for us by having it create the instructions file for us.
+[] 
+1. [] Open Copilot Chat.
+2. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
+3. [] Click on the **Cog** icon at the top of the Chat window and select **Generate Instructions** from the menu.
+4. [] Copilot will analyze the repository and generate a comprehensive instructions file based on the project structure, technologies, and patterns.
+5. [] Review the generated instructions. In a real-world scenario, you would customize them with items specific to your enterprise or team requirements (such as internal coding standards, security policies, or organizational best practices). For this lab, you can use the generated instructions as-is.
+6. [] Accept the suggested changes.
+
 ## Using Agent mode to add database support
 
 Let's use Agent mode to modify our backend to support multiple database systems.
@@ -44,7 +72,6 @@ Let's use Agent mode to modify our backend to support multiple database systems.
 
 > [!NOTE]
 > Because LLMs are probabilistic, not deterministic, the exact changes made can vary. The steps below describe a typical experience, but your experience may differ slightly. Also note that we are a little ambiguous in the prompt on purpose to see how the agent interprets it.
-
 
 ## Monitoring the Agent's progress
 
