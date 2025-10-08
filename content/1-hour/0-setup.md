@@ -46,10 +46,24 @@ With the repository created, it's now time to clone the repository locally. We'l
     cd <REPO_NAME_HERE>
     ```
 
-5. Start the application by running the following command:
+5. Start the application by running the script appropriate for your operating system:
 
-    ```sh
-    ./scripts/start-app.sh
+    - macOS / Linux:
+
+        ```sh
+        ./scripts/start-app.sh
+        ```
+
+    - Windows (PowerShell):
+
+        ```powershell
+        ./scripts/start-app.ps1
+        ```
+
+    If you encounter execution policy warnings on Windows, run PowerShell as an administrator or execute the script with an explicit bypass, for example:
+
+    ```powershell
+    powershell -ExecutionPolicy Bypass -File .\scripts\start-app.ps1
     ```
 
 The startup script will start two applications:
