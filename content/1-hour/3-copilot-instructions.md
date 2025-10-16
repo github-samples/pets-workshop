@@ -98,7 +98,7 @@ Whenever you make a call to Copilot chat, the references dialog indicates all fi
 
 ## Make the instructions even better
 
-While we intentionally created a simple Copilot instructions file to illustrate how powerful they are even with minimal content, you can leverage Copilot itself to either generate comprehensive instructions or improve existing ones.
+While we intentionally included a starter Copilot instructions file to illustrate how powerful they are, even with minimal content, you can leverage Copilot itself to either generate comprehensive instructions or improve existing ones.
 
 ### Using Copilot to generate instructions
 
@@ -115,8 +115,8 @@ While we intentionally created a simple Copilot instructions file to illustrate 
 
 While `copilot-instructions.md` is included in every Copilot Chat interaction, you can also add more specialized instructions in the `.github/instructions` folder. These files can be:
 
-- **Automatically applied** based on file patterns (using the `applyTo` frontmatter property)
-- **Included on demand**  in the context
+- **Automatically applied** based on file patterns (using the `applyTo` frontmatter property). For example, you can ensure all React files (*.tsx and *.jsx) have the same instructions.
+- **Included on demand** by adding context to the chat. This is useful for specific types of tasks, like creating a new API endpoint which might require tests and updates to a data abstraction layer.
 
 For example, this repository includes:
 
