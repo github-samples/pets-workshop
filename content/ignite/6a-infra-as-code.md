@@ -50,26 +50,22 @@ In this scenario, you will create a Terraform configuration file with Copilot, a
    Prompt Copilot:
    “Create a simple Terraform configuration for an Azure Static webapp with an Azure SQL Database”  
   
-  Copilot will generate a main.tf file, along with corresponding variables and outputs files. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output.
-3. []**Learn Slash Commands**  
-   In Copilot Chat, use slash commands for frequent tasks. Type `/` to view available commands, or check the [GitHub Copilot Chat cheat sheet](https://docs.github.com/copilot/reference/github-copilot-chat-cheat-sheet#slash-commands) for details.
+  Copilot will generate a `main.tf` file, along with corresponding variables and outputs files. Copilot also generated a README to provide comprehensive documentation. 
 
-   Some useful examples are:
-   - `/doc` — Add a documentation comment  
-   - `/explain` — Explain your code  
-   - `/fix` — Propose a fix  
-   - `/generate` — Create code as needed  
+  ![Chat output](./images/6-output-tf-simple.jpg)
+  
+  You can view the files in your IDE and choose to keep them, undo the changes, or modify. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output. 
+   - Add additional security features
+   - Optimize the configuration for cost
+   - Add more environment-specific configurations
 
-   Type `/explain` to get an in-depth explanation of the generated code. This is helpful for learning about existing files and new projects.
-
-   ![Shortcuts in Chat](./images/6-explain.jpg)
-
-4. []**Create Reusable Infrastructure**  
+3. []**Create Reusable Infrastructure**  
    Next, make your infrastructure reusable and scalable for Azure by asking Copilot:  
-   “Generate a Terraform module for the static site and storage account so it can be used in multiple environments.”  
+   “Generate a Terraform module for the static site and storage account so it can be used in multiple environments”  
+
    Copilot will often generate several files and environment setups. Take time to review them and refine the output — iterative improvement is an essential part of the process.
 
-5. []**Generate a Deployment Workflow**  
+4. []**Generate a Deployment Workflow**  
    Since Copilot has suggested multiple environments, create a deployment pipeline in GitHub by asking:  
    “Create a deployment YAML workflow to deploy to Azure.”  
    Copilot will generate a multi-step YAML workflow you can use.
@@ -181,34 +177,9 @@ jobs:
    - Add tests to your Terraform code (recommended).  
    - Ask Copilot to review your code for security.
     
-7. The output in this lab is a great starting point, but to improve the output of Copilot, it's critical that we improve the amount of context that it is given. One of the best ways to do this is by using an instructions file:
+By combining GitHub Copilot with Terraform, you’ve seen how AI can accelerate infrastructure-as-code development while maintaining flexibility and control. You now have a foundation for deploying and managing scalable, repeatable environments all powered by intelligent code generation. Continue refining your prompts, expanding your instruction files, and iterating on Copilot’s output to make it a true extension of your team’s DevOps workflow. With these practices in place, your cloud deployments will become faster, more consistent, and easier to manage over time.
 
-GitHub Copilot instruction files are Markdown documents that give Copilot the context it needs to understand your Terraform project. These files help Copilot generate code that aligns with your team’s standards, naming conventions, and infrastructure patterns.
-
-There are two types of instruction files:
-
-- **Global instructions** — Apply to the whole repository and are stored in `copilot-instructions.md`.  
-- **Scoped instructions** — Apply to specific folders or modules and are stored in `.github/instructions/*instructions.md`.  
-
-By adding clear context—such as preferred Terraform module structures, naming rules, backend configurations, or resource tagging strategies—you help Copilot suggest code that fits seamlessly into your workflows. For instance, Copilot can generate Terraform modules that follow your variable naming patterns, use your standard providers, or include required tags and outputs automatically.
-
-These instruction files also improve collaboration. New contributors get consistent, project-aligned suggestions without heavy onboarding, and your team benefits from more uniform, readable code across environments.
-
-With well-written instructions, Copilot becomes a project-aware Terraform assistant that writes, updates, and refactors your IaC with your team’s practices in mind.
-
-Let's create our first global custom instructions file!
-
-8. []**Create** a new file named `copilot-instructions.md` inside the `.github` directory.
-9. []**Ask Copilot:**  
-   “Create a global instructions file for using Terraform.”  
-   Review the output—it should include general practices, naming conventions, required providers, and module development guidance. Use it as a starting point and customize it to your team’s standards.
-10. []**Enhance Context with Scoped Files**  
-   You can also create scoped instruction files that apply only to specific directories or modules.  
-   - Create a subdirectory `.github/instructions`.  
-   - Save scoped instruction files with a `terraform.instructions.md` extension inside this folder.
-
-Your output from Copilot will improve significantly as it gains more context about your project. Give it a try!
-
+Scroll below to complete the Working with Bicep Module, or proceed to the next module
 
 
 # Working with Bicep Using GitHub Copilot
@@ -236,29 +207,24 @@ In this scenario, you will create an initial Bicep file with Copilot and then ge
 2. []**Open Copilot Chat** by clicking the Copilot icon in the VSCode top bar.  
    ![Copilot Chat](./images/6-chat.jpg)
    Prompt Copilot:
-   “Create a Bicep configuration for an Azure Static webapp with an Azure SQL Database”  
+   “Create a simple Bicep configuration for an Azure Static webapp with an Azure SQL Database”  
   
-  Copilot will generate a `main.bicep` file, along with corresponding variables and outputs files. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output.
+  Copilot will generate a `main.bicep` file, along with corresponding variables and outputs files.
+  
+  ![Chat output](./images/6-output-bicep-simple.jpg)
+  
+  You can view the files in your IDE and choose to keep them, undo the changes, or modify. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output. 
+   - Add additional security features
+   - Optimize the configuration for cost
+   - Add more environment-specific configurations
 
-3. []**Learn Slash Commands**  
-   In Copilot Chat, use slash commands for frequent tasks. Type `/` to view available commands, or check the [GitHub Copilot Chat cheat sheet](https://docs.github.com/copilot/reference/github-copilot-chat-cheat-sheet#slash-commands) for details.
-
-   Some useful examples are:
-   - `/doc` — Add a documentation comment  
-   - `/explain` — Explain your code  
-   - `/fix` — Propose a fix  
-   - `/generate` — Create code as needed  
-
-   Type `/explain` to get an in-depth explanation of the generated code. This is helpful for learning about existing files and new projects.
-
-   ![Shortcuts in Chat](./images/6-explain-bicep.jpg)
-
-4. []**Create Reusable Infrastructure**  
+3. []**Create Reusable Infrastructure**  
    Next, make your infrastructure reusable and scalable for Azure by asking Copilot:  
    “Generate a Bicep module for the static site and storage account so it can be used in multiple environments.”  
+
    Copilot will often generate several files and environment setups. Take time to review them and refine the output — iterative improvement is an essential part of the process. 
 
-5. []**Generate a Deployment Workflow**  
+4. []**Generate a Deployment Workflow**  
    Since Copilot has suggested multiple environments, create a deployment pipeline in GitHub by asking:  
    “Create a deployment YAML workflow to deploy to Azure.”  
    Copilot will generate a multi-step YAML workflow you can use.
@@ -323,33 +289,7 @@ jobs:
 ```
 6.  **Next Steps**
    - Iterate on the output to match your environment.  
-   - Add tests to your Terraform code (recommended).  
+   - Add tests to your Bicep code (recommended).  
    - Ask Copilot to review your code for security.
     
-7. The output in this lab is a great starting point, but to improve the output of Copilot, it's critical that we improve the amount of context that it is given. One of the best ways to do this is by using an instructions file:
-
-GitHub Copilot instruction files are Markdown documents that give Copilot the context it needs to understand your Bicep project. These files help Copilot generate code that aligns with your team’s standards, naming conventions, and infrastructure patterns.
-
-There are two types of instruction files:
-
-- **Global instructions** — Apply to the whole repository and are stored in `copilot-instructions.md`.  
-- **Scoped instructions** — Apply to specific folders or modules and are stored in `.github/instructions/*instructions.md`.  
-
-By adding clear context—such as preferred Bicep module structures, naming rules, backend configurations, or resource tagging strategies—you help Copilot suggest code that fits seamlessly into your workflows. For instance, Copilot can generate Bicep modules that follow your variable naming patterns, use your standard providers, or include required tags and outputs automatically.
-
-These instruction files also improve collaboration. New contributors get consistent, project-aligned suggestions without heavy onboarding, and your team benefits from more uniform, readable code across environments.
-
-With well-written instructions, Copilot becomes a project-aware Bicep assistant that writes, updates, and refactors your IaC with your team’s practices in mind.
-
-Let's create our first global custom instructions file!
-
-8. []**Create** a new file named `copilot-instructions.md` inside the `.github` directory.
-9. []**Ask Copilot:**  
-   “Create a global instructions file for using Bicep.”  
-   Review the output—it should include general practices, naming conventions, required providers, and module development guidance. Use it as a starting point and customize it to your team’s standards.
-10. []**Enhance Context with Scoped Files**  
-   You can also create scoped instruction files that apply only to specific directories or modules.  
-   - Create a subdirectory `.github/instructions`.  
-   - Save scoped instruction files with a `bicep.instructions.md` extension inside this folder.
-
-Your output from Copilot will improve significantly as it gains more context about your project. Give it a try!
+By combining GitHub Copilot with Bicep, you’ve experienced how AI can accelerate Azure-native infrastructure development while preserving clarity, modularity, and control. You now have a foundation for deploying and managing a complete environment — including a web app, API, and database — using clean, reusable Bicep templates. Continue refining your prompts and expanding your Copilot instruction files to reflect your team’s standards and architecture patterns. As you iterate, Copilot becomes an even more capable assistant, helping you build consistent, secure, and scalable Azure deployments with less effort and greater confidence.
