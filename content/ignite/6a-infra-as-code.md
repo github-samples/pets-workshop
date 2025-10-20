@@ -1,14 +1,5 @@
 # Accelerating Infrastructure as Code (IaC) with GitHub Copilot
 
-# Working with Terraform Using GitHub Copilot
-
-## Learning Objectives
-By the end of this workshop, you will:
-- Use GitHub Copilot to generate Terraform configuration files
-- Create reusable Terraform modules with Copilot assistance  
-- Generate GitHub Actions workflows for CI/CD deployment
-- Configure Copilot instruction files for better context
-
 Infrastructure as Code (IaC) lets teams define, provision, and manage cloud infrastructure using code. This brings the benefits of version control, automation, and repeatability to infrastructure management.
 
 Tools like Terraform and Bicep make it easier to describe and deploy cloud resources declaratively. However, writing and maintaining IaC files can still take time and may be prone to errors.
@@ -29,9 +20,9 @@ GitHub Copilot doesn’t replace your understanding of Terraform or Bicep. Inste
 
 ## Scenario
 
-Your application includes a database, a website, and an API. Though everything is currently hosted locally in your repository, you want to deploy to Azure using an automated process for Infrastructure as Code. This reduces human error in deployments and introduces continuous integration and continuous delivery (CI/CD) practices. 
+Your application includes a database, a website, and an API. Though everything is currently hosted locally in your repository, you want to deploy to Azure using an automated process for Infrastructure as Code(IaC). This reduces human error in deployments and introduces continuous integration and continuous deployment (CI/CD) practices. 
 
-In this workshop, you will create either a Bicep or Terraform configuration file and a GitHub Actions workflow to deploy to Azure. Choose which technology you prefer and follow the relevant section below.
+In this workshop, you will learn how to work with GitHub Copilot to write, modify and test scripts in either Terraform or Bicep, it's your choice! If you're feeling brave, you can complete both sections!
 
 > **Note:** The same workflow can be applied to other cloud providers. Copilot can also suggest Terraform code for AWS, GCP, and more.
 
@@ -43,7 +34,7 @@ Everything you need for this exercise is already set up:
 - HashiCorp Terraform extension for VSCode (`.tf` files)  
 - Bicep extension for VSCode (`.bicep` files)  
 
-Start below to follow the Terraform learning path. To follow the Bicep learning path, [click here](#working-with-bicep-using-gitHub-copilot).
+Start below to follow the Terraform learning path. To follow the Bicep learning path, scroll down to the `Prompting Bicep with Copilot` section.
 
 ## Prompting Terraform with Copilot
 
@@ -57,7 +48,7 @@ In this scenario, you will create a Terraform configuration file with Copilot, a
 2. []**Open Copilot Chat** by clicking the Copilot icon in the VSCode top bar.  
    ![Copilot Chat](./images/6-chat.jpg)
    Prompt Copilot:
-   “Create a Terraform configuration for an Azure Static webapp with an Azure SQL Database”  
+   “Create a simple Terraform configuration for an Azure Static webapp with an Azure SQL Database”  
   
   Copilot will generate a main.tf file, along with corresponding variables and outputs files. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output.
 3. []**Learn Slash Commands**  
@@ -218,7 +209,7 @@ Let's create our first global custom instructions file!
 
 Your output from Copilot will improve significantly as it gains more context about your project. Give it a try!
 
-________________________________________________________________________________________________________________________________________________________________________
+
 
 # Working with Bicep Using GitHub Copilot
 
@@ -229,7 +220,7 @@ By the end of this workshop, you will:
 - Use GitHub Copilot to generate Bicep configuration files
 - Create reusable Bicep modules with Copilot assistance  
 - Generate GitHub Actions workflows for CI/CD deployment
-- Configure Copilot instruction files for better context
+
 
 ## Prompting Bicep with Copilot
 
