@@ -26,7 +26,7 @@ To complete this workshop you will need to clone a repository with a copy of the
 10. [] Click on **yes** in the **Stay signed in?** modal dialog
 11. [] Authorize the user by clicking continue and authorize VS Code access to user email by clicking on **Authorize Visual-Studio-Code*** button
 12. [] Click **open** when browser asks for the confirmation (**This site is trying to open Visual Studio Code.**)
-13. [] After Copilot is setup you should now have a **Walkthrough: GitHub Copilot Chat** open tab in Visual Studio Code
+13. [] After Copilot is setup you should now have a GitHub Copilot **Welcome** open tab in Visual Studio Code
 
 We are now ready to start working on our code with the help of Copilot.
 
@@ -56,7 +56,7 @@ The code is now open in Visual Studio Code, feel free to take a look at it or sk
 .\scripts\start-app.ps1
 ```
 
-The startup script will install dependencies and start two applications:
+The startup script will install dependencies (the first will take a while) and start two applications:
 
 - The backend Flask app on **http://localhost:5100**. You can see a list of dogs by opening the url +++http://localhost:5100/api/dogs+++
 - The frontend Astro/Svelte app on +++http://localhost:4321+++. You can see app the by opening that URL.

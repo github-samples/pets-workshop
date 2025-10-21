@@ -90,7 +90,7 @@ With the code created and saved, let's quickly validate the endpoint to ensure i
 
 ## Summary and next steps
 
-You've added a new endpoint with the help of GitHub Copilot! You saw how Copilot predicted the next block of code you were likely looking for and provided the suggestion inline, helping save you the effort of typing it out manually. Let's start down the path of performing more complex operations by [exploring our project][walkthrough-next].
+You've added a new endpoint with the help of GitHub Copilot! You saw how Copilot predicted the next block of code you were likely looking for and provided the suggestion inline, helping save you the effort of typing it out manually. Let's start down the path of performing more complex operations by exploring our project.
 
 ## Resources
 

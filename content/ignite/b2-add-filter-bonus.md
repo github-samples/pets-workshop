@@ -27,7 +27,7 @@ In this section, you will use Copilot's agent mode to add themes to the Tailspin
 2. [] Close any tabs you may have open in your VS Code to ensure Copilot chat has an empty context.
 3. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
 4. [] Select agent mode, by selecting **Agent** (just like you did **Edit** before) in the model selector dropdown at the bottom of the chat window.
-5. [] Select one of models (some may not be available) **Claude 3.5 Sonnet**, **Claude 3.7 Sonnet** or **GPT-4.1**
+5. [] Select one of models (some may not be available) **Claude Sonnet 4.5**, **Claude Sonnet 4**, **GPT-5-Codex** or **GPT-5**
 6. [] Open the `content/prompts/fun-add-themes.md` file
 7. [] Copy the content of the prompt
 8. [] Paste the content in the copilot prompt input
@@ -39,7 +39,7 @@ In this section, you will use Copilot's agent mode to add themes to the Tailspin
     - Examine the changes made to the files if you like
     - Was it good? If you are not happy with the results, you can refine the prompt by crafting extra prompts in the chat to improve the end results. Don't start a new session, it's an interactive process.
 
-You _may_ have gotten something like this for the Terminal Theme (generated with claude 3.7)
+You _may_ have gotten something like this for the Terminal Theme (generated with **Claude 3.7**)
 
 ![Tailspin Shelter Terminal Classic theme](images/tail-spin-shelter-terminal-theme.png)
 
@@ -78,4 +78,4 @@ We have provided you some prompts in [prompts][github-prompts-path] folder, whic
 
 
 [vscode-prompts]: https://aka.ms/vscode-ghcp-prompt-snippets
-[github-prompts-path: https://github.com/github-samples/pets-workshop/tree/msbuild-25/content/prompts/
+[github-prompts-path]: https://github.com/github-samples/pets-workshop/tree/main/content/prompts/

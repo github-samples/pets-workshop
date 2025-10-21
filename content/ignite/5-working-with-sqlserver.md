@@ -110,7 +110,7 @@ Now let's use GitHub Copilot to query our database using natural language. This 
    ```text
    How many "Golden Retrievers" do we have available for adoption in the Database?
    ```
-12. [] When asked permission to run **mssql: Run query**, before allowing it, click on the **show more** to preview the SQL statement Copilot wants to execute to see that it was able to join tables and set the right predicates to count the number of Golden Retrievers, if you click again on the show more you can see the inputs that will be passed to the tool (**connectionId** and **query**). When a tool is executed you can always see the inputs and if you choose to execute it the output as well. The query should be similar to:
+13. [] When asked permission to run **mssql: Run query**, before allowing it, click on the **show more** to preview the SQL statement Copilot wants to execute to see that it was able to join tables and set the right predicates to count the number of Golden Retrievers, if you click again on the show more you can see the inputs that will be passed to the tool (**connectionId** and **query**). When a tool is executed you can always see the inputs and if you choose to execute it the output as well. The query should be similar to:
 
     ```sql-nocopy
     SELECT COUNT(*) as available_golden_retrievers
@@ -120,7 +120,7 @@ Now let's use GitHub Copilot to query our database using natural language. This 
     AND d.available = 'Available';
     ```
 
-12. [] Click Allow to execute the query. Copilot will tell how many golden retrievers are available for adoption.
+14. [] Click Allow to execute the query. Copilot will tell how many golden retrievers are available for adoption.
 
 > [!TIP]
 > Notice how Copilot understands the context of your database and generates a SQL query that:

@@ -1,4 +1,5 @@
-# Cloudify Application
+# Modernizing Your Backend with GitHub Copilot Agent Mode
+
 
 GitHub Copilot can help you modernize and adapt your applications for cloud deployment. One of the most powerful features is Agent mode, which allows Copilot to work autonomously across multiple files to implement complex changes. Let's use this capability to enhance our application's database support.
 
@@ -40,13 +41,16 @@ Here are some guidelines to consider when creating a Copilot instructions file:
 - If you notice GitHub Copilot consistently provides an unexpected suggestion (e.g. using class components for React), add those notes to the instructions file.
 
 Let's make Copilot do all the hard work for us by having it create the instructions file for us.
-[] 
+
 1. [] Open Copilot Chat.
 2. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
 3. [] Click on the **Cog** icon at the top of the Chat window and select **Generate Instructions** from the menu.
 4. [] Copilot will analyze the repository and generate a comprehensive instructions file based on the project structure, technologies, and patterns.
-5. [] Review the generated instructions. In a real-world scenario, you would customize them with items specific to your enterprise or team requirements (such as internal coding standards, security policies, or organizational best practices). For this lab, you can use the generated instructions as-is.
-6. [] Accept the suggested changes.
+5. [] While copilot is generating the instructions, look at the prompt being used, also that Copilot is reading the project files to gather context and write an effective prompt.
+6. [] Review the generated instructions. In a real-world scenario, you would customize them with items specific to your enterprise or team requirements (such as internal coding standards, security policies, or organizational best practices). For this lab, you can use the generated instructions as-is.
+7. [] Accept the suggested changes by clicking **Keep** on the list of files changed at the bottom of the Copilot Chat window.
+
+Now that we have an instruction file, the Copilot will be more effective when writing code.
 
 ## Using Agent mode to add database support
 
@@ -55,19 +59,16 @@ Let's use Agent mode to modify our backend to support multiple database systems.
 > [!NOTE]
 > While we recommend using Claude Sonnet 4.5 for this exercise, you're free to experiment with other models if you'd like to see how different models approach the same task.
 
-1. []  Return to Visual Studio Code.
 1. []  Close any tabs you may have open in your VS Code to ensure Copilot has a clean context.
 1. []  Open or switch to GitHub Copilot Chat.
 1. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
     - If asked **Changing the chat mode will end your current session. Would you like to continue?** click **Yes**
     - If you were already in Agent mode, press **+** to start a new session.
-1. []  If available, select **Claude Sonnet 4.5** from the list of available models.
+1. []  Select **Claude Sonnet 4.5** from the list of available models.
 1. []  Send the following prompt to the agent (feel free to make changes to the wording if you'd like to experiment):
 
     ```text
-    Add support for Microsoft SQL Server and PostgreSQL in the backend. 
-    If there is an env variable called MS_SQL_CONN_STRING or PGSQL_CONN_STRING use that connection string to connect to the server. 
-    Otherwise keep using SQLite like currently. Install additional dependencies and or drivers as needed.
+    Add support for Microsoft SQL Server and PostgreSQL in the backend. If there is an env variable called MS_SQL_CONN_STRING or PGSQL_CONN_STRING use that connection string to connect to the server. Otherwise keep using SQLite like currently. Install additional dependencies and or drivers as needed.
     ```
 
 > [!NOTE]
@@ -80,8 +81,9 @@ As the agent works, you'll see it taking various actions. Watch the terminal win
 - The agent analyzing the codebase to understand the current database implementation
 - The agent will most likely ask for your permission to execute code - carefully examine the request(s) and authorize them if appropriate
 - Installation of new Python packages (like `psycopg2` for PostgreSQL or `pyodbc` for SQL Server)
-- Code changes being made across multiple files
-- The agent's reasoning about each step it's taking
+- Code changes being made across multiple files (X files changes list at the bottom of the chat window)
+  - If you expand the list and click on file changed, you can see the changes being suggested with a visual diff.
+- The agent's reasoning about each step it is taking
 - On top of the chat window there is a **Todos** list, which is the list of things the agent is performing, the list has a **(x/y)** format indicating the number of completed tasks versus the total tasks. You can expand the list and see it being updated in real time. It is a great way to observe how the agent is approaching the task at hand and it's progress.
 
 ![Todos list in chat window](./images/copilot-todos-list.png)
@@ -109,7 +111,7 @@ Copilot will typically:
 > [!IMPORTANT]
 > Sometimes the agent might not modify all necessary files on the first attempt. This can happen if the prompt isn't explicit enough or if the agent prioritizes certain changes over others. This is a normal part of working with AI agents, and you can guide them with follow-up prompts.
 
-**If you notice** that the changes to **server/seed_database.py** were not made because it's not on the **changed files** list at the bottom of Copilot Chat window, you can prompt the agent with a more specific prompt. 
+**If you notice** that the changes to **server/seed_database.py** were not made because it is not on the **changed files** list at the bottom of Copilot Chat window, you can prompt the agent with a more specific prompt. 
 
 ![List of changed files](images/4-changed-files-agent-mode.png)
 
@@ -132,6 +134,7 @@ Once the agent completes its work:
 1. []  Ensure the application still works with SQLite by opening it:
     - Navigate to +++http://localhost:5100/api/dogs+++ to verify the API still works
     - Check the frontend at +++http://localhost:4321+++ to ensure the website loads correctly
+    - If the agent stopped the server you might need to start it again by running in the terminal ` .\scripts\start-app.ps1`
 1. []  Run the Python tests to validate nothing broke (in case the agent wasn't executed the tests already):
     
     ```ps1
@@ -162,12 +165,12 @@ This makes your application more flexible and ready for cloud deployment.
 
 ## What's next?
 
-Now that your application supports enterprise databases, you can explore additional cloud capabilities:
+Now that you've enhanced your application with multi-database support, it's time to explore how GitHub Copilot can help you manage your Azure cloud resources. In the next lab, you'll learn how to:
 
-- **Using the MSSQL extension for Visual Studio Code** - Learn how to use Copilot to interact with SQL Server databases directly from VS Code
-- **Using GitHub Copilot for Azure** - Discover how to interact with Azure resources using Copilot's Azure integration
-
-Choose the path that interests you most, or explore both to get the full cloud development experience!
+- Use GitHub Copilot's Agent mode with the Azure extension
+- Query your Azure subscriptions and resources using natural language
+- Explore your Azure environment without leaving VS Code
+- Understand how tool-calling enables Copilot to interact with external services
 
 ## Resources
 

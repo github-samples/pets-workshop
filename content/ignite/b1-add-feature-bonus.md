@@ -30,7 +30,7 @@ Adding the filters to the page will require updating a minimum of two files - th
 5. []  Switch to edit mode by selecting **Edit** in the chat mode dropdown at the bottom of Chat view (should be currently **Ask**)
     - If asked **Changing the chat mode mode will end your current session. Would you like to continue?** click **Yes**
     - If you were already on Copilot Edit mode, press **+** to start a new chat.
-6. []  If available, select **Claude 3.5 Sonnet** from the list of available models
+6. []  Select **Claude 4.5 Sonnet** from the list of available models
 7. []  Click **Add Context...** in the chat window.
 8. []  Select **server/app.py** and **client/src/components/DogList.svelte** files (you need to select **Add context** for each file) 
 
@@ -44,9 +44,6 @@ Adding the filters to the page will require updating a minimum of two files - th
 
 > [!NOTE]
 > You should use your own phrasing when generating the prompt. As highlighted previously, part of the exercise is to become comfortable creating prompts for GitHub Copilot. One key tip is it's always good to provide more guidance to ensure you get the code you are looking for.
-
-> [!NOTE]
-> If you are asked to **Enable Claude 3.5 Sonnet for all clients** click on **Enable** button.
 
 Copilot begins generating the suggestions!
 
