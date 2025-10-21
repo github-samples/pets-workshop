@@ -42,3 +42,4 @@ htmlcov/
 # playwright
 client/test-results/
 client/playwright-report/
+.azure

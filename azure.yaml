@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: pets-workshop
+metadata:
+    template: azd-init@1.20.1
+services:
+    client:
+        project: client
+        host: containerapp
+        language: ts
+        docker:
+            path: Dockerfile
+    server:
+        project: server
+        host: containerapp
+        language: python
+resources:
+    client:
+        type: host.containerapp
+        port: 4321
+    server:
+        type: host.containerapp
+        port: 80
