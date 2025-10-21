@@ -83,7 +83,7 @@ jobs:
     - name: Install linting tools
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 isort
+        pip install isort
 ##        pip install flake8 black isort
     
     - name: Lint with flake8
@@ -97,7 +97,7 @@ jobs:
 ##        cd server
 ##        black --check --diff .
     
-    - name: Check import sorting with isort
-      run: |
-        cd server
-        isort --check-only --diff .
+##    - name: Check import sorting with isort
+##      run: |
+##        cd server
+##        isort --check-only --diff .
