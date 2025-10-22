@@ -1,5 +1,7 @@
 # Pets workshop
 
+![The Pets Workshop Mascot](/images/The Pets Workshop Mascot.png)
+
 This repository contains the project for two guided workshops to explore various GitHub features. The project is a website for a fictional dog shelte, with a [Flask](https://flask.palletsprojects.com/en/stable/) backend using [SQLAlchemy](https://www.sqlalchemy.org/) and [Astro](https://astro.build/) frontend using [Svelte](https://svelte.dev/) for dynami pages.
 
 ## Getting starte
@@ -17,3 +19,34 @@ You can find the list of maintainers in [CODEOWNERS](./.github/CODEOWNERS).
 ## Support
 
 This project is provided as-is, and may be updated over time. If you have questions, please open an issue.
+
+# Azure Boards Status 
+
+[![Board Status](https://dev.azure.com/PUnlimited/915ef36c-5c6d-47d3-a3af-c7570cefb4b9/f71d58d2-562e-4943-ac2f-10cf5c90caf7/_apis/work/boardbadge/d55d864f-57ca-474c-88a0-bc9eacf0cccb)](https://dev.azure.com/PUnlimited/915ef36c-5c6d-47d3-a3af-c7570cefb4b9/_boards/board/t/f71d58d2-562e-4943-ac2f-10cf5c90caf7/Stories/)
+
+# GitHub Actions Status 
+[![CodeQL](https://github.com/devrellabs/pets-workshop/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/devrellabs/pets-workshop/actions/workflows/github-code-scanning/codeql)
+
+[![Dependabot Updates](https://github.com/devrellabs/pets-workshop/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/devrellabs/pets-workshop/actions/workflows/dependabot/dependabot-updates)
+
+[![Server Tests](https://github.com/devrellabs/pets-workshop/actions/workflows/server-test.yml/badge.svg)](https://github.com/devrellabs/pets-workshop/actions/workflows/server-test.yml)
+
+# Azure Pipelines Status 
+(**To be configured**)
+[![Build Status](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_apis/build/status%2FPR%20Checks?branchName=refs%2Fpull%2F14%2Fmerge)](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_build/latest?definitionId=5&branchName=refs%2Fpull%2F14%2Fmerge)
+
+[![Build Status](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_apis/build/status%2FBuild-and-Deploy?branchName=refs%2Fpull%2F14%2Fmerge)](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_build/latest?definitionId=4&branchName=refs%2Fpull%2F14%2Fmerge)
+
+# Environments:
+ - **Dev**: (**To be configured**)
+ - **QA**: (**To be configured**)
+ - **Production**: [Web Site](https://client.braveforest-9b03311d.westus.azurecontainerapps.io/)
+
+# Key Azure Resources
+- [Resource Group](https://portal.azure.com/#@daveburnisonyahoo.onmicrosoft.com/resource/subscriptions/9078e9ae-b0c7-4eb8-8054-e9bf5e1875ad/resourceGroups/rg-Production/overview)
+- [Dashboard](https://portal.azure.com/#@daveburnisonyahoo.onmicrosoft.com/dashboard/arm/subscriptions/9078e9ae-b0c7-4eb8-8054-e9bf5e1875ad/resourcegroups/rg-production/providers/microsoft.portal/dashboards/dash-wgry4yau64yb6)
+
+# Integrations 
+
+- [![Azure DevOps Dashboard](/images/The Pets Workshop Mascot.png)<br/>Dashboard](https://dev.azure.com/PUnlimited/PetsWorkshop/_dashboards/dashboard/346a7268-ee7c-42e0-9beb-8000c9259df4)
+
