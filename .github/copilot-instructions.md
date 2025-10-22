@@ -22,31 +22,15 @@ When the user wants to "clean up my epics", do the following:
 
 2. Fetch wiki page content from `https://dev.azure.com/PUnlimited/PetsWorkshop/_wiki/wikis/PetsWorkshop.wiki/5/Defining-Good-Epics`
 
-3. Go through the description and title of each Epic where the state equals "New". If they do not align with the wiki page, update the title and description to match wiki page guidelines. I like using an emoji as a prefix before the title text. The description should be in markdown format. Make sure you set the format to 'Markdown' as well.
+3. Go through the description and title of each Epic where the state equals "New". If they do not align with the wiki page, update the title and description to match wiki page guidelines. I like using an emoji as a prefix before the title text. The description should be in markdown format. Make sure you set the format to 'Markdown'.
 
-4. If the Epic does not have any tags, add appropriate tags based on the title and description.
+4. If the Epic does not have any tags, add appropriate tags based on the title and description. Only use these tags of "Security", "Performance", "Reliability", "Usability", "Maintainability", and "Scalability", "High Priority" as appropriate.
 
-5. Set priority of the Epic. Security should be priority 1. Performance should be Priority 2.
+5. Set priority of the Epic. Security and High Priority should be priority 1. Performance and Reliability should be Priority 2. Scalability should be Priority 3. Everything else should be Priority 4.
 
-6. Set the StackRank to 1 for priority 1 items. Set StackRank to 2 for priority 2 items.
+6. Set the StackRank to 1 for priority 1 items. Set StackRank to 2 for priority 2 items. Set StackRank to 3 for priority 3 items. Set StackRank to 99 for priority 4 items.
 
 7. Try and use batch update tool to update description, title, tags, and priority of the Epics. You can update 100 Epics at a time.
-
-# Using MCP Server for Azure Devops to "Clean up Feature"
-
-When the user wants to "clean up my feature" and passes the work item Id, do the following:
-
-1. Get work item for `PetsWorkshop` project by Id. 
-
-2. Fetch wiki page content from `https://dev.azure.com/PUnlimited/PetsWorkshop/_wiki/wikis/PetsWorkshop.wiki/6/Defining-Good-Features`
-
-3. Go through the description and title of the feature. If they do not align with the wiki page, update the title and description to match wiki page guidelines. I like using an emoji as a prefix before the title text.
-
-4. If the work does not have any tags, add appropriate tags based on the title and description.
-
-5. Set priority of the work item. Security should be priority 1. Performance should be Priority 2.
-
-7. Try and use batch update tool to update description, title, tags, and priority of the work item.
 
 # Using MCP Server for Azure Devops to "Create child stories for feature"
 
