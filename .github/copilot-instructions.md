@@ -22,7 +22,7 @@ When the user wants to "clean up my epics", do the following:
 
 2. Fetch wiki page content from `https://dev.azure.com/PUnlimited/PetsWorkshop/_wiki/wikis/PetsWorkshop.wiki/5/Defining-Good-Epics`
 
-3. Go through the description and title of each Epic where the state equals "New". If they do not align with the wiki page, update the title and description to match wiki page guidelines. I like using an emoji as a prefix before the title text. The description should be in markdown format. Make sure you set the format to 'Markdown'.
+3. Go through the description and title of each Epic where the state equals "New". If they do not align with the wiki page, update the title and description to match wiki page guidelines. I like using an emoji as a prefix before the title text. The description should be in markdown format. Make sure you set the format to 'Markdown'. Only update the Epics where State equals "New".
 
 4. If the Epic does not have any tags, add appropriate tags based on the title and description. Only use these tags of "Security", "Performance", "Reliability", "Usability", "Maintainability", and "Scalability", "High Priority" as appropriate.
 
