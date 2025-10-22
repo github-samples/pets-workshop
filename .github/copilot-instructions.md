@@ -8,7 +8,7 @@ When getting work items using MCP Server for Azure DevOps, always try to use bat
 
 # Using MCP Server for Azure Devops to "get my work items"
 
-1. Get my assigned work items for `PartsUnlimitedGH` project.
+1. Get my assigned work items for `PetsWorkshop` project.
 
 2. Take Id's from that result and fetch work items in batch. Get fields Id, Type, Title, State, and Priority fields. Ignore any Test Case or Test Plan work item types.
 
