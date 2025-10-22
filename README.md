@@ -1,8 +1,8 @@
 # Pets workshop
 
-This repository contains the project for two guided workshops to explore various GitHub features. The project is a website for a fictional dog shelter, with a [Flask](https://flask.palletsprojects.com/en/stable/) backend using [SQLAlchemy](https://www.sqlalchemy.org/) and [Astro](https://astro.build/) frontend using [Svelte](https://svelte.dev/) for dynamic pages.
+This repository contains the project for two guided workshops to explore various GitHub features. The project is a website for a fictional dog shelte, with a [Flask](https://flask.palletsprojects.com/en/stable/) backend using [SQLAlchemy](https://www.sqlalchemy.org/) and [Astro](https://astro.build/) frontend using [Svelte](https://svelte.dev/) for dynami pages.
 
-## Getting started
+## Getting starte
 
 > **[Get started learning about development with GitHub!](./content/README.md)**
 
