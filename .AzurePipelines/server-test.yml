@@ -47,9 +47,9 @@ stages:
     - task: Cache@2
       displayName: 'Cache pip dependencies'
       inputs:
-        key: 'python | "$(Agent.OS)" | server/requirements.txt'
+        key: '$(pythonVersion) | "$(Agent.OS)" | server/requirements.txt'
         restoreKeys: |
-          python | "$(Agent.OS)"
+          $(pythonVersion) | "$(Agent.OS)"
         path: $(Pipeline.Workspace)/.pip
     
     - script: |
