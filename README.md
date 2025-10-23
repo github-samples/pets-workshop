@@ -32,10 +32,7 @@ This project is provided as-is, and may be updated over time. If you have questi
 [![Server Tests](https://github.com/devrellabs/pets-workshop/actions/workflows/server-test.yml/badge.svg)](https://github.com/devrellabs/pets-workshop/actions/workflows/server-test.yml)
 
 # Azure Pipelines Status 
-(**To be configured**)
-[![Build Status](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_apis/build/status%2FPR%20Checks?branchName=refs%2Fpull%2F14%2Fmerge)](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_build/latest?definitionId=5&branchName=refs%2Fpull%2F14%2Fmerge)
-
-[![Build Status](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_apis/build/status%2FBuild-and-Deploy?branchName=refs%2Fpull%2F14%2Fmerge)](https://dev.azure.com/PUnlimited/PartsUnlimitedGH/_build/latest?definitionId=4&branchName=refs%2Fpull%2F14%2Fmerge)
+[![Build Status](https://dev.azure.com/PUnlimited/PetsWorkshop/_apis/build/status%2FServer%20Tests?branchName=main)](https://dev.azure.com/PUnlimited/PetsWorkshop/_build/latest?definitionId=10&branchName=main)
 
 # Environments:
  - **Dev**: (**To be configured**)
