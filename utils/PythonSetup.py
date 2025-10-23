@@ -5,6 +5,11 @@ import sqlite3
 from Crypto.Cipher import DES
 from urllib.parse import urlparse
 
+# This file contains multiple Python functions that intentionally demonstrate common security vulnerabilities and coding pitfalls. 
+# The file provides examples for issues such as weak cryptography, SQL injection, incomplete sanitization, and more, likely for 
+# educational or testing purposes.
+# Last updated on 2025-10-22 by @DaveOps30
+
 # BIND_SOCKET_ALL_NETWORK_INTERFACES test
 def bind_socket_to_all_interfaces():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
