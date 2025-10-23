@@ -2,11 +2,13 @@
 
 ![The Pets Workshop Mascot](/images/The%20Pets%20Workshop%20Mascot.png)
 
-This repository contains the project for two guided workshops to explore various GitHub features. The project is a website for a fictional dog shelte, with a [Flask](https://flask.palletsprojects.com/en/stable/) backend using [SQLAlchemy](https://www.sqlalchemy.org/) and [Astro](https://astro.build/) frontend using [Svelte](https://svelte.dev/) for dynami pages.
+This repository is being used to demonstrate the full capabilities of the **GitHub platform**, including integrations with **Azure Boards** and **Azure Pipelines**. The project is a website for a fictional dog shelte, with a [Flask](https://flask.palletsprojects.com/en/stable/) backend using [SQLAlchemy](https://www.sqlalchemy.org/) and [Astro](https://astro.build/) frontend using [Svelte](https://svelte.dev/) for dynami pages.
 
 ## Getting starte
 
 > **[Get started learning about development with GitHub!](./content/README.md)**
+> 
+> **[New to GitHub Copilot? Check out our list of GitHub Copilot resourcres!](./content/GitHub-Copilot-Resources.md)**
 
 ## License 
 
