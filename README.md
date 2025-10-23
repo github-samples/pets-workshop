@@ -45,5 +45,5 @@ This project is provided as-is, and may be updated over time. If you have questi
 
 # Integrations 
 
-- [![Azure DevOps Dashboard](/images/azure_devops_dashboard_icon.png)<br/>Dashboard](https://dev.azure.com/PUnlimited/PetsWorkshop/_dashboards/dashboard/346a7268-ee7c-42e0-9beb-8000c9259df4)
+- [![Azure DevOps Dashboard](/images/azure_devops_dashboard_icon.png)<br/>Azure DevOps Dashboard](https://dev.azure.com/PUnlimited/PetsWorkshop/_dashboards/dashboard/346a7268-ee7c-42e0-9beb-8000c9259df4)
 
