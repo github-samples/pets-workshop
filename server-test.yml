@@ -1,0 +1,103 @@
+# Azure Pipelines YAML for Server Tests
+
+# Pull request trigger
+pr:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  pythonVersions: '["3.12", "3.13", "3.14"]'
+
+stages:
+- stage: Test
+  displayName: 'Run Tests'
+  jobs:
+  - job: TestMatrix
+    displayName: 'Test with Multiple Python Versions'
+    strategy:
+      matrix:
+        Python312:
+          pythonVersion: '3.12'
+        Python313:
+          pythonVersion: '3.13'
+        Python314:
+          pythonVersion: '3.14'
+    
+    steps:
+    - checkout: self
+      displayName: 'Checkout code'
+    
+    - task: UsePythonVersion@0
+      displayName: 'Set up Python $(pythonVersion)'
+      inputs:
+        versionSpec: '$(pythonVersion)'
+        addToPath: true
+    
+    - script: |
+        python -m pip install --upgrade pip
+        pip install -r server/requirements.txt
+        pip install pytest pytest-cov
+      displayName: 'Install dependencies'
+    
+    - script: |
+        cd server
+        python -m pytest test_app.py -v --tb=short --junitxml=test-results.xml --cov=app --cov-report=term-missing --cov-report=xml
+      displayName: 'Run tests with pytest'
+    
+    - task: PublishTestResults@2
+      displayName: 'Publish test results'
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFiles: 'server/test-results.xml'
+        testRunTitle: 'Python $(pythonVersion) Tests'
+        failTaskOnFailedTests: true
+    
+    - task: PublishCodeCoverageResults@2
+      displayName: 'Upload coverage reports'
+      condition: eq(variables['pythonVersion'], '3.12')
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: 'server/coverage.xml'
+        reportDirectory: 'server/htmlcov'
+        failIfCoverageEmpty: false
+
+- stage: Lint
+  displayName: 'Code Linting'
+  dependsOn: []
+  jobs:
+  - job: Lint
+    displayName: 'Lint Code'
+    
+    steps:
+    - checkout: self
+      displayName: 'Checkout code'
+    
+    - task: UsePythonVersion@0
+      displayName: 'Set up Python 3.12'
+      inputs:
+        versionSpec: '3.12'
+        addToPath: true
+    
+    - script: |
+        python -m pip install --upgrade pip
+        pip install flake8
+        # pip install flake8 black isort
+      displayName: 'Install linting tools'
+    
+    - script: |
+        cd server
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      displayName: 'Lint with flake8'
+    
+    # - script: |
+    #     cd server
+    #     black --check --diff .
+    #   displayName: 'Check code formatting with black'
+    
+    # - script: |
+    #     cd server
+    #     isort --check-only --diff .
+    #   displayName: 'Check import sorting with isort'
