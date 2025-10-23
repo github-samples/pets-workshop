@@ -49,18 +49,16 @@ stages:
     
     - script: |
         cd server
-        python -m unittest test_app.py -v
-      displayName: 'Run tests with unittest'
+        python -m pytest test_app.py -v --tb=short --junitxml=test-results.xml --cov=app --cov-report=term-missing --cov-report=xml
+      displayName: 'Run tests with pytest'
     
-    - script: |
-        cd server
-        python -m pytest test_app.py -v --tb=short
-      displayName: 'Run tests with pytest (alternative)'
-    
-    - script: |
-        cd server
-        python -m pytest test_app.py --cov=app --cov-report=term-missing --cov-report=xml
-      displayName: 'Run tests with coverage'
+    - task: PublishTestResults@2
+      displayName: 'Publish test results'
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFiles: 'server/test-results.xml'
+        testRunTitle: 'Python $(pythonVersion) Tests'
+        failTaskOnFailedTests: true
     
     - task: PublishCodeCoverageResults@2
       displayName: 'Upload coverage reports'
