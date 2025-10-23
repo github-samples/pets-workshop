@@ -41,12 +41,12 @@ stages:
         versionSpec: '$(pythonVersion)'
         addToPath: true
     
-    - task: Cache@2
-      displayName: 'Cache pip dependencies'
-      inputs:
-        key: '"$(Agent.OS)" | server/test_app.py'
-        path: '$(Pipeline.Workspace)/.pip'
-        restoreKeys: '"$(Agent.OS)"'
+#    - task: Cache@2
+#      displayName: 'Cache pip dependencies'
+#      inputs:
+#        key: '"$(Agent.OS)" | server/test_app.py'
+#        path: '$(Pipeline.Workspace)/.pip'
+#        restoreKeys: '"$(Agent.OS)"'
     
     - script: |
         python -m pip install --upgrade pip
