@@ -7,6 +7,8 @@ This repository is being used to demonstrate the full capabilities of the **GitH
 ## Getting starte
 
 > **[Get started learning about development with GitHub!](./content/README.md)**
+> 
+> **[New to GitHub Copilot? Check out our list of GitHub Copilot resourcres!](./content/GitHub-Copilot-Resources.md)**
 
 ## License 
 
