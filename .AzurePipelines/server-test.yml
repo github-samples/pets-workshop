@@ -44,10 +44,9 @@ stages:
     - task: Cache@2
       displayName: 'Cache pip dependencies'
       inputs:
-        key: '"$(Agent.OS)" | server/requirements.txt'
-        restoreKeys: |
-          "$(Agent.OS)"
-        path: $(Pipeline.Workspace)/.pip
+        key: '"$(Agent.OS)" | server/test_app.py'
+        path: '$(Pipeline.Workspace)/.pip'
+        restoreKeys: '"$(Agent.OS)"'
     
     - script: |
         python -m pip install --upgrade pip
