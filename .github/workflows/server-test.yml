@@ -3,14 +3,8 @@ name: Server Tests
 on:
   push:
     branches: [ main]
-    paths:
-      - 'server/**'
-      - '.github/workflows/server-test.yml'
   pull_request:
     branches: [ main]
-    paths:
-      - 'server/**'
-      - '.github/workflows/server-test.yml'
   workflow_dispatch:
 
 jobs:
