@@ -8,10 +8,7 @@ pr:
   branches:
     include:
       - main
-  paths:
-    include:
-      - server/*
-      - .AzurePipelines/server-test.yml
+
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -47,9 +44,9 @@ stages:
     - task: Cache@2
       displayName: 'Cache pip dependencies'
       inputs:
-        key: '$(pythonVersion) | "$(Agent.OS)" | server/requirements.txt'
+        key: '"$(Agent.OS)" | server/requirements.txt'
         restoreKeys: |
-          $(pythonVersion) | "$(Agent.OS)"
+          "$(Agent.OS)"
         path: $(Pipeline.Workspace)/.pip
     
     - script: |
