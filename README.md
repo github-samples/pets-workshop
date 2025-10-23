@@ -22,7 +22,7 @@ You can find the list of maintainers in [CODEOWNERS](./.github/CODEOWNERS).
 
 ## Support
 
-This project is provided as-is, and may be updated over time. If you have questions, please create a work item in the [PetsWorkshop](https://dev.azure.com/PUnlimited/PetsWorkshop/_dashboards/dashboard/346a7268-ee7c-42e0-9beb-8000c9259df4) team project in **Azure DevOps**.
+This project is provided as-is, and may be updated over time. If you have questions, please create a work item in the [PetsWorkshop](https://dev.azure.com/PUnlimited/PetsWorkshop/_dashboards/dashboard/346a7268-ee7c-42e0-9beb-8000c9259df4) team project in **Azure DevOps**. (**NOTE**: Access to the Azure DevOps team project is limited. If you do not have access, please [open an issue in this repo](https://github.com/devrellabs/pets-workshop/issues).)
 
 # Azure Boards Status 
 
