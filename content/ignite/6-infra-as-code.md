@@ -47,6 +47,9 @@ Everything you need for this exercise is already set up:
 
 Start below to follow the Terraform learning path. To follow the Bicep learning path, scroll down to the **Prompting Bicep with Copilot** section.
 
+> [!NOTE] 
+> Terraform and Bicep exercises are the same, they just use different IaC tools. Choose the one you prefer, or complete both if you have time! 
+
 ## Prompting Terraform with Copilot
 
 Once your environment is ready, let’s use GitHub Copilot to create your first Terraform configuration file.

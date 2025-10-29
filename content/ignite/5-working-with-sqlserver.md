@@ -59,7 +59,7 @@ If you want to create your own database:
 3. []  Type the following prompt:
 
     ```text
-    Create a database called Pets with recovery mode set to simple
+    Create a Sql server database called Pets with recovery mode set to simple
     ```
 
 4. []  Review the generated SQL and click **Accept** the suggestion if it feels right. It should be very similar to this:
@@ -88,7 +88,7 @@ Now let's use GitHub Copilot to query our database using natural language. This 
 7. []  Let's execute our first prompt in the chat window:
 
     ```text
-    connect to the PetsDB database using my LocalServer connection
+    connect to the PetsDB database using my LocalServer profile name
     ```
 8. []  Copilot is going to ask our permission to execute **mssql: List Connections tool**. Every time Copilot needs to execute something, it will ask your permission. In this case let's click on the dropdown selector and pick **Always allow**. This will add this tool to the auto-approve list; in the future if Copilot wants to run this tool, you will not be asked for confirmation.
    ![always allow list connection tool execution](images/5-always-allow-tool-execution.png)
@@ -208,6 +208,7 @@ Testing edge cases is crucial for building robust applications. Let's generate d
     - Other edge case variations you can think of
     All should reference valid breed IDs.
     ```
+    Note: Don't use the type feature, use copy to clipboard and paste instead to avoid partial generations due to new lines.
 
 3. []  Review the generated SQL to see how Copilot handles these edge cases.
 4. []  Execute the statements.
