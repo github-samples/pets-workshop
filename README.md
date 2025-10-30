@@ -14,7 +14,7 @@ The code is for a website for a fictional dog shelte, with a [Flask](https://fla
 
 ## License 
 
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) for the full terms.
+This projec is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) for the full terms.
 
 ## Maintainers 
 
