@@ -40,7 +40,7 @@ Here are some guidelines to consider when creating a Copilot instructions file:
         - use [arrow functions][arrow-functions] rather than the **function** keyword in TypeScript.
 - If you notice GitHub Copilot consistently provides an unexpected suggestion (e.g. using class components for React), add those notes to the instructions file.
 
-Let's make Copilot do all the hard work for us by having it create the instructions file for us.
+Let's make Copilot do all the hard work for us by having it create the instructions file.
 
 1. [] Open Copilot Chat.
 2. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
@@ -84,7 +84,7 @@ As the agent works, you'll see it taking various actions. Watch the terminal win
 - Code changes being made across multiple files (X files changes list at the bottom of the chat window)
   - If you expand the list and click on file changed, you can see the changes being suggested with a visual diff.
 - The agent's reasoning about each step it is taking
-- On top of the chat window there is a **Todos** list, which is the list of things the agent is performing, the list has a **(x/y)** format indicating the number of completed tasks versus the total tasks. You can expand the list and see it being updated in real time. It is a great way to observe how the agent is approaching the task at hand and it's progress.
+- On top of the chat window there may be a **Todos** list, which is the list of things the agent is performing, the list has a **(x/y)** format indicating the number of completed tasks versus the total tasks. You can expand the list and see it being updated in real time. It is a great way to observe how the agent is approaching the task at hand and it's progress.
 
 ![Todos list in chat window](./images/copilot-todos-list.png)
 
@@ -96,7 +96,7 @@ As the agent works, you'll see it taking various actions. Watch the terminal win
 Copilot should make modifications to at least two key files:
 
 - **server/app.py** - Updates to the database initialization to support multiple database types
-- **server/seed_database.py** - Changes to the seeding logic to work with different database systems
+- **server/utils/seed_database.py** - Changes to the seeding logic to work with different database systems
 
 Copilot will typically:
 
