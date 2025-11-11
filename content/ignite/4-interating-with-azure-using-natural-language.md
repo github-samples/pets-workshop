@@ -21,7 +21,7 @@ This integration allows you to stay in your coding flow while gathering informat
 
 Good news! We've already set up everything you need for this exercise:
 
-- The **GitHub Copilot for Azure** extension is installed in VS Code
+- The **[GitHub Copilot for Azure][gh-copilot-for-azure]** extension is installed in VS Code
 - Azure credentials are ready for authentication
 - An Azure subscription with resources is available
 
@@ -76,6 +76,9 @@ This demonstrates how Copilot's tool-calling capability allows it to interact wi
 > [!NOTE]
 > The GitHub Copilot for Azure extension provides many more capabilities beyond listing resources. You can ask questions about specific resources, query logs, get cost information, and much more - all using natural language within Copilot Chat.
 
+> [!TIP]
+> The GitHub Copilot for Azure includes the `@azure` chat participant, which allows you to specify Azure-related tasks directly without relying so much on Copilot understanding your intent. For example, you can use prompts like `@azure show me the details of my storage account` to get specific information.
+
 ## Summary and next steps
 
 You've successfully used GitHub Copilot's Agent mode with the Azure extension to explore your Azure environment! You saw how:
@@ -104,6 +107,6 @@ Now that you understand how to interact with Azure through Copilot, you can expl
 - [GitHub Copilot for Azure VS Code extension][gh-copilot-for-azure]
 - [What is the Model Context Protocol (MCP)?][what-is-mcp]
 
-[gh-copilot-for-azure]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azure-github-copilot~
+[gh-copilot-for-azure]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azure-github-copilot
 [gh-mcp-registry]: https://github.com/mcp
 [what-is-mcp]: https://modelcontextprotocol.io/docs/getting-started/intro

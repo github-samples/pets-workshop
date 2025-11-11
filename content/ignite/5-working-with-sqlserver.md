@@ -21,7 +21,7 @@ Good news! We've already set up everything you need for this exercise:
 
 - SQL Server Express is installed and running locally 
   - With pets database populated with data
-- The **GitHub Copilot for MSSQL** extension is installed in VS Code
+- The **[GitHub Copilot for MSSQL][mssql-extension]** extension is installed in VS Code
 - A SQL Server connection has been pre-registered in your environment
 
 You're ready to connect and start querying right away!
