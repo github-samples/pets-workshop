@@ -199,6 +199,9 @@ Testing edge cases is crucial for building robust applications. Let's generate d
 1. []  Open GitHub Copilot Chat and start a new chat by clicking the **+** button.
 2. []  Ask Copilot to generate edge case data:
 
+> [!IMPORTANT]
+> **Do NOT use the "type" button** that appears when hovering over the code block. Instead, **copy and paste** the prompt directly into the chat. Using the type button will cause Copilot to interpret each newline as pressing Enter, executing the prompt immediately after the first line before you can complete the full multi-line prompt.
+
     ```text
     @mssql Generate insert statements for the dogs table to test edge cases. Include:
     - A dog with age 0 (newborn puppy)

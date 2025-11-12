@@ -67,8 +67,13 @@ Let's use Agent mode to modify our backend to support multiple database systems.
 1. []  Select **Claude Sonnet 4.5** from the list of available models.
 1. []  Send the following prompt to the agent (feel free to make changes to the wording if you'd like to experiment):
 
+> [!IMPORTANT]
+> **Do NOT use the "type" button** that appears when hovering over the code block. Instead, **copy and paste** the prompt directly into the chat. Using the type button will cause Copilot to interpret each newline as pressing Enter, executing the prompt immediately after the first line before you can complete the full multi-line prompt.
+
     ```text
-    Add support for Microsoft SQL Server and PostgreSQL in the backend. If there is an env variable called MS_SQL_CONN_STRING or PGSQL_CONN_STRING use that connection string to connect to the server. Otherwise keep using SQLite like currently. Install additional dependencies and or drivers as needed.
+    Add support for Microsoft SQL Server and PostgreSQL in the backend. 
+    If there is an env variable called MS_SQL_CONN_STRING or PGSQL_CONN_STRING use that connection string to connect to the server. 
+    Otherwise keep using SQLite like currently. Install additional dependencies and or drivers as needed.
     ```
 
 > [!NOTE]
@@ -78,6 +83,7 @@ Let's use Agent mode to modify our backend to support multiple database systems.
 
 As the agent works, you'll see it taking various actions. Watch the terminal window and the VS Code interface to observe:
 
+- The prompt we just added being used by the agent
 - The agent analyzing the codebase to understand the current database implementation
 - The agent will most likely ask for your permission to execute code - carefully examine the request(s) and authorize them if appropriate
 - Installation of new Python packages (like `psycopg2` for PostgreSQL or `pyodbc` for SQL Server)
