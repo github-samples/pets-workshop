@@ -58,32 +58,33 @@ Terraform lets you define infrastructure declaratively—specifying what you wan
 
 In this scenario, you will create a Terraform configuration file with Copilot, and then generate a deployment workflow.
 
-1. []  Open or switch to GitHub Copilot Chat if it's not already open.
-2. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
+1. []  Close any tabs you may have open in your VS Code to ensure Copilot has a clean context.
+2. []  Open or switch to GitHub Copilot Chat if it's not already open.
+3. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
     - If asked **Changing the chat mode will end your current session. Would you like to continue?** click **Yes**
     - If you were already in Agent mode, press **+** to start a new session.
-3. []  Select **Claude Sonnet 4.5** from the list of available models.
-4. []  Send the following prompt to the agent:
+4. []  Select **Claude Sonnet 4.5** from the list of available models.
+5. []  Send the following prompt to the agent:
    `Create a simple Terraform configuration for an Azure Static webapp with an Azure SQL Database`
-5. Copilot may decide to execute tools to do a better job. If it does, examine the request being made and **Allow** it. For example it may ask to run **azureterraformbestpractices** from **Azure MCP server**
-6. [] It will also read the instructions file specific for Terraform, which you can see the chat results as **Read terraform-azure.instructions.md**, click on the file or open it from the **.github/instructions** folder and take a look at it while Copilot is working.
+6. Copilot may decide to execute tools to do a better job. If it does, examine the request being made and **Allow** it. For example it may ask to run **azureterraformbestpractices** from **Azure MCP server**
+7. [] It will also read the instructions file specific for Terraform, which you can see the chat results as **Read terraform-azure.instructions.md**, click on the file or open it from the **.github/instructions** folder and take a look at it while Copilot is working.
   ![reading instruction file](./images/6-reading-instruction-image.png)
-7. [] Copilot might try validate the created **.tf** file with **terraform** CLI. The tool is not installed (intentionally) so not only you can observe that the Agent may decide to use tools (**Allow** the execution) to validate it's own code and in this case ask permission to install it after it tries to run **terraform** and realized the execution failed because it is not installed. Click on **Skip**, the agent will adapt on the absence of the tool.
+9. [] Copilot might try validate the created **.tf** file with **terraform** CLI. The tool is not installed (intentionally) so not only you can observe that the Agent may decide to use tools (**Allow** the execution) to validate it's own code and in this case ask permission to install it after it tries to run **terraform** and realized the execution failed because it is not installed. Click on **Skip**, the agent will adapt on the absence of the tool.
 
   ![terraform execution failure](images/6-tf-execution-failure.png)
 
-8. When the execution has finished, see the list of files changes. You should see a **main.tf**, along with corresponding variables and outputs files. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output and then click on **keep**
-9. []**Create Reusable Infrastructure**
+9. When the execution has finished, see the list of files changes. You should see a **main.tf**, along with corresponding variables and outputs files. Be sure to review the generated code carefully — iteration and refinement are essential when working with Copilot’s output and then click on **keep**
+10. []**Create Reusable Infrastructure**
    Next, make your infrastructure reusable and scalable for Azure by asking Copilot:
    `Generate a Terraform module for the static site and storage account so it can be used in multiple environments`
-10. If Copilot tries to execute tools, review the ask and **Allow** them.
+11. If Copilot tries to execute tools, review the ask and **Allow** them.
    Copilot will often generate several files and environment setups. Take time to review them and refine the output — iterative improvement is an essential part of the process.
-11. []**Generate a Deployment Workflow**
+12. []**Generate a Deployment Workflow**
    Since Copilot has suggested multiple environments, create a deployment pipeline in GitHub by asking:
    `Create a GitHub deployment YAML workflow to deploy to Azure.`
    Copilot will generate a multi-step YAML workflow you can use.
 
-12.  **Next Steps**
+13.  **Next Steps**
    - Iterate on the output to match your environment.
    - Add tests to your Terraform code (recommended).
    - Ask Copilot to review your code for security.
@@ -103,15 +104,16 @@ In this scenario, you will create an initial Bicep file with Copilot and then ge
 
 ### Steps
 
-1. []  Open or switch to GitHub Copilot Chat if it's not already open.
-2. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
+1. []  Close any tabs you may have open in your VS Code to ensure Copilot has a clean context.
+2. []  Open or switch to GitHub Copilot Chat if it's not already open.
+3. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
     - If asked **Changing the chat mode will end your current session. Would you like to continue?** click **Yes**
     - If you were already in Agent mode, press **+** to start a new session.
-3. []  Select **Claude Sonnet 4.5** from the list of available models.
-4. []  Send the following prompt to the agent:
+4. []  Select **Claude Sonnet 4.5** from the list of available models.
+5. []  Send the following prompt to the agent:
    `Create a simple Bicep configuration for an Azure Static webapp with an Azure SQL Database`
-5. [] Copilot may decide to execute tools to do a better job. If it does, examine the request being made and **Allow** it. For example it may ask to run **get_bestpractices** from **Azure MCP server**.
-6. [] If asked to **Allow MCP tools from "Azure MCP" to make LLM requests?" click on **Always**
+6. [] Copilot may decide to execute tools to do a better job. If it does, examine the request being made and **Allow** it. For example it may ask to run **get_bestpractices** from **Azure MCP server**.
+7. [] If asked to **Allow MCP tools from "Azure MCP" to make LLM requests?" click on **Always**
 
   Observe the process. Copilot output, the actions it is taking and the files it is reading,etc. When it is finished it will generate a **main.bicep** file, along with corresponding variables and outputs files.
 
@@ -123,18 +125,18 @@ In this scenario, you will create an initial Bicep file with Copilot and then ge
    - Add more environment-specific configurations
 8. [] Click on **Keep**
 
-7. []**Create Reusable Infrastructure**
+9. []**Create Reusable Infrastructure**
    Next, make your infrastructure reusable and scalable for Azure by asking Copilot:
    `Generate a Bicep module for the static site and storage account so it can be used in multiple environments.`
 
    Copilot will often generate several files and environment setups. Take time to review them and refine the output — iterative improvement is an essential part of the process.
 
-4. []**Generate a Deployment Workflow**
+10. []**Generate a Deployment Workflow**
    Since Copilot has suggested multiple environments, create a deployment pipeline in GitHub by asking:
    `Create a GitHub Actions deployment YAML workflow to deploy to Azure.`
    Copilot will generate a multi-step YAML workflow you can use, if asked to allow execution of tools, **allow** it.
 
-6.  **Next Steps**
+11.  **Next Steps**
    - Iterate on the output to match your environment.
    - Add tests to your Bicep code (recommended).
    - Ask Copilot to review your code for security.

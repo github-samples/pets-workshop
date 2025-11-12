@@ -69,7 +69,7 @@ If you want to create your own database:
     ALTER DATABASE Pets SET RECOVERY SIMPLE;
     ```
     
-5. []  Execute the query by clicking **Run** or pressing <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>.
+5. []  Execute the query by on the **Green arrow** or pressing <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>.
 6. []  Refresh the SQL Server view to see your new **Pets** database.
 
 Typically we would now seed the just created database by calling the **seed-database.ps1** (or **seed-database.sh** on Linux/Mac), but let's skip this so we are not distracted by non-Copilot activities.
@@ -166,14 +166,16 @@ Copilot can also help you understand existing SQL queries. This is incredibly us
 1. []  Copy a complex query from your previous exercises into the query editor.
 
 2. []  Select the entire query. (or you can use this one):
-    ```sql
-    SELECT b.name AS BreedName, COUNT(d.id) AS DogCount
-    FROM dbo.dogs d    
-        JOIN dbo.breeds b ON d.breed_id = b.id
-    WHERE d.status = 'available' AND d.age < 5
-    GROUP BY b.name
-    ORDER BY DogCount DESC;
-    ```
+
+```sql
+SELECT b.name AS BreedName, COUNT(d.id) AS DogCount
+FROM dbo.dogs d    
+    JOIN dbo.breeds b ON d.breed_id = b.id
+WHERE d.status = 'available' AND d.age < 5
+GROUP BY b.name
+ORDER BY DogCount DESC;
+```
+
 3. []  In Copilot inline Chat, type `/explain` and press <kbd>Enter</kbd>.
 4. []  Read through Copilot's explanation of what the query does, including details about joins, filters, and aggregations.
 
@@ -202,16 +204,15 @@ Testing edge cases is crucial for building robust applications. Let's generate d
 > [!IMPORTANT]
 > **Do NOT use the "type" button** that appears when hovering over the code block. Instead, **copy and paste** the prompt directly into the chat. Using the type button will cause Copilot to interpret each newline as pressing Enter, executing the prompt immediately after the first line before you can complete the full multi-line prompt.
 
-    ```text
-    @mssql Generate insert statements for the dogs table to test edge cases. Include:
-    - A dog with age 0 (newborn puppy)
-    - A dog with age 20 (very old)
-    - Dogs with very short names (1-2 characters)
-    - Dogs with longer names (15+ characters)
-    - Other edge case variations you can think of
-    All should reference valid breed IDs.
-    ```
-    Note: Don't use the type feature, use copy to clipboard and paste instead to avoid partial generations due to new lines.
+```text
+@mssql Generate insert statements for the dogs table to test edge cases. Include:
+- A dog with age 0 (newborn puppy)
+- A dog with age 20 (very old)
+- Dogs with very short names (1-2 characters)
+- Dogs with longer names (15+ characters)
+- Other edge case variations you can think of
+All should reference valid breed IDs.
+```
 
 3. []  Review the generated SQL to see how Copilot handles these edge cases.
 4. []  Execute the statements.

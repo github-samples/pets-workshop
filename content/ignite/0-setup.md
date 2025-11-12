@@ -60,7 +60,7 @@ The code is now open in Visual Studio Code, feel free to take a look at it or sk
 .\scripts\start-app.ps1
 ```
 
-The startup script will install dependencies (the first will take a while) and start two applications:
+The startup script will install dependencies (the first time will take a while) and start two applications:
 
 - The backend Flask app on **http://localhost:5100**. You can see a list of dogs by opening the url +++http://localhost:5100/api/dogs+++
 - The frontend Astro/Svelte app on +++http://localhost:4321+++. You can see app the by opening that URL.

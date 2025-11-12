@@ -46,7 +46,7 @@ Let's make Copilot do all the hard work for us by having it create the instructi
 2. [] Select the **+** icon towards the top of Copilot chat to begin a new chat.
 3. [] Click on the **Cog** icon at the top of the Chat window and select **Generate Instructions** from the menu.
 4. [] Copilot will analyze the repository and generate a comprehensive instructions file based on the project structure, technologies, and patterns.
-5. [] While copilot is generating the instructions, look at the prompt being used, also that Copilot is reading the project files to gather context and write an effective prompt.
+5. [] While copilot is generating the instructions, examine the chat window (scroll as necessary), look at the prompt being used, also that Copilot is reading the project files to gather context and write an effective prompt.
 6. [] Review the generated instructions. In a real-world scenario, you would customize them with items specific to your enterprise or team requirements (such as internal coding standards, security policies, or organizational best practices). For this lab, you can use the generated instructions as-is.
 7. [] Accept the suggested changes by clicking **Keep** on the list of files changed at the bottom of the Copilot Chat window.
 
@@ -70,11 +70,11 @@ Let's use Agent mode to modify our backend to support multiple database systems.
 > [!IMPORTANT]
 > **Do NOT use the "type" button** that appears when hovering over the code block. Instead, **copy and paste** the prompt directly into the chat. Using the type button will cause Copilot to interpret each newline as pressing Enter, executing the prompt immediately after the first line before you can complete the full multi-line prompt.
 
-    ```text
-    Add support for Microsoft SQL Server and PostgreSQL in the backend. 
-    If there is an env variable called MS_SQL_CONN_STRING or PGSQL_CONN_STRING use that connection string to connect to the server. 
-    Otherwise keep using SQLite like currently. Install additional dependencies and or drivers as needed.
-    ```
+```text
+Add support for Microsoft SQL Server and PostgreSQL in the backend. 
+If there is an env variable called MS_SQL_CONN_STRING or PGSQL_CONN_STRING use that connection string to connect to the server. 
+Otherwise keep using SQLite like currently. Install additional dependencies and or drivers as needed.
+```
 
 > [!NOTE]
 > Because LLMs are probabilistic, not deterministic, the exact changes made can vary. The steps below describe a typical experience, but your experience may differ slightly. Also note that we are a little ambiguous in the prompt on purpose to see how the agent interprets it.
@@ -90,7 +90,7 @@ As the agent works, you'll see it taking various actions. Watch the terminal win
 - Code changes being made across multiple files (X files changes list at the bottom of the chat window)
   - If you expand the list and click on file changed, you can see the changes being suggested with a visual diff.
 - The agent's reasoning about each step it is taking
-- On top of the chat window there may be a **Todos** list, which is the list of things the agent is performing, the list has a **(x/y)** format indicating the number of completed tasks versus the total tasks. You can expand the list and see it being updated in real time. It is a great way to observe how the agent is approaching the task at hand and it's progress.
+- On top of the chat window there may be a **Todos** list, which is the list of things the agent is performing, the list has a **(x/y)** format indicating the number of completed tasks versus the total tasks. You can expand the list and see it being updated in real time. It is a great way to observe how the agent is approaching the task at hand and its progress.
 
 ![Todos list in chat window](./images/copilot-todos-list.png)
 
@@ -137,17 +137,19 @@ Once the agent completes its work:
 
 1. []  Review the code changes made by the agent across the different files (click on the file names in the **changed files** list at the bottom of the Copilot Chat window to see diffs).
 1. []  Check that the **requirements.txt** file has been updated with the new database drivers.
-1. []  Ensure the application still works with SQLite by opening it:
+1. []  (Optionally) Ensure the application still works with SQLite by opening it:
     - Navigate to +++http://localhost:5100/api/dogs+++ to verify the API still works
     - Check the frontend at +++http://localhost:4321+++ to ensure the website loads correctly
     - If the agent stopped the server you might need to start it again by running in the terminal ` .\scripts\start-app.ps1`
-1. []  Run the Python tests to validate nothing broke (in case the agent wasn't executed the tests already):
+1. []  (Optionally) Run the Python tests to validate nothing broke (in case the agent wasn't executed the tests already):
     
     ```ps1
     venv/Scripts/Activate.ps1
     cd server
     python -m unittest test_app.py
     ```
+    Here is an example of the agent running the tests without any specific instructions:
+    ![agent running the tests](./images/agent-running-the-tests.png)
 
 5. []  If all tests pass and the application works correctly, select **Keep** to keep the changes.
 

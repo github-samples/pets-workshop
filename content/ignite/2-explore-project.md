@@ -23,7 +23,7 @@ GitHub Copilot Chat has a set of available [chat participants][chat-participants
 > You can open Chat by clicking on GitHub Copilot icon at the top bar and then choose **Open Chat** or use <kbd>Control</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>
 
 4. []  Select the **+** icon towards the top of Copilot chat to begin a new chat.
-5. []  Type `@workspace` in the chat prompt window and hit <kbd>tab</kbd> to select or activate it, then continue by asking Copilot about your project. You can ask what technologies are in use, what the project does, where functionality resides, etc.
+5. []  Type **@workspace** in the chat prompt window and hit <kbd>tab</kbd> to select or activate it, then continue by asking Copilot about your project. You can ask what technologies are in use, what the project does, where functionality resides, etc.
 
 > [!NOTE]
 > You may be asked to authenticate again, if that happens follow the process you have followed before (this time you won't need to enter the credentials).

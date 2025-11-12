@@ -31,28 +31,29 @@ You're ready to start exploring your Azure environment!
 
 Let's use GitHub Copilot's Agent mode to discover what Azure resources are available in your subscription.
 
-1. []  Open or switch to GitHub Copilot Chat if it's not already open.
-2. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
+1. []  Close any tabs you may have open in your VS Code to ensure Copilot has a clean context.
+2. []  Open or switch to GitHub Copilot Chat if it's not already open.
+3. []  Switch to Agent mode by clicking on the chat mode dropdown at the bottom of the Chat view and selecting **Agent**.
     - If asked **Changing the chat mode will end your current session. Would you like to continue?** click **Yes**
     - If you were already in Agent mode, press **+** to start a new session.
-3. []  Select **Claude Sonnet 4.5** from the list of available models.
-4. []  Send the following prompt to the agent:
+4. []  Select **Claude Sonnet 4.5** from the list of available models.
+5. []  Send the following prompt to the agent:
 
     ```text
     show me the list of my azure resources
     ```
 
-5. Since we never logged in on Azure, the extension will guide us through the login process interactively.
-5. []  The **GitHub Copilot for Azure** extension will prompt you to log in. Click **Allow** to proceed. (after Copilot attempted to run **@azure query azure resource graph**)
-6. []  When prompted authenticate on popup, use the following credentials:
+6. Since we never logged in on Azure, the extension will guide us through the login process interactively.
+7. []  The **GitHub Copilot for Azure** extension will prompt you to log in. Click **Allow** to proceed. (after Copilot attempted to run **@azure query azure resource graph**)
+8. []  When prompted authenticate on popup, use the following credentials:
   -  +++@lab.CloudPortalCredential(User1).Username+++ on the **Email, phone, or Skype** input box and click on **Next**
   -  +++@lab.CloudPortalCredential(User1).AccessToken+++ on the **Temporary Access Pass** field and click on **Sign in** button
-7. [] Says **Yes, all apps** when asked to **Automatically sign in to all desktop apps and websites on this device?**
-8. [] Click **Allow** if prompt (**The extension 'GitHub Copilot for Azure'  wants to sign in sign in GitHub**)
-9. [] Select the user to login (**User1-.....**) when prompt at the top of VS Code screen (**Select an account for 'GitHub Copilot for Azure' to use or Esc to cancel**)
-10. [] With authentication in place Copilot retrieve your resources, displaying a comprehensive list including:
+9. [] Says **Yes, all apps** when asked to **Automatically sign in to all desktop apps and websites on this device?**
+10. [] Click **Allow** if prompt (**The extension 'GitHub Copilot for Azure'  wants to sign in sign in GitHub**)
+11. [] Select the user to login (**User1-.....**) when prompt at the top of VS Code screen (**Select an account for 'GitHub Copilot for Azure' to use or Esc to cancel**)
+12. [] With authentication in place, Copilot retrieves your resources, displaying a comprehensive list including:
     - Resource names
-    - Resource types (You have access to three resources: A managed identity, a deployment script and a storage account)
+    - Resource types (You should have access to at least two resources: A managed identity, and a storage account)
     - Resource groups
     - Locations
 
