@@ -72,7 +72,7 @@ When you run the prompt, observe how the agent works:
 - After authentication, it executes the query and formats the results
 - You receive a readable summary of your Azure resources
 
-This demonstrates how Copilot's tool-calling capability allows it to interact with external services like Azure on your behalf, Copilot knows nothing about Azure, but the GitHub Copilot for Azure extension provides him with the tools necessary to interact with an Azure subscription and Copilot will call the necessary tools. If you click on the **Wrench** icon at the bottom of Copilot Chat, you can see the list of tools available to Copilot, the tools are made available to Copilot either by VS Code extensions or by installing an MCP server.
+This demonstrates how Copilot's tool-calling capability allows it to interact with external services like Azure on your behalf, Copilot knows nothing about Azure, but the GitHub Copilot for Azure extension provides him with the tools necessary to interact with an Azure subscription and Copilot will call the necessary tools. If you click on the **Wrench** icon at the bottom of Copilot Chat, you can see the list of tools available to Copilot. The tools are made available to Copilot either by VS Code extensions or by installing an MCP server.
 
 > [!NOTE]
 > The GitHub Copilot for Azure extension provides many more capabilities beyond listing resources. You can ask questions about specific resources, query logs, get cost information, and much more - all using natural language within Copilot Chat.

@@ -59,7 +59,7 @@ If you want to create your own database:
 3. []  Type the following prompt:
 
     ```text
-    Create a Sql server database called Pets with recovery mode set to simple
+    Create a SQL Server database called Pets with recovery mode set to simple
     ```
 
 4. []  Review the generated SQL and click **Accept** the suggestion if it feels right. It should be very similar to this:
@@ -194,12 +194,13 @@ GitHub Copilot can help you generate realistic test and mock data for your datab
 
 Before starting, type in the chat window `@mssql /` to see the available slash commands the **@mssql** chat participant offers.
 
-### Generate edge case test data
+### Generate edge case test data (feature in Preview)
 
 Testing edge cases is crucial for building robust applications. Let's generate data to test boundary conditions or uncover other issues our code might have with odd data shapes.
 
 1. []  Open GitHub Copilot Chat and start a new chat by clicking the **+** button.
-2. []  Ask Copilot to generate edge case data:
+2. []  Make sure you have an open query window on Visual Studio Code connected to the **PetsDB** database, his connection allows the **@mssql** chat participant to understand the context of your database environment, enabling accurate and context-aware suggestions.
+3. []  Ask Copilot to generate edge case data using the chat participant by typing the following prompt:
 
 > [!IMPORTANT]
 > **Do NOT use the "type" button** that appears when hovering over the code block. Instead, **copy and paste** the prompt directly into the chat. Using the type button will cause Copilot to interpret each newline as pressing Enter, executing the prompt immediately after the first line before you can complete the full multi-line prompt.
@@ -214,8 +215,8 @@ Testing edge cases is crucial for building robust applications. Let's generate d
 All should reference valid breed IDs.
 ```
 
-3. []  Review the generated SQL to see how Copilot handles these edge cases.
-4. []  Execute the statements.
+4. []  Review the generated SQL to see how Copilot handles these edge cases.
+5. []  Execute the statements.
 
 > [!IMPORTANT]
 > Edge case testing helps you discover potential issues before they affect real users. Pay attention to how your UI displays very long names, ages at boundaries, etc.

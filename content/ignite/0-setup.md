@@ -3,7 +3,7 @@
 To complete this workshop you will need to clone a repository with a copy of the contents of this repository
 
 > [!Hint]
-> Under regular conditions you would need to ensure all pre requisites, but don't worry. We have ensured this environment has all you need.
+> Under regular conditions you would need to ensure all prerequisites are installed, but don't worry. We have ensured this environment has all you need.
 
 
 > [!NOTE]

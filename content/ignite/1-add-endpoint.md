@@ -82,10 +82,11 @@ In the input box, type **/doc**. (You can optionally provide additional details,
 With the code created and saved, let's quickly validate the endpoint to ensure it works.
 
 1. []  Navigate to +++http://localhost:5100/api/breeds+++ on the browser to validate the new route. You should see JSON displayed which contains the list of breeds!
-2. [] Let's commit the changes locally, click on the Source control icon on the left sidebar
-3. [] Click on the **+** icon to stage **server/app.py**
-4. [] On the commit message box click on the icon with two stars, Copilot is going to create the commit message for you
-5. [] Click on the **Commit** blue button to commit locally if you are happy with the commit message, otherwise adjust the message before committing.
+2. [] Switch back to Visual Studio Code.
+3. [] Let's commit the changes locally, click on the Source control icon on the left sidebar
+4. [] Click on the **+** icon to stage **server/app.py**
+5. [] On the commit message box click on the icon with two stars, Copilot is going to create the commit message for you
+6. [] Click on the **Commit** blue button to commit locally if you are happy with the commit message, otherwise adjust the message before committing.
   - Don't try to push the changes (by pushing or synching), you do not have write permissions on the repository.
 
 ## Summary and next steps
