@@ -144,7 +144,7 @@ Once the agent completes its work:
 1. []  (Optionally) Run the Python tests to validate nothing broke (in case the agent wasn't executed the tests already):
     
     ```ps1
-    venv/Scripts/Activate.ps1
+    ./venv/Scripts/Activate.ps1
     cd server
     python -m unittest test_app.py
     ```

@@ -62,6 +62,11 @@ The code is now open in Visual Studio Code, feel free to take a look at it or sk
 
 The startup script will install dependencies (the first time will take a while) and start two applications:
 
+> [!NOTE]
+> The first time you start the application, it may take several minutes to become available. This is because all required dependencies need to be installed before the app can launch. If you prefer, you can move on to the next section and explore GitHub Copilot while you wait.
+> When the server is ready, you'll see the message **┃ Local    http://localhost:4321/** in the terminal, indicating that the frontend is running and accessible.
+
+
 - The backend Flask app on **http://localhost:5100**. You can see a list of dogs by opening the url +++http://localhost:5100/api/dogs+++
 - The frontend Astro/Svelte app on +++http://localhost:4321+++. You can see app the by opening that URL.
 
