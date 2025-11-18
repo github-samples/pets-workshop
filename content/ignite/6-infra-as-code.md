@@ -32,7 +32,7 @@ In this workshop, you will learn how to work with GitHub Copilot to write, modif
 Everything you need for this exercise is already set up:
 
 - GitHub Copilot
-- [HashiCorp Terraform extension for VSCode][https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform] (**.tf** files)
+- [HashiCorp Terraform extension for VSCode](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform) (**.tf** files)
 - [Bicep extension for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) (**.bicep** files)
 - GitHub Copilot instruction files for Terraform Azure instructions and Bicep code best practices
 
@@ -168,8 +168,6 @@ By combining GitHub Copilot with Bicep, you've experienced how AI can accelerate
 [terraform-azure-provider]: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 [bicep-docs]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/
 [bicep-best-practices]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/best-practices
-[copilot-docs]: https://docs.github.com/copilot
-[copilot-agent-mode]: https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode
 [copilot-instructions]: https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot
 [awesome-copilot]: https://github.com/github/awesome-copilot
 [github-actions-docs]: https://docs.github.com/actions
