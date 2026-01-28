@@ -1,0 +1,8 @@
+name: Practise workflow dispatch
+on: workflow_dispatch
+jobs:
+  build:
+    steps:
+      - name: run sample flow
+        run: echo "Hi"
+    
