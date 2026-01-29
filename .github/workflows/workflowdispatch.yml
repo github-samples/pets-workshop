@@ -14,5 +14,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: 
+      - name: run tests
+        run: |
+          pytest -q
+      - name: upload a build artifact
+        uses: actions/upload-artifact@v6.0.0
     
