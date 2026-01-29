@@ -1,0 +1,10 @@
+name: pull request trigger
+on:
+  pull_request:
+    branches: [ main ]
+jobs:
+  pr-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull request practise
+        run: echo "triggered by pull request"
