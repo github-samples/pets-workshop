@@ -14,9 +14,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss(), svelte()]
   },
-  experimental: {
-    session: true,
-  },
   adapter: node({
     mode: 'standalone'
   }),
