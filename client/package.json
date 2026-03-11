@@ -14,16 +14,16 @@
     "test:e2e:chromium": "playwright test --project=chromium"
   },
   "dependencies": {
-    "@astrojs/node": "^9.5.2",
+    "@astrojs/node": "^9.5.3",
     "@astrojs/svelte": "^7.2.5",
     "@tailwindcss/vite": "^4.1.12",
-    "astro": "^5.15.1",
-    "svelte": "^5.49.1",
+    "astro": "^5.17.2",
+    "svelte": "^5.53.6",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
-    "@types/node": "^24.3.1",
+    "@types/node": "^25.2.2",
     "autoprefixer": "^10.4.24",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17"
