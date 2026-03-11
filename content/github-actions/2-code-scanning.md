@@ -35,7 +35,7 @@ Most projects depend on open source and external libraries. While modern develop
 Public repositories on GitHub automatically have Dependabot alerts enabled. Let's configure Dependabot to also create PRs that update insecure library versions automatically.
 
 1. Navigate to your repository on GitHub.
-2. Select **Settings** > **Code security** (under **Security** in the sidebar).
+2. Select **Settings** > **Advanced security** (under **Security** in the sidebar).
 3. Locate the **Dependabot** section.
 
     ![Screenshot of the Dependabot section](../shared-images/dependabot-settings.png)
@@ -54,11 +54,11 @@ You've now enabled Dependabot alerts and security updates! When an insecure libr
 
 Many developers have accidentally checked in code containing tokens or credentials. Regardless of the reason, even seemingly innocuous tokens can create a security issue. [Secret scanning][about-secret-scanning] detects tokens in your source code and raises alerts. With push protection enabled, pushes containing supported secrets are blocked before they reach your repository.
 
-1. On the same **Code security** settings page, locate the **Secret scanning** section.
-2. Next to **Receive alerts on GitHub for detected secrets, keys or other tokens**, select **Enable**.
+1. On the same **Advanced security** settings page, locate the **Secret Protection** section.
+2. Next to **GitHub will always send alerts to partners for detected secrets in public repositories**, select **Enable**.
 3. Next to **Push protection**, select **Enable** to block pushes containing a [supported secret][supported-secrets].
 
-    ![Screenshot of fully configured secret scanning](../shared-images/secret-scanning-settings.png)
+    ![Screenshot of fully configured secret scanning](../shared-images/setup-secret-protection.png)
 
 You've now enabled secret scanning and push protection — helping prevent credentials from reaching your repository.
 
@@ -68,7 +68,7 @@ There is a direct relationship between the amount of code an organization writes
 
 Let's enable code scanning with the default CodeQL setup. This runs automatically whenever code is pushed to `main` or a pull request targets `main`, and on a regular schedule to catch newly discovered vulnerabilities.
 
-1. On the same **Code security** settings page, locate the **Code scanning** section.
+1. On the same **Advanced security** settings page, locate the **Code scanning** section.
 2. Next to **CodeQL analysis**, select **Set up** > **Default**.
 
     ![Screenshot of code scanning dropdown menu](../shared-images/code-scanning-setup.png)
