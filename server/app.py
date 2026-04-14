@@ -32,7 +32,12 @@ def get_dogs() -> Response:
         }
         for dog in dogs_query
     ]
-    
+        dogs_list.append({
+            'id': dog.id,
+            'name': dog.name,
+            'breed': dog.breed
+        })
+
     return jsonify(dogs_list)
 
 @app.route('/api/dogs/<int:id>', methods=['GET'])
