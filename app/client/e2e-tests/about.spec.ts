@@ -18,6 +18,15 @@ test.describe('About Page', () => {
     await expect(page.getByText('Tailspin Shelter is a fictional organization')).toBeVisible();
   });
 
+  test('should display adoption guidance', async ({ page }) => {
+    await page.goto('/about');
+
+    await expect(page.getByRole('heading', { name: 'Prepare for a good match' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Match your routine' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Plan the first week' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Ask specific questions' })).toBeVisible();
+  });
+
   test('should navigate back to homepage from about page', async ({ page }) => {
     await page.goto('/about');
     
