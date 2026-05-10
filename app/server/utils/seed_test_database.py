@@ -11,7 +11,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from flask import Flask
-from models import init_db, db, Breed, Dog
+from models import init_db, db, Breed, Dog, User
 from models.dog import AdoptionStatus
 
 # Server directory (parent of utils/)
@@ -144,6 +144,13 @@ def seed_test_database():
                 description=dog_data['description'],
             )
             db.session.add(dog)
+
+        staff_user = User(
+            email=os.environ.get('DEMO_STAFF_EMAIL', 'staff@tailspin.example').strip().lower(),
+            role='staff',
+        )
+        staff_user.set_password(os.environ.get('DEMO_STAFF_PASSWORD', 'TailspinDemo123!'))
+        db.session.add(staff_user)
 
         db.session.commit()
 

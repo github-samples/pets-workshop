@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const API_SERVER_URL = process.env.API_SERVER_URL || 'http://localhost:5100';
+const cookie = Astro.request.headers.get('cookie') || '';
+
+let user = null;
+
+try {
+  const response = await fetch(`${API_SERVER_URL}/api/auth/me`, {
+    headers: cookie ? { cookie } : {},
+  });
+  if (response.ok) {
+    const data = await response.json();
+    user = data.user;
+  }
+} catch {
+  user = null;
+}
+
+if (!user) {
+  return Astro.redirect('/login?next=/upload');
+}
+---
+
+<Layout title="Upload AI Listing - Tailspin Shelter">
+  <div class="py-8">
+    <div class="max-w-3xl mb-8">
+      <h1 class="text-3xl font-bold text-slate-100 mb-3" data-testid="upload-heading">AI Listing Agent</h1>
+      <p class="text-slate-300">
+        Upload pet images and notes to generate a searchable, SEO-ready adoption listing.
+      </p>
+    </div>
+
+    <section class="bg-slate-800/70 border border-slate-700 rounded-xl p-6" data-testid="upload-panel">
+      <div class="grid gap-5">
+        <div>
+          <label for="pet-images" class="block text-sm font-medium text-slate-200 mb-2">Pet images</label>
+          <input
+            id="pet-images"
+            type="file"
+            accept="image/*"
+            multiple
+            class="block w-full text-sm text-slate-300 file:mr-4 file:rounded-lg file:border-0 file:bg-blue-600 file:px-4 file:py-2 file:text-white hover:file:bg-blue-700"
+            data-testid="upload-images"
+          />
+        </div>
+
+        <div>
+          <label for="pet-notes" class="block text-sm font-medium text-slate-200 mb-2">Known notes</label>
+          <textarea
+            id="pet-notes"
+            rows="5"
+            class="w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-slate-100 focus:border-blue-400 focus:outline-none"
+            placeholder="Name, temperament, medical notes, intake source, or adoption restrictions"
+            data-testid="upload-notes"
+          ></textarea>
+        </div>
+
+        <button
+          type="button"
+          class="w-fit rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 transition-colors"
+          data-testid="generate-listing"
+        >
+          Generate listing draft
+        </button>
+      </div>
+    </section>
+  </div>
+</Layout>

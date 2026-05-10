@@ -101,6 +101,111 @@ class TestApp(unittest.TestCase):
         self.assertEqual(len(data['dogs']), 1)
         self.assertEqual(set(data['dogs'][0].keys()), {'id', 'name', 'breed'})
 
+    @patch('app.User')
+    def test_login_success(self, mock_user_model):
+        """Test staff login with valid credentials"""
+        user = MagicMock()
+        user.id = 1
+        user.check_password.return_value = True
+        user.to_dict.return_value = {
+            'id': 1,
+            'email': 'staff@tailspin.example',
+            'role': 'staff'
+        }
+        mock_user_model.query.filter_by.return_value.first.return_value = user
+
+        response = self.app.post('/api/auth/login', json={
+            'email': 'staff@tailspin.example',
+            'password': 'TailspinDemo123!'
+        })
+
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data)
+        self.assertEqual(data['user']['email'], 'staff@tailspin.example')
+
+        with self.app.session_transaction() as session:
+            self.assertEqual(session['user_id'], 1)
+
+    @patch('app.User')
+    def test_login_invalid_password(self, mock_user_model):
+        """Test login failure with invalid credentials"""
+        user = MagicMock()
+        user.check_password.return_value = False
+        mock_user_model.query.filter_by.return_value.first.return_value = user
+
+        response = self.app.post('/api/auth/login', json={
+            'email': 'staff@tailspin.example',
+            'password': 'wrong-password'
+        })
+
+        self.assertEqual(response.status_code, 401)
+        data = json.loads(response.data)
+        self.assertEqual(data['error'], 'Invalid email or password')
+
+    def test_me_requires_login(self):
+        """Test current user endpoint rejects guests"""
+        response = self.app.get('/api/auth/me')
+
+        self.assertEqual(response.status_code, 401)
+        data = json.loads(response.data)
+        self.assertEqual(data['error'], 'Authentication required')
+
+    @patch('app.db.session.get')
+    def test_me_returns_current_user(self, mock_get):
+        """Test current user endpoint returns authenticated staff user"""
+        user = MagicMock()
+        user.to_dict.return_value = {
+            'id': 1,
+            'email': 'staff@tailspin.example',
+            'role': 'staff'
+        }
+        mock_get.return_value = user
+
+        with self.app.session_transaction() as session:
+            session['user_id'] = 1
+
+        response = self.app.get('/api/auth/me')
+
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data)
+        self.assertEqual(data['user']['role'], 'staff')
+
+    @patch('app.db.session.get')
+    def test_logout_clears_session(self, mock_get):
+        """Test logout clears the authenticated session"""
+        with self.app.session_transaction() as session:
+            session['user_id'] = 1
+
+        response = self.app.post('/api/auth/logout')
+
+        self.assertEqual(response.status_code, 200)
+        with self.app.session_transaction() as session:
+            self.assertNotIn('user_id', session)
+
+    def test_protected_listing_agent_rejects_guest(self):
+        """Test upload analysis endpoint requires authentication"""
+        response = self.app.post('/api/listing-agent/analyze', json={})
+
+        self.assertEqual(response.status_code, 401)
+        data = json.loads(response.data)
+        self.assertEqual(data['error'], 'Authentication required')
+
+    @patch('app.db.session.get')
+    def test_protected_listing_agent_rejects_non_staff(self, mock_get):
+        """Test upload analysis endpoint requires staff role"""
+        user = MagicMock()
+        user.role = 'viewer'
+        mock_get.return_value = user
+
+        with self.app.session_transaction() as session:
+            session['user_id'] = 1
+
+        response = self.app.post('/api/listing-agent/analyze', json={})
+
+        self.assertEqual(response.status_code, 403)
+        data = json.loads(response.data)
+        self.assertEqual(data['error'], 'Staff access required')
+
 
 if __name__ == '__main__':
     unittest.main()

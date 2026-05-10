@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const next = Astro.url.searchParams.get('next') || '/upload';
+---
+
+<Layout title="Staff Login - Tailspin Shelter">
+  <div class="py-8 max-w-md">
+    <h1 class="text-3xl font-bold text-slate-100 mb-3">Staff Login</h1>
+    <p class="text-slate-300 mb-8">Sign in to upload and generate AI-assisted pet listings.</p>
+
+    <form id="login-form" class="bg-slate-800/70 border border-slate-700 rounded-xl p-6 space-y-5" data-testid="login-form">
+      <input type="hidden" id="next-url" value={next} />
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-slate-200 mb-2">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="username"
+          required
+          value="staff@tailspin.example"
+          class="w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-slate-100 focus:border-blue-400 focus:outline-none"
+          data-testid="login-email"
+        />
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium text-slate-200 mb-2">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          value="TailspinDemo123!"
+          class="w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-slate-100 focus:border-blue-400 focus:outline-none"
+          data-testid="login-password"
+        />
+      </div>
+
+      <p id="login-error" class="hidden text-sm text-red-400" data-testid="login-error"></p>
+
+      <button
+        type="submit"
+        class="w-full rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 transition-colors"
+        data-testid="login-submit"
+      >
+        Sign in
+      </button>
+    </form>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('login-form') as HTMLFormElement | null;
+  const error = document.getElementById('login-error');
+  const nextUrl = (document.getElementById('next-url') as HTMLInputElement | null)?.value || '/upload';
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    error?.classList.add('hidden');
+
+    const formData = new FormData(form);
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        email: formData.get('email'),
+        password: formData.get('password'),
+      }),
+    });
+
+    if (response.ok) {
+      window.location.href = nextUrl;
+      return;
+    }
+
+    const data = await response.json().catch(() => ({ error: 'Unable to sign in' }));
+    if (error) {
+      error.textContent = data.error || 'Unable to sign in';
+      error.classList.remove('hidden');
+    }
+  });
+</script>

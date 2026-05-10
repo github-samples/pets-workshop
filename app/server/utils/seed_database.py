@@ -9,7 +9,7 @@ from collections import defaultdict
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from flask import Flask
-from models import init_db, db, Breed, Dog
+from models import init_db, db, Breed, Dog, User
 from models.dog import AdoptionStatus
 
 def create_app():
@@ -132,10 +132,33 @@ def create_dogs():
             count = breed_counts[breed.id]
             print(f"Breed '{breed.name}': {count} dogs")
 
+def create_staff_user():
+    """Seed a staff user for the upload demo."""
+    app = create_app()
+    email = os.environ.get('DEMO_STAFF_EMAIL', 'staff@tailspin.example').strip().lower()
+    password = os.environ.get('DEMO_STAFF_PASSWORD', 'TailspinDemo123!')
+
+    with app.app_context():
+        user = User.query.filter_by(email=email).first()
+        if user:
+            user.role = 'staff'
+            if os.environ.get('DEMO_STAFF_PASSWORD'):
+                user.set_password(password)
+            db.session.commit()
+            print(f"Staff user '{email}' already exists. Ensured staff role.")
+            return
+
+        user = User(email=email, role='staff')
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        print(f"Successfully seeded staff user '{email}'.")
+
 def seed_database():
     """Run all seeding functions in the correct order"""
     create_breeds()
     create_dogs()
+    create_staff_user()
 
 if __name__ == '__main__':
     seed_database()

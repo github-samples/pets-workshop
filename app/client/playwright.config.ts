@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const serverDir = path.resolve(__dirname, '..', 'server');
 const testDbPath = path.join(serverDir, 'e2e_test_dogshelter.db');
-const flaskPort = 5100;
-const astroDevPort = 4321;
+const flaskPort = Number(process.env.FLASK_PORT || 5100);
+const astroDevPort = Number(process.env.ASTRO_DEV_PORT || 4321);
 
 export default defineConfig({
   testDir: './e2e-tests',
