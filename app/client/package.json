@@ -16,7 +16,7 @@
   "dependencies": {
     "@astrojs/node": "^10.0.4",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.1.6",
+    "astro": "^6.3.3",
     "esbuild-wasm": "^0.28.0",
     "typescript": "^6.0.2"
   },
