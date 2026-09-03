@@ -1,6 +1,7 @@
 import os
 from typing import Dict, List, Any, Optional
 from flask import Flask, jsonify, request, Response
+from sqlalchemy import text
 from models import init_db, db, Dog, Breed
 
 # Get the server directory path
@@ -77,7 +78,16 @@ def get_dog(id: int) -> tuple[Response, int] | Response:
     
     return jsonify(dog)
 
-## HERE
+@app.route('/api/dogs/search', methods=['GET'])
+def search_dogs() -> tuple[Response, int] | Response:
+    name = request.args.get('name', '')
+    sql = "SELECT id, name FROM dogs WHERE name LIKE '%" + name + "%' ORDER BY name"
+    try:
+        rows = db.session.execute(text(sql)).fetchall()
+        results: List[Dict[str, Any]] = [{'id': row[0], 'name': row[1]} for row in rows]
+        return jsonify(results)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5100) # Port 5100 to avoid macOS conflicts
