@@ -12,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the database with the app
+# Test comment
 init_db(app)
 
 @app.route('/api/dogs', methods=['GET'])
