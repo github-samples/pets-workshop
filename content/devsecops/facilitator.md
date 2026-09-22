@@ -12,16 +12,16 @@ Up to 90 participant-owned laptops with one presenter and 1-2 helpers leave litt
 1. Use only the [original Pets template](https://github.com/github-samples/pets-workshop) for learner applications. Supply all customization through the versioned [companion repository](https://github.com/frye/pets-devsecops-workshop). The companion is a kit, not an application template.
 2. Resolve every mandatory [readiness gate](readiness.md). Label source inspection and local tests separately from live GitHub results. A prerelease can support review, but it must not imply event readiness.
 3. Recheck upstream fingerprints. If they drift, refresh and rehearse the companion against the original template. Do not switch attendees to a derived template.
-4. Rehearse Step 0 from zero setup on the terminal fetch route and the no-install raw-file route. Check current UI labels and capture only redacted, real screenshots or use clearly labeled field examples.
+4. Rehearse the actual Codespaces Step 0: access/payer/quota, original template copy, default-image startup, existing clone, companion fetch, two-workflow commit/push, security checks, and stop/resume with the kit still present. Test local Git and file-editor fallbacks separately. Earlier native Linux tests do not prove Codespaces authentication or persistence.
 5. Rehearse with representative prepared learners and managed/personal laptops on the venue network. Record wall-clock editing, Actions latency, help requests, and every outcome. The arithmetic `8 + 75 + 7 = 90` is not timing evidence.
 
 ## Prework and staffing
 
-Collect public repository, starter-PR, baseline-run URLs and kit version through existing event communications. Helpers mark each attendee ready or needing help before the event; do not add another signup service or share credentials.
+Collect public repository, starter-PR, baseline-run URLs and kit version through existing event communications. Also ask whether Codespaces startup, companion fetch, and workflow push succeeded and whether the learner knows how to reopen and stop that space. Record a fallback explicitly. Helpers mark readiness before the event; do not collect tokens or private connection details, or require another service signup.
 
-Narrate the web-editor route and keep the numbered terminal reference available. Assign the 1-2 helpers to tables or zones. They should prioritize account and Git problems and the three individual technical exercises. At maximum capacity, a helper may cover 45-90 learners; repeated rescue cannot be the normal setup path. Revisit the attendance cap or format if readiness or support is insufficient.
+Narrate **Codespaces**, using the browser-based VS Code editor and integrated terminal. Keep the local Git and file-editor fallback references available for helpers rather than repeating every route. Assign the 1-2 helpers to tables or zones, prioritizing access/startup, Git problems, and the three individual exercises. At maximum capacity, a helper may cover 45-90 learners; revisit capacity if advance readiness is insufficient.
 
-Confirm power, Wi-Fi, GitHub sign-in, editing, and Actions access. Neither a paired learner's run nor the presenter's repository satisfies another attendee's individual checkpoint.
+Confirm power, Wi-Fi, GitHub sign-in, the Codespaces editor/terminal and reconnection, and Actions access on representative personal/company-managed laptops. Check allowed quota or sponsorship before startup; do not change billing or machine size to force access. Use one smallest suitable codespace per learner repo, normally two cores, and no required custom devcontainer or app install. Neither a partner's run nor the presenter's repo completes another attendee's checkpoint.
 
 ## Prepare the two demonstrations
 
@@ -37,7 +37,7 @@ Use a separate, explicitly authorized facilitator repository. Never change parti
 
 | Event minute | Action |
 |---:|---|
-| 00-08 | Verify prework; triage small remaining issues |
+| 00-08 | Verify prework and resume the existing codespace; triage small remaining issues |
 | 08-15 | Baseline and functional blind spots |
 | 15-21 | Three-row threat model |
 | 21-38 | Individual code fix/test; start scans |
@@ -51,11 +51,13 @@ After a four-minute wait, continue with the next independent activity and revisi
 
 At minute 80, stop starting new troubleshooting/edit cycles. At minute 83, begin closing regardless of queues. Keep missing outcomes pending/incomplete. Never bypass secret protection, required checks, code-scanning policy, or approval to finish on time.
 
+At closing, have learners save and push intended safe work and explicitly stop their own codespace. Closing a tab does not stop compute; stopped storage still counts. Keep forwarded ports private. Preserve needed work and evidence before deletion, and reopen the same space for take-home.
+
 ## Optional identity practice
 
 During lesson 1's existing seven minutes, identify the job's GitHub App installation identity and read-only scope alongside the CI commands. Point to [the self-service workload-identity lab](take-home/4-workload-identity.md) for later practice. Offer its two-job permission exercise as optional take-home or a separately scheduled follow-along. Do not add a fourth required individual outcome to the 75-minute core; keep the secret exercise and all timeboxes unchanged.
 
-The optional workflow is installed through a reviewed learner PR, not the setup helper. Learners need no cloud account, new app, PAT, or laptop runtime. Its OIDC section is a route to provider-specific trust documentation; no cloud authentication or resource authorization was tested by the GitHub issue exercise.
+Learners copy/edit the optional workflow in Codespaces and install it through a reviewed PR, not the setup helper. Its jobs execute only in Actions. Do not run the proof script with the developer `GITHUB_TOKEN` configured in Codespaces or print either credential. No cloud account, new app, PAT, or laptop runtime is required; OIDC remains provider-specific reading, not a claimed cloud test.
 
 ## Build and publish the companion
 
@@ -93,3 +95,5 @@ The complete live and take-home kit ships together, links and fetch commands wor
 ## Resources
 
 [GitHub template repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template), [Git archive](https://git-scm.com/docs/git-archive), and [Actions usage](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
+
+[Codespaces creation](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository), [billing](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces), and [stop/start](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace) support the primary route.

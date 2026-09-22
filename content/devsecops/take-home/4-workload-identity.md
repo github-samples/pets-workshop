@@ -3,7 +3,7 @@
 | [Previous: dependency maintenance](3-maintain-dependencies.md) | [Next: troubleshooting](troubleshooting.md) |
 |:---|---:|
 
-This optional exercise is outside the 75-minute core. Use the same public learner repository and GitHub.com account. You need no cloud account, PAT, app registration, Copilot subscription, or local tool installation. You will test GitHub API authorization, not Azure or AWS authentication.
+This optional exercise is outside the 75-minute core. Use the same public learner repository, GitHub.com account, and existing Codespaces editor/terminal. You need no cloud account, PAT, app registration, Copilot subscription, or laptop tool installation. You will test GitHub API authorization in Actions, not Azure or AWS authentication.
 
 ## Why it matters
 
@@ -11,19 +11,37 @@ The shelter wants automation to create an issue without being able to change app
 
 GitHub creates a distinct `GITHUB_TOKEN` for each job. It is an installation access token for the GitHub App installed when Actions is enabled, scoped to the repository containing the workflow. It is not the triggering person's PAT. It expires when the job finishes or reaches its effective maximum lifetime; these jobs also have five-minute execution timeouts. The workflow can use the token through `github.token` without you creating or copying it.
 
+Codespaces configures a separate developer credential that may also be named `GITHUB_TOKEN`. Do not print either value or run this workflow's proof code in the Codespaces terminal with developer credentials. You edit and push the YAML there; Actions must execute the two jobs.
+
 ## 1. Check readiness
 
-1. Complete [Step 0](../0-setup.md), or follow [Resume](0-resume.md) if returning to an existing learner copy. You need working PR checks and permission to merge a reviewed workflow.
+1. Complete [Step 0](../0-setup.md), or [resume your existing codespace](0-resume.md). You need working PR checks and permission to merge a reviewed workflow.
 2. Confirm **Issues** is available in your repository. If it is disabled, the repository owner can enable it under **Settings > General > Features > Issues**, if policy allows. Do not change another repository or work around organization policy.
 3. Keep your current repository-default workflow permissions unchanged. This exercise specifies permission grants per job.
-4. Open the v0.1.1 [token-permissions.yml starter](../starter/token-permissions.yml), or its [version-pinned raw file](https://raw.githubusercontent.com/frye/pets-devsecops-workshop/v0.1.1/starter/token-permissions.yml). Read it before installing it.
+4. Open `../pets-devsecops-kit-v0.1.2/starter/token-permissions.yml` from the fetched kit in the Codespaces editor. The [starter](../starter/token-permissions.yml) and [raw fallback](https://raw.githubusercontent.com/frye/pets-devsecops-workshop/v0.1.2/starter/token-permissions.yml) are the same v0.1.2 content. Read it before installing it.
 
 You can do this lab independently of the release/environment and dependency-maintenance labs. The setup helper still installs only the two core workflows; it will not install this optional file.
 
 ## 2. Review and add the workflow
 
-1. From current `main`, prepare a change for a new `exercise/token-permissions` branch. In the web editor, select **Add file > Create new file**, name it `.github/workflows/token-permissions.yml`, and copy the entire starter.
-2. Select **Commit changes**, choose a new branch named `exercise/token-permissions`, and open a PR against your own `main`.
+1. In the Codespaces terminal at the clean learner root, update your own `main` and create the branch:
+
+   ```bash
+   git status --short
+   git fetch origin
+   git switch main
+   git merge --ff-only origin/main
+   git switch -c exercise/token-permissions
+   ```
+
+2. Copy the inspected starter only if the destination is new:
+
+   ```bash
+   test ! -e .github/workflows/token-permissions.yml &&
+   cp ../pets-devsecops-kit-v0.1.2/starter/token-permissions.yml .github/workflows/token-permissions.yml
+   ```
+
+   If it exists, compare it and resume the existing work rather than overwriting it.
 3. Inspect these boundaries in the diff:
 
    | Setting | Expected behavior |
@@ -36,21 +54,21 @@ You can do this lab independently of the release/environment and dependency-main
    | Execution | No checkout or third-party actions; fixed API requests use Python already on the standard hosted runner |
    | Cleanup | Each job's `always()` step can close only the recorded issue whose title, body marker, and bot creator match that run |
 
-4. Review the PR yourself. Wait for `api-tests`, `client-build`, `dependency-review`, and any configured CodeQL merge policy to pass on its latest revision. Merge normally, without bypassing rules. This optional workflow does not run on PRs and is not another required PR check.
+4. Save the file, then commit and push:
+
+   ```bash
+   git add -- .github/workflows/token-permissions.yml
+   git diff --cached
+   git commit -m "Add optional workflow identity exercise"
+   git push -u origin exercise/token-permissions
+   ```
+
+   Open and review the PR on GitHub.com. Wait for `api-tests`, `client-build`, `dependency-review`, and any configured CodeQL merge policy to pass on its latest revision. Merge normally, without bypassing rules. This optional workflow does not run on PRs and is not another required PR check.
 5. Confirm the file is on remote `main`. Keep the original core workflows unchanged.
 
 If you installed the release simulation in Lab 2, this merge also starts its normal release run. You can cancel that specific run if you are not practicing release approval now. It is separate from the token exercise; do not approve it automatically or cancel someone else's run.
 
-If using terminal Git, start from clean, up-to-date `main`, run `git switch -c exercise/token-permissions`, copy the starter to the path above, then:
-
-```bash
-git add -- .github/workflows/token-permissions.yml
-git diff --cached
-git commit -m "Add optional workflow identity exercise"
-git push -u origin exercise/token-permissions
-```
-
-Open and review the PR in GitHub as described above. Python runs only on the hosted runner, so neither Python nor GitHub CLI is a laptop prerequisite.
+If Codespaces is unavailable, [local Git](../0-setup.md#fallback-a-local-vs-code-and-git) uses these commands. In the [file-editor fallback](../0-setup.md#fallback-b-github-file-editor), create the same file from remote `main`, choose the new `exercise/token-permissions` branch when committing, and open the PR. Python runs only on the hosted runner; no laptop Python or GitHub CLI is required.
 
 ## 3. Run once and inspect both job identities
 
@@ -83,6 +101,8 @@ Save the run URL and revision, both jobs' permission displays, the exact denial 
 If creation was interrupted before its number was returned, the summary includes an exact title and a **Recovery search** link. Search both open and closed issues, match the run URL/body marker and bot author, then record and close only the matching training issue. Do not rerun blindly: a server may have created an issue even if the client did not receive the response.
 
 Each rerun has a new attempt number and may create one new training issue. Save your evidence first. If you no longer want this exercise available, disable **Token permissions** in its Actions menu or remove only `.github/workflows/token-permissions.yml` through a reviewed PR.
+
+After preserving safe edits and evidence, explicitly stop the codespace. That does not cancel an Actions job: inspect and manage the job separately on GitHub. Keep the stopped space's storage usage in mind and delete it only after preserving needed work.
 
 For an optional negative check, manually select the still-existing `exercise/token-permissions` branch containing the unchanged workflow. The first job must fail its main-only guard, the allowed job must be skipped, and no issue may be created. This is ref-guard evidence, not the permission-denial result.
 

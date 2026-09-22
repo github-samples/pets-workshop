@@ -9,7 +9,7 @@ The shelter needs to know which revision passed its checks and who approved its 
 
 ## 1. Configure the environment first
 
-Complete Lab 1 and confirm your safe change is on `main`. Do not install the third workflow until this environment exists:
+Complete Lab 1, [resume the existing codespace](0-resume.md), and confirm your safe change is on remote `main`. Configure the following on GitHub.com before installing the third workflow:
 
 1. Open **Settings > Environments > New environment**. Name it exactly `workshop-demo`.
 2. Enable **Required reviewers**, add your own account, and save the protection rule.
@@ -22,8 +22,24 @@ Public repositories support required reviewers on GitHub Free. If your account c
 
 ## 2. Review and install the third workflow
 
-1. Create branch `exercise/release-simulation` from current prepared `main`.
-2. Copy the complete [release starter](../starter/release-simulation.yml) to `.github/workflows/release-simulation.yml`. The setup helper intentionally does not install this file.
+1. From the learner root in the Codespaces terminal, confirm a clean tree and update your own `main` before branching:
+
+   ```bash
+   git status --short
+   git fetch origin
+   git switch main
+   git merge --ff-only origin/main
+   git switch -c exercise/release-simulation
+   ```
+
+2. Inspect the fetched [release starter](../starter/release-simulation.yml) in the editor. Copy it only if the destination does not exist:
+
+   ```bash
+   test ! -e .github/workflows/release-simulation.yml &&
+   cp ../pets-devsecops-kit-v0.1.2/starter/release-simulation.yml .github/workflows/release-simulation.yml
+   ```
+
+   If it already exists, compare it and resume its existing PR/run rather than overwriting different content. The setup helper intentionally does not install this file.
 3. Inspect its behavior before committing:
 
    | Control | What the supplied workflow does |
@@ -36,18 +52,20 @@ Public repositories support required reviewers on GitHub Free. If your account c
    | Permissions | `contents: read`; no cloud identity, PR-target trigger, or persisted checkout credential |
    | Output | `receipt.json`, its SHA-256 file, and artifact identity in the summary; retention three days |
 
-4. Open a PR titled **Add the reviewed release simulation** against your own `main`. Review the YAML yourself; the solo ruleset does not require a second approver.
+4. Save any reviewed edits, commit and push from Codespaces:
+
+   ```bash
+   git add -- .github/workflows/release-simulation.yml
+   git diff --cached
+   git commit -m "Add reviewed cloud-free release simulation"
+   git push -u origin exercise/release-simulation
+   ```
+
+   On GitHub, open a PR titled **Add the reviewed release simulation** against your own `main`. Review the YAML yourself; the solo ruleset does not require a second approver.
 5. Wait for the existing required PR checks and CodeQL policy to pass. The release workflow itself does not run for PR events and is not a new required PR check.
 6. Merge this workflow PR normally. Record the resulting `main` SHA.
 
-For terminal users, after creating/editing on that branch:
-
-```bash
-git add -- .github/workflows/release-simulation.yml
-git diff --cached
-git commit -m "Add reviewed cloud-free release simulation"
-git push -u origin exercise/release-simulation
-```
+The workflow executes in Actions, never in the codespace. If needed, [local Git](../0-setup.md#fallback-a-local-vs-code-and-git) uses the same commands; the [file-editor fallback](../0-setup.md#fallback-b-github-file-editor) creates the same file on a new branch and opens its PR. Both require the environment first.
 
 ## 3. Inspect, approve, and verify
 
@@ -58,17 +76,26 @@ git push -u origin exercise/release-simulation
 5. Open the completed run summary. Record the commit SHA, run URL and attempt, artifact ID and URL, `receipt.json` checksum, and archive digest.
 6. Download the small receipt artifact before its three-day expiration. Open `receipt.json` and confirm `kind` is `workshop-simulation-no-deployment`, its SHA is the run's `main` SHA, and the prerequisite names are correct.
 
-The checksum printed for `receipt.json` is different from the uploaded archive's digest. To check the file locally after unzipping, use one available command:
+The checksum printed for `receipt.json` is different from the uploaded archive's digest. Verify the receipt in Codespaces without installing tools on your laptop:
 
-```bash
-# macOS
-shasum -a 256 -c receipt.sha256
+1. In the learner-root terminal, create `../pets-devsecops-receipts/RUN_ID`, replacing `RUN_ID` with the numeric run ID you just inspected:
 
-# Linux or Git Bash
-sha256sum -c receipt.sha256
-```
+   ```bash
+   mkdir -p ../pets-devsecops-receipts/RUN_ID
+   ```
 
-Without local tools, inspect the file and compare the receipt fields with the summary; mark independent checksum verification unperformed. This does not require installing a hashing tool.
+2. In browser-based VS Code, use **File > Add Folder to Workspace** to show that receipt folder under `/workspaces` alongside the learner repository. Upload the downloaded ZIP into this folder using the Explorer, and name it `receipt.zip`. Keep it outside the app checkout.
+3. In the terminal, substitute the same run ID, then extract and verify:
+
+   ```bash
+   cd ../pets-devsecops-receipts/RUN_ID
+   unzip receipt.zip
+   sha256sum -c receipt.sha256
+   ```
+
+4. Confirm `receipt.json: OK`. Return the terminal to the learner root you recorded in Step 0 before running further Git commands.
+
+For local fallback users, `sha256sum -c receipt.sha256` works on Linux/Git Bash or `shasum -a 256 -c receipt.sha256` on macOS after extraction. File-editor-only learners can inspect the fields but must mark independent checksum verification unperformed. Never substitute a copied expected checksum for an actual calculation.
 
 ## 4. Handle failures without bypassing
 
@@ -89,6 +116,8 @@ For a safe negative check, use **Run workflow** with a non-`main` branch that co
 Save the public evidence links and any receipt you need. Artifacts expire after three days; you may delete an individual artifact earlier through its run page. Do not delete other people's runs or repositories.
 
 If you want no further simulations, disable **Release simulation** from its Actions menu, or remove only `.github/workflows/release-simulation.yml` through a reviewed PR. Cancel pending runs first. Keep the `workshop-demo` environment until no workflow references it; deleting it while the workflow remains can cause automatic recreation without your rules. Keep the core workflows and useful security settings enabled.
+
+Preserve needed receipts and safe commits, then explicitly stop the codespace. Its storage continues to count while stopped; deleting it removes the receipt folder and fetched kit along with any unpushed work.
 
 ## Checkpoint
 

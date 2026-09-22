@@ -5,6 +5,8 @@
 
 Budget: 8 minutes. Facilitator demonstration and discussion. No participant environment, third workflow, or cloud account is required now.
 
+Observe the run and approval on GitHub.com. Use your codespace for edits and Git; the release simulation runs in Actions. The take-home lab reuses the codespace to install the reviewed starter and verify the downloaded receipt.
+
 ## Why it matters
 
 Release approval is a decision about a particular revision and its evidence. A traceable receipt helps the shelter identify what was approved when a later advisory appears.

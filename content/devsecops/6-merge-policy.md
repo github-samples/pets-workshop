@@ -5,6 +5,8 @@
 
 Budget: 10 minutes. Facilitator demonstration in a separate repository. Keep your working PR open; you do not configure rulesets during this segment.
 
+Keep your existing codespace available for outstanding edits, and use GitHub.com to inspect results. Later, [take-home Lab 1](take-home/1-enforce-merge-policy.md) resumes that same codespace for file changes while ruleset configuration stays on GitHub.
+
 ## Why it matters
 
 A failed check provides feedback. A ruleset can require that check to pass before merging. A successful CodeQL analysis means the scanner ran; its findings still need a policy.

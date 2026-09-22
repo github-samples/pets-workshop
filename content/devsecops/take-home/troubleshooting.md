@@ -7,20 +7,54 @@
 
 A workaround that removes the control also removes the evidence you came to collect. Preserve your work, diagnose the failure, and record incomplete outcomes honestly.
 
+## Codespaces access and recovery
+
+Use the Codespaces editor and integrated terminal for the primary route. Keep GitHub.com open for repository settings, PRs, and Actions results. Do not install the application or create credentials to repair the editing environment.
+
+| Symptom | Check and recovery |
+|---|---|
+| Codespaces is unavailable or policy-blocked | Confirm the signed-in account, learner repository ownership, and employer/organization policy. Use the approved [local Git](../0-setup.md#fallback-a-local-vs-code-and-git) or [file-editor fallback](../0-setup.md#fallback-b-github-file-editor). Do not evade policy or create duplicate spaces. |
+| Quota exhausted or unexpected payer | Check **Billing and licensing > Usage** and the payer shown in the creation dialog. Use an existing allowance, approved sponsorship, or a fallback. Do not add payment details, increase budgets, or upsize the machine as the default fix. |
+| Cannot resume because usage is blocked | Preserve work through [exporting changes](https://docs.github.com/en/codespaces/troubleshooting/exporting-changes-to-a-branch) where available, reviewing the files before publishing. Never export a rejected secret fixture. Do not delete the codespace before preserving needed work. |
+| Startup fails or takes too long | Inspect the creation/connection error and service status, then use [creation troubleshooting](https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-creation-and-deletion-of-codespaces). Record incomplete startup; don't add a required devcontainer, rebuild, or larger machine to mask the problem. |
+| Wrong repository or automatic fork prompt | Check the existing checkout root, `git remote get-url origin`, and branch. Stop before pushing. Preserve work, stop the wrong space if it is yours, and open the intended learner copy. Do not retarget upstream or companion origins automatically. |
+| Closed tab, stopped space, or expired editor session | Reopen the same named learner space at [github.com/codespaces](https://github.com/codespaces). Saving is not a push. Check the branch and `git status --short` after reconnecting before switching or fetching. |
+| Kit missing after reconnect or rebuild | Check the exact `/workspaces` sibling and kit version. That directory persists across stop/start/rebuild; a different or deleted/recreated space does not share it. Fetch/extract again using [Step 0](../0-setup.md#04-fetch-the-companion-beside-the-existing-checkout) if needed, without overwriting existing work. |
+| `KIT_COMMIT` is empty or no longer known | A new terminal does not retain the earlier shell variable. Repeat the explicit companion fetch, immediate SHA capture, and release comparison. Archive that verified SHA; background origin fetches can replace `FETCH_HEAD`. Do not disable global auto-fetch. |
+| Public companion fetch fails | Verify the exact public URL/tag opens in the browser and check connectivity. Stop before extraction; never reuse stale `FETCH_HEAD` after a failed fetch. Use the same release's ZIP or raw-file fallback if needed. Do not replace `GITHUB_TOKEN`, add another repository grant, or paste a PAT to read public material. |
+| Git push/authentication fails | Keep the configured HTTPS authentication for the learner repository. Check origin, your access, and whether the Codespaces session expired; stop/reopen the existing space to refresh its configured token. If dotfiles or secrets override authentication, investigate with the owner without printing values or changing global settings as a quick fix. |
+| Workflow-file push is rejected | Preserve the local commit and note the exact rejection. Confirm it targets your learner copy and policy permits workflow edits. Use the web-editor fallback for the same two core files or optional reviewed workflow if needed; don't widen token scopes, add `write-all`, or create a privileged bootstrap. Reconcile divergent local/remote branches deliberately afterward; no force push. |
+| Port opened or app started accidentally | Stop the process you started and leave forwarded ports private. Application hosting, dependency installation, and local tests are not part of this editing route; use the Actions jobs. |
+
+Codespaces' developer credential and an Actions job token can both be named `GITHUB_TOKEN`, but they have different scopes and lifecycles. Never print either, dump environment variables, or run the optional identity proof locally with the developer token.
+
+Stop explicitly with **Codespaces: Stop Codespace** or the website's **Stop codespace** control. Closing the tab leaves compute running until timeout. Stopped spaces still use storage. Delete only your intended space after preserving safe work, receipts, and resume information.
+
 ## Setup and accounts
 
 | Symptom | Check and recovery |
 |---|---|
 | Cannot create public repo or change settings | Confirm the signed-in account, admin access, email verification, and employer/organization policy. Managed users cannot create public repositories. Use an eligible personal account only if permitted; otherwise arrange approved observation and mark individual work incomplete. |
-| Git authentication fails | Confirm the learner origin and your existing credential helper or VS Code browser sign-in. Use the web route if local authentication is restricted. Never paste a PAT into code/URLs or change global work identity for this lab. |
-| Author identity unknown or wrong commit email | Authentication does not set your commit author. Follow [Step 0's repository-local identity check](../0-setup.md#terminal-route), using the exact noreply address shown in your GitHub email settings. Do not change global corporate settings; the helper never changes identity. |
+| Local-fallback Git authentication fails | Confirm the learner origin and your existing credential helper or VS Code browser sign-in. Use the file-editor fallback if local authentication is restricted. Never paste a PAT into code/URLs or change global work identity. |
+| Author identity unknown or wrong commit email | Authentication does not set your commit author. Use the [repository-local identity steps](#commit-identity) below. Do not change global corporate settings; the helper never changes identity. |
 | Helper rejects origin | It accepts direct GitHub.com HTTPS/SSH learner URLs and rejects upstream, aliases, embedded credentials, multiple origins, or a different push destination. Inspect `git remote -v` yourself; do not share embedded credentials. Correct the clone intentionally, not by asking the helper to mutate remotes. |
 | Wrong branch, detached HEAD, or Git operation in progress | Finish your work on its intended branch and resolve or deliberately abort the existing operation. Then use clean `main`. The helper does not reset, stash, or change your identity. |
 | Unrelated files or conflicting workflows | Review and preserve them. Use a fresh original-template learner copy if appropriate, or manually reconcile the two workflows. Identical kit files are a no-op; differing files are never overwritten by the helper. |
 | Baseline fingerprint mismatch | An original-template update or local application change needs review. Report the exact path, kit version, and source revision. The organizer must refresh and retest the companion; do not switch to an alternate application template or replace the app with old files. |
 | Helper refuses after lesson 3 | Expected: the application fingerprint changed because you fixed it. Use the resume guide; the helper is for initial setup only. |
-| Kit files appear as unrelated changes | Extract the fetched archive outside the learner clone. Move only that kit directory yourself after checking its contents; do not delete learner files. |
+| Kit files appear as unrelated changes | Keep the fetched kit outside the learner checkout, in a sibling under `/workspaces` for Codespaces. Move only that kit directory after inspecting it; do not delete learner files. |
 | Starter PR already exists | Resume it and inspect its current branch/checks. For a closed/merged PR, follow [Resume](0-resume.md). |
+
+### Commit identity
+
+Check `git config --get user.name` and `git config --get user.email` privately in the learner-root terminal. If either is missing or the inherited email is unsuitable for public training, copy your exact noreply address from **GitHub Settings > Emails**, replace the quoted values, and run:
+
+```bash
+git config --local user.name "YOUR DISPLAY NAME"
+git config --local user.email "YOUR EXACT GITHUB NOREPLY ADDRESS"
+```
+
+These settings apply only to this checkout and do not authenticate a push. Keep configured Codespaces authentication or the local fallback's existing sign-in; never print tokens or change global identity to repair this lab.
 
 ## Checks and findings
 
@@ -41,11 +75,11 @@ A workaround that removes the control also removes the evidence you came to coll
 
 Only use the fixture with documented nonfunctionality and recent route verification. Never authenticate with it. Repository push protection can behave differently for a value already detected in that repository; rehearse in fresh history.
 
-For a blocked web edit, replace the value in the uncommitted buffer and retry. No local commit exists to amend. For one newest unpublished terminal commit, follow lesson 5's targeted `git add` and amend.
+For one newest unpublished Codespaces terminal commit, follow lesson 5's targeted `git add` and amend. The local Git fallback does the same. For a blocked file-editor edit, correct the uncommitted buffer and retry; no local commit exists to amend.
 
 ### More than one unpublished secret commit
 
-1. Stop the timed exercise. Read every commit/path listed in the rejection and confirm none of those commits was published or shared.
+1. Stop the timed exercise. In the same Codespaces terminal (or local Git fallback), read every commit/path listed in the rejection and confirm none of those commits was published or shared.
 2. Save nonsecret work independently. Do not create a published backup branch containing the value.
 3. Find the earliest affected commit with `git log --oneline`. Replace `EARLIEST` below with its hash:
 
@@ -80,7 +114,7 @@ Record the failing step, exact error, revision/run URL, kit version, and safe ne
 
 ## Resources
 
-[Required checks troubleshooting](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks), [blocked-push repair](https://docs.github.com/en/code-security/how-tos/secure-your-secrets/work-with-leak-prevention/push-protection-on-the-command-line), and [environment protection](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments).
+[Codespaces authentication](https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-authentication-to-a-repository), [repository access](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces), [usage and billing](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces), [required checks](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks), [blocked-push repair](https://docs.github.com/en/code-security/how-tos/secure-your-secrets/work-with-leak-prevention/push-protection-on-the-command-line), and [environment protection](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments).
 
 | [Previous: optional workload identity](4-workload-identity.md) | [Next: annotated solutions](../solutions/README.md) |
 |:---|---:|

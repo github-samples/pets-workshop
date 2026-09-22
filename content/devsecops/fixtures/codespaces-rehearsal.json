@@ -1,0 +1,33 @@
+{
+  "evidence_type": "author-access-preflight-not-a-codespaces-walkthrough",
+  "observed_utc": "2026-09-22",
+  "author_identity": "frye",
+  "authorized_repository": "frye/pets-devsecops-codespaces-rehearsal",
+  "repository_preflight": "404-absent",
+  "codespaces_api": {
+    "method": "GET",
+    "path": "/user/codespaces",
+    "http_status": 403,
+    "message": "Must have admin rights to Repository.",
+    "cli_scope_diagnostic": "This API operation needs the codespace scope."
+  },
+  "browser_control": "No usable page handle; open_browser_page capability unavailable",
+  "codespace_id": null,
+  "codespace_state": "not-created",
+  "payer": "not-observed",
+  "quota": "not-observed",
+  "machine": "not-created",
+  "repository_created": false,
+  "billing_or_credentials_changed": false,
+  "tokens_printed_or_copied": false,
+  "unobserved_steps": [
+    "Codespaces creation and default-image startup",
+    "default learner clone and configured repository authentication",
+    "public companion fetch within Codespaces",
+    "helper installation and workflow-file push within Codespaces",
+    "code/dependency edits from Codespaces",
+    "secret-protection block and unpublished-commit repair within Codespaces",
+    "stop/resume and persistent sibling kit"
+  ],
+  "scope_of_other_tests": "Local Git, earlier native runner tests, and Actions evidence are not Codespaces proof."
+}

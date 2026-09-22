@@ -48,6 +48,23 @@ The candidate PyJWT 2.10.1 was rejected during authoring because the advisory AP
 
 Do not infer a safe secret fixture from search-result prose. This kit uses only the attributed, delimiter-masked GitHub Skills value and never authenticates with it. The course's bypass activity and initial disable-protection activity are deliberately excluded. See [fixture provenance and route status](fixtures/secret-validation.md).
 
+## Codespaces primary-route sources
+
+The v0.1.2 route was checked against these official pages on 2026-09-22. Documentation review establishes the intended behavior, not a completed live Codespaces walkthrough; the authoring access limitation is recorded in [readiness](readiness.md).
+
+| Topic | Source and relevant fact |
+|---|---|
+| Creation and payer | [Create a codespace for a repository](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository): create on the learner's selected branch and read the payer shown in the dialog |
+| Editor and Git | [Source control](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-source-control-in-your-codespace): use the existing checkout, terminal or VS Code editor, configured HTTPS authentication, then commit/push |
+| Default image and persistence | [Deep dive](https://docs.github.com/en/codespaces/about-codespaces/deep-dive): the repository is already cloned under `/workspaces`; its saved files and siblings persist across stop/start and rebuild |
+| Authentication | [Troubleshooting repository authentication](https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-authentication-to-a-repository): keep configured repository-scoped authentication; do not overwrite its developer token |
+| Repository access | [Manage access](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces): default access is scoped; this kit does not add custom grants or a required devcontainer |
+| Security | [Security in Codespaces](https://docs.github.com/en/codespaces/reference/security-in-github-codespaces): credential and port boundaries; keep forwarded ports private and never print developer secrets |
+| Usage | [Codespaces billing](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces): included personal quotas or approved sponsorship, separate compute/storage, and no unlimited free usage just because a repo is public |
+| Stop/resume | [Stop and start](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace): closing a browser tab is not stopping; stopped storage still counts |
+
+The companion fetch immediately captures its commit and compares it with the published release before archiving that saved SHA. This prevents a later background origin fetch from changing the archive source through `FETCH_HEAD`; no global auto-fetch setting or permanent companion remote is changed.
+
 ## Attribution
 
 Pets source remains under its [original license](SOURCE-LICENSE). The reused inactive fixture is covered by [GitHub Skills' license](fixtures/SKILLS-LICENSE). Other lesson text is written for this workshop; linked documentation is not copied into the package.

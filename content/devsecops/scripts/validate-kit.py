@@ -143,8 +143,44 @@ def main():
                     f"Unmasked fixture/token in source: {path}")
     manifest = json.loads((KIT / "workshop-kit.json").read_text())
     require(manifest["core_workflows"] == ["ci.yml", "dependency-review.yml"], "Helper scope changed")
+    require(manifest["primary_route"] == "codespaces", "Codespaces must be the primary route")
+    require(manifest["fallback_routes"] == ["local-git", "github-file-editor"],
+            "Missing documented fallbacks")
+    setup = (KIT / "0-setup.md").read_text()
+    primary, fallback = setup.split("## Fallback A: local VS Code and Git", 1)
+    primary_commands = "\n".join(re.findall(r"```bash\n(.*?)```", primary, re.DOTALL))
+    require("git clone " not in primary_commands, "Primary route must use the existing clone")
+    require("git clone " in fallback, "Local fallback needs an explicit learner clone")
+    require("Create codespace on main" in primary and "Terminal > New Terminal" in primary,
+            "Missing Codespaces entry instructions")
+    require("/workspaces" in primary and "git rev-parse --show-toplevel" in primary,
+            "Primary checkout and persistent kit location are not explained")
+    require("KIT_COMMIT=$(git rev-parse 'FETCH_HEAD^{commit}')" in primary_commands
+            and re.search(r'git archive[^\n]*"\$KIT_COMMIT"', primary_commands),
+            "Archive must use the captured, verified companion commit")
+    require(not re.search(r"git archive[^\n]*\bFETCH_HEAD\b", primary_commands),
+            "Background fetch may replace an unpinned archive source")
+    require(not re.search(r"\b(npm (ci|install)|pip install|docker run)\b", primary_commands),
+            "Primary setup must not install or run the application")
+    version = manifest["version"]
+    require("refs/tags/v" + version in primary_commands
+            and "pets-devsecops-kit-v" + version in primary_commands,
+            "Primary fetch/extraction version differs from the manifest")
+    secrets_lesson = (KIT / "5-secrets.md").read_text()
+    require(secrets_lesson.index("## Primary route: Codespaces terminal")
+            < secrets_lesson.index("## Fallbacks"), "Secret push/repair must be primary")
+    require("git commit --amend --no-edit" in secrets_lesson
+            and "git push -u origin exercise/secret-protection" in secrets_lesson,
+            "Missing primary unpublished-commit repair")
+    for file in sorted(KIT.glob("[1-8]-*.md")) + sorted((KIT / "take-home").glob("[0-4]-*.md")):
+        require("codespace" in file.read_text().lower(), f"{file}: missing primary context")
+    for file in markdown:
+        commands = "\n".join(re.findall(r"```bash\n(.*?)```", file.read_text(), re.DOTALL))
+        require(not re.search(r"(?:echo|printenv|env)\s.*(?:GITHUB_TOKEN|GH_TOKEN)", commands),
+                f"{file}: token-printing instruction")
     print(f"Validated {len(markdown)} Markdown files, {link_count} local links, "
-          f"{snippets} command/config snippets, and {len(workflows)} inert workflows.")
+          f"{snippets} command/config snippets, {len(workflows)} inert workflows, "
+          "and the Codespaces-primary route contract.")
 
 
 if __name__ == "__main__":

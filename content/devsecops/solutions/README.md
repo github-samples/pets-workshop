@@ -7,6 +7,8 @@
 
 A solution should explain the intended behavior and how to check it. Copying a fix without its evidence leaves the original question unanswered.
 
+Use the Codespaces editor and integrated terminal for the learner edits. Copy material from the fetched `../pets-devsecops-kit-v0.1.2` sibling, save it, review the exact staged files, then commit and push to the intended exercise branch. Inspect checks and configure repository controls on GitHub.com. Local Git and file editing are labeled fallbacks in [Step 0](../0-setup.md); do not clone the app again inside Codespaces.
+
 ## Code fix and regression test
 
 In `app/server/app.py`, the direct entry point becomes:
@@ -33,6 +35,7 @@ CI installs only `app/server/requirements.txt`. It must never install the exerci
 | Surface | Expected configuration | Reason |
 |---|---|---|
 | Core files | [ci.yml](../starter/ci.yml), [dependency-review.yml](../starter/dependency-review.yml) on `main` before branches | Required checks must report on all exercise PRs |
+| Editing environment | Own learner codespace, default image, existing checkout and sibling kit under `/workspaces` | No app install, extra clone, or required devcontainer; builds/tests stay in Actions |
 | Check names | `api-tests`, `client-build`, `dependency-review` | These are job names, not workflow titles |
 | Core/release permissions | `contents: read`, no `pull_request_target`, no stored checkout credential | PR code receives no deployment privilege |
 | Dependency threshold | `high`, all scopes, `warn-only: false` | The training failure must block |
@@ -49,11 +52,15 @@ In [take-home Lab 4](../take-home/4-workload-identity.md), the first job is gree
 
 The second job receives a different installation token with `issues: write`. HTTP 201, the actual `github-actions[bot]` creator, and a closed matching issue prove the allowed operation and cleanup. The user who initiated the run is not the bot identity. Each job's cleanup runs even after a failed proof, but does not override that failure; interruption may still require manual closure of the exact recorded issue.
 
+The developer `GITHUB_TOKEN` configured in Codespaces is not that Actions job token. Do not print either or execute the workflow proof in the Codespaces terminal. Copy and review the YAML there, then dispatch it on GitHub.
+
 No `contents: write`, broad grant, or `id-token: write` is needed. OIDC ID-token requests and provider-issued cloud permissions are separate concepts explained in the guide, not actions performed by this workflow.
 
 ## Secret repair
 
 Remove the verified nonfunctional value; never choose bypass. A blocked web edit has no created commit, so correct the buffer and retry. A blocked terminal push may include local commits: remove the value from every affected unpublished commit, not just the final tree. The [secret lesson](../5-secrets.md) and [recovery guide](../take-home/troubleshooting.md#more-than-one-unpublished-secret-commit) distinguish those cases.
+
+Codespaces is the primary route for the blocked push and repair. Earlier local-terminal evidence does not establish Codespaces authentication. Save and push safe work, then explicitly stop the codespace after practice; stopped storage still counts, and deletion requires preserving needed work first.
 
 ## Checkpoint
 

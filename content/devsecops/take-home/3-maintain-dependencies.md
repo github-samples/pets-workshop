@@ -9,8 +9,23 @@ New advisories can affect a previously reviewed revision. Update configuration h
 
 ## 1. Extend Dependabot coverage
 
-1. Create `exercise/dependency-maintenance` from current `main`.
-2. Replace `.github/dependabot.yml` with [the supplied configuration](../solutions/dependabot.yml). It preserves the npm groups and adds these entries under `updates`:
+1. [Resume your existing codespace](0-resume.md). From a clean learner root, update your own `main` and branch:
+
+   ```bash
+   git status --short
+   git fetch origin
+   git switch main
+   git merge --ff-only origin/main
+   git switch -c exercise/dependency-maintenance
+   ```
+
+2. Open the fetched kit's [configuration](../solutions/dependabot.yml) in the editor, then copy it to the learner copy:
+
+   ```bash
+   cp ../pets-devsecops-kit-v0.1.2/solutions/dependabot.yml .github/dependabot.yml
+   ```
+
+   Review this intentional configuration replacement. It preserves the npm groups and adds these entries under `updates`:
 
    ```yaml
      - package-ecosystem: pip
@@ -23,7 +38,7 @@ New advisories can affect a previously reviewed revision. Update configuration h
          interval: weekly
    ```
 
-3. Pin the application's three direct Python requirements in `app/server/requirements.txt` to the kit's tested baseline:
+3. In the Codespaces editor, pin the application's three direct requirements in `app/server/requirements.txt` to the tested baseline and save:
 
    ```text
    Flask==3.1.3
@@ -31,9 +46,18 @@ New advisories can affect a previously reviewed revision. Update configuration h
    Flask-SQLAlchemy==3.1.1
    ```
 
-4. Open a PR, review the diff, and wait for core checks and policy results. Merge only after they pass. Do not include `workshop-lab/dependency/requirements.txt`.
+4. Commit and push only the two intended files:
 
-The complete [configuration](../solutions/dependabot.yml) is available so you do not have to reconstruct YAML indentation from the excerpt. Terminal users stage only `.github/dependabot.yml` and `app/server/requirements.txt`, commit, push the branch, and open the PR in GitHub.
+   ```bash
+   git add -- .github/dependabot.yml app/server/requirements.txt
+   git diff --cached
+   git commit -m "Maintain Python and Actions dependencies"
+   git push -u origin exercise/dependency-maintenance
+   ```
+
+   On GitHub.com, open the PR and inspect core checks and policy results. Merge only after they pass. Do not include `workshop-lab/dependency/requirements.txt`, or install these requirements in the codespace during the lab.
+
+The complete config avoids reconstructing indentation from the excerpt. If needed, [local Git](../0-setup.md#fallback-a-local-vs-code-and-git) uses these commands; the [file-editor fallback](../0-setup.md#fallback-b-github-file-editor) edits the same two files on the new branch and opens its PR.
 
 ## 2. Understand the Python snapshot
 
@@ -43,7 +67,9 @@ The constraints cover the resolved dependencies for the selected runtimes, inclu
 
 A future pip update may conflict with the constraints. That failure is intentional: review the new resolved versions, update the constraints in **both** `ci.yml` and `release-simulation.yml` if installed, then rerun tests and review advisories. Do not delete the constraint flag just to obtain green checks.
 
-For maintainers who already have Python, use a disposable environment to resolve an update; this is not an attendee prerequisite:
+### Maintainer-only snapshot regeneration
+
+The commands below are for future kit maintenance in a separately approved disposable environment, outside this learner exercise. Do not run them in the participant codespace or require a laptop Python installation:
 
 ```bash
 python3 -m venv /path/to/disposable-resolution-env
@@ -65,6 +91,8 @@ Replace the path with a new, unused directory. On Windows, use that environment'
 ## Checkpoint
 
 Save the merged configuration PR and evidence of accepted update configuration. Record any update PR as a later observation, not a guaranteed workshop result. Assign an owner to review future alerts.
+
+Save and push safe work, then explicitly stop the codespace when pausing. Keep the kit for the next lab and preserve needed work before deleting a space.
 
 ## Resources
 

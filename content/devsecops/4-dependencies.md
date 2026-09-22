@@ -15,24 +15,58 @@ Dependency review evaluates the packages a PR introduces. Dependabot alerts moni
 ## Try it
 
 1. Return briefly to your code-fix PR and record its current results. Then inspect `.github/dependabot.yml`: it covers npm in `/app/client`. Pip and Actions configuration belongs to the take-home lab; do not edit it now.
-2. Create `exercise/dependency-review` from prepared `main`, not from the working PR. In the web editor, start on `main`, create the file below, and choose a new branch when committing. Terminal users run `git switch main` and `git switch -c exercise/dependency-review` from a clean checkout of the prepared baseline.
-3. Create **`workshop-lab/dependency/requirements.txt`** with exactly:
+2. In the Codespaces terminal, confirm your previous work is committed and the tree is clean, then create the isolated branch from prepared `main`:
+
+   ```bash
+   git status --short
+   git switch main
+   git switch -c exercise/dependency-review
+   ```
+
+   If that branch already exists, inspect it and resume the work instead of overwriting it.
+3. Copy the fetched kit's inert before fixture into the unused lab directory:
+
+   ```bash
+   test ! -e workshop-lab/dependency/requirements.txt &&
+   mkdir -p workshop-lab/dependency &&
+   cp ../pets-devsecops-kit-v0.1.2/fixtures/dependency-before.txt workshop-lab/dependency/requirements.txt
+   ```
+
+   Open **`workshop-lab/dependency/requirements.txt`** in the Codespaces editor and confirm it contains exactly:
 
    ```text
    PyJWT==2.3.0
    ```
 
-4. Commit, push if using Git, and open a PR against your own `main` titled **Training only: dependency review; do not merge**. The workflow on `main` already reports `dependency-review`. Neither CI job reads this lab directory.
+4. Review, commit, and push only this manifest:
+
+   ```bash
+   git add -- workshop-lab/dependency/requirements.txt
+   git diff --cached -- workshop-lab/dependency/requirements.txt
+   git commit -m "Add isolated dependency review training fixture"
+   git push -u origin exercise/dependency-review
+   ```
+
+   On GitHub.com, open a PR against your own `main` titled **Training only: dependency review; do not merge**. The workflow on `main` already reports `dependency-review`. Neither CI job reads this lab directory.
 5. Wait for the initial dependency review result. Inspect the PR's dependency diff and confirm it lists PyJWT, the manifest path, and version 2.3.0. Open the failed `dependency-review` job and record the high-severity advisory and run URL.
-6. Only after observing the failure, replace the file's one line with:
+6. Only after observing the failure, use the Codespaces editor to replace the file's one line with the content of `../pets-devsecops-kit-v0.1.2/fixtures/dependency-after.txt`:
 
    ```text
    PyJWT==2.14.0
    ```
 
-7. Commit the repair on the same branch and inspect the new result. Record the passing `dependency-review` run for the repaired commit. Leave this PR unmerged for take-home, or close it without merging.
+7. Save the file, commit the repair on the same branch, and inspect its Actions result on GitHub:
 
-For terminal edits, stage only `workshop-lab/dependency/requirements.txt`, commit, and use `git push -u origin exercise/dependency-review` for the first push; subsequent pushes can use `git push`.
+   ```bash
+   git add -- workshop-lab/dependency/requirements.txt
+   git diff --cached -- workshop-lab/dependency/requirements.txt
+   git commit -m "Repair the isolated dependency fixture"
+   git push
+   ```
+
+   Record the passing `dependency-review` run for this revision. Leave the PR unmerged for take-home, or close it without merging. Never install the fixture in Codespaces, on a laptop, or in CI.
+
+If needed, the [local Git fallback](0-setup.md#fallback-a-local-vs-code-and-git) uses these same commands. In the [file-editor fallback](0-setup.md#fallback-b-github-file-editor), create the same manifest from `main` on a new `exercise/dependency-review` branch, observe failure, then edit its one line and commit the repair on that branch.
 
 ## Read the advisory
 

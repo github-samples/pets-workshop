@@ -7,7 +7,7 @@
 
 Evidence links let you return to the exact revision and result. Record only public workshop data; exclude credentials, fixture values, and private screenshots.
 
-Write your repository URL, kit version, editing route, and date first. Use these status words consistently:
+Write your repository URL, kit version, date, and route first: **Codespaces primary**, local Git fallback, or file-editor fallback. Keep only a nonsecret codespace identifier for your own resume record; do not share tokens or connection secrets. Use these status words consistently:
 
 | Status | Meaning |
 |---|---|
@@ -23,11 +23,12 @@ Write your repository URL, kit version, editing route, and date first. Use these
 | Outcome | Evidence to record | Status |
 |---|---|---|
 | Prework | Repository, kit version, baseline CI run, open harmless PR | ___ |
+| Codespaces readiness | Correct existing clone/origin, allowed payer/usage, startup, verified companion fetch and workflow push; or named fallback | ___ |
 | Threat model | Three risk/control/owner rows in notes or PR description | ___ |
 | Code remediation | Fix/test commit, passing CI, latest PR CodeQL result without targeted finding | ___ |
 | Dependency failure | Manifest visible in dependency diff, high advisory/version, failed run | ___ |
 | Dependency repair | Repaired commit and passing run; PR remains unmerged | ___ |
-| Secret protection | Terminal push or web commit block, redacted evidence, successful clean retry | ___ |
+| Secret protection | Codespaces/local blocked push plus unpublished repair, or fallback web blocked commit; redacted evidence and clean retry | ___ |
 
 ## Demonstrations
 
@@ -49,12 +50,15 @@ Write your repository URL, kit version, editing route, and date first. Use these
 | Optional job-token identity | Run/revision; separate job grants; exact integration403 with rate budget; HTTP201, bot creator, issue URL and closed state | ___ |
 | Optional identity ref guard | Non-main manual attempt rejected before any API mutation; allowed job skipped | ___ |
 | Cleanup | Fixture PRs not merged, pending runs cancelled, receipt saved before expiry | ___ |
+| Codespaces lifecycle | Safe work pushed, sibling kit retained under `/workspaces`, observed stop/resume, final space explicitly stopped | ___ |
 
 ## Checkpoint
 
 Leave any unanswered row incomplete. A recording, absent dependency diff, successful analysis with findings, or later deletion of a committed secret does not satisfy the corresponding live criterion.
 
 The optional identity exercise is not another core requirement. Its OIDC references are further reading: GitHub issue authorization does not demonstrate Azure/AWS login or cloud resource access.
+
+An earlier local-terminal test is not Codespaces evidence. Record unobserved startup, configured authentication, workflow pushes, secret repair, or persistence as incomplete rather than borrowing another route's result.
 
 ## Resources
 

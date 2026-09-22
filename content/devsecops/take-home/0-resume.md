@@ -7,12 +7,31 @@
 
 Your repository may have changed since the event. Establish its current state before adding rules or trying to recreate an exercise.
 
+## Reopen the same codespace
+
+1. At [github.com/codespaces](https://github.com/codespaces), find the space for **your learner repository** and reopen it. Check access, payer, and remaining usage; do not change spending settings to resume. Do not create a new space merely because the old one is stopped.
+2. Wait for initialization and open **Terminal > New Terminal**. Inspect the existing checkout:
+
+   ```bash
+   repo_root=$(git rev-parse --show-toplevel) && cd "$repo_root"
+   pwd
+   git remote get-url origin
+   git branch --show-current
+   git status --short
+   test -f ../pets-devsecops-kit-v0.1.2/workshop-kit.json
+   ```
+
+3. Confirm the root is under `/workspaces` and origin names your learner repository. Saved workspace files, including the sibling kit, persist across stop/start and rebuild. A newly created replacement space will not contain the previous space's unpushed work or kit.
+4. If the v0.1.2 kit is missing or you only have v0.1.1, follow [Step 0's fetch/extract section](../0-setup.md#04-fetch-the-companion-beside-the-existing-checkout). Do not rerun initial installation against an already remediated application or overwrite an old kit. Keep all versions outside the app checkout.
+
+If quota prevents resuming, follow [the recovery guide](troubleshooting.md#codespaces-access-and-recovery) and preserve work before using a fallback. Do not delete a space to resolve an authentication or quota error.
+
 ## Inspect your state
 
 1. Confirm you own the public learner repository and can administer it. Check both core files on remote `main`: `.github/workflows/ci.yml` and `.github/workflows/dependency-review.yml`.
 2. Open your working PR and dependency-training PR, if they exist. Record their branch names, state, latest commit, and checks. Inspect the actual file contents as well as old run links.
 3. Confirm CodeQL default setup, dependency graph, secret scanning, and repository push protection are enabled. Check the current kit's [readiness register](../readiness.md) for any unresolved exercise blocker.
-4. Before any local branch switch, inspect `git status --short`. Commit your work to its intended branch or move it yourself; these labs never reset or stash it for you.
+4. Before a branch switch in the Codespaces terminal, inspect `git status --short`. Commit your work to its intended branch or preserve it separately; these labs never reset or stash it for you.
 
 | State | Safe next action |
 |---|---|
@@ -29,9 +48,9 @@ The helper checks the original application's fingerprints for initial setup. It 
 
 ## Refresh a branch safely
 
-A required workflow must exist in the branch you use. With the web route, create new exercise branches from current `main`. If an existing PR is behind, use **Update branch** when available and review the resulting checks; conflicts need a deliberate manual resolution.
+A required workflow must exist in the branch you use. In the same codespace, update your local `main` from your learner origin before starting new take-home branches. For an existing working PR, the commands below merge the updated `main` into its branch.
 
-With Git, the following updates local `main` only if it can move forward without a merge. Substitute a different working branch only if your PR uses it:
+The fast-forward command refuses divergent local `main`. Substitute your actual working branch if it differs from `exercise/shelter-change`. If the working branch is gone or its PR was already merged, run only through the fast-forward of `main`, then use the new-branch sequence below; do not run the last two lines:
 
 ```bash
 git status --short
@@ -44,9 +63,24 @@ git merge main
 
 Start only with a clean working tree. If the fast-forward or merge fails, stop and inspect the conflict; do not force it. These commands use the learner's own origin, never companion or upstream history.
 
+To recreate the working PR after updating `main`, create a new branch with `git switch -c exercise/shelter-resume`, edit `workshop-notes.md` in the Codespaces editor with a harmless resume note, and save:
+
+```bash
+git add -- workshop-notes.md
+git diff --cached -- workshop-notes.md
+git commit -m "Resume the shelter workshop"
+git push -u origin exercise/shelter-resume
+```
+
+Open the new PR on GitHub against your own `main`. Apply only missing code/test edits, using this branch name in later instructions. Never restore the unsafe debug setting just to recreate prework.
+
+For the file-editor fallback, create new branches from current remote `main` and use **Update branch** for an existing PR when available. Resolve conflicts deliberately. The local Git fallback uses the same terminal commands without Codespaces lifecycle assumptions.
+
 ## Checkpoint
 
 You have an open safe PR, working core checks on its current revision, and a separate unmerged dependency exercise. Any missing live outcome remains labeled incomplete; it does not prevent learning about the later controls as long as their own prerequisites pass.
+
+When pausing, verify safe commits are pushed, then explicitly stop this codespace. Closing the tab is not a stop; delete only after preserving needed work and evidence.
 
 ## Resources
 

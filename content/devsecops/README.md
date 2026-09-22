@@ -8,13 +8,17 @@ You're volunteering at the dog shelter. Its Flask API and Astro website pass the
 You'll fix code, review a dependency change, and practice secret protection in your own public repository. The presenter demonstrates merge policy and a cloud-free release. The [take-home labs](take-home/README.md) include the instructions and files to perform those two exercises yourself afterward.
 
 > [!IMPORTANT]
-> Kit **0.1.1** is a prerelease for review and rehearsal. The [readiness register](readiness.md) records actual checks and remaining gaps, including fresh browser-only walkthroughs and human timing. Do not treat publication as approval to promise every attendee a completed 75-minute core.
+> Kit **0.1.2** is a Codespaces-first prerelease. Actual Codespaces and human walkthroughs remain pending; the [readiness register](readiness.md) records the access limitation and earlier terminal/Actions evidence separately.
 
 ## What you need
 
-Bring a laptop with internet access. Your GitHub.com account must be able to create and administer a public learner repository, run standard GitHub-hosted Actions, and configure its security settings. Use only the shelter's public sample data.
+Bring a laptop with internet access. Your GitHub.com account must be able to create and administer a public learner repository, run standard GitHub-hosted Actions, configure its security settings, and use Codespaces with sufficient included usage or approved sponsorship. Use only the shelter's public sample data.
 
-GitHub Free supports the public-repository features used here, subject to account and organization policies. No local Python, Node.js, Docker, Azure account, Codespaces, Copilot subscription, second reviewer, GitHub CLI, or pasted personal access token is required. Git and VS Code are optional; the narrated route uses GitHub.com's file editor. A [terminal route](0-setup.md#terminal-route) reaches the same baseline.
+The primary route uses browser-based VS Code in **GitHub Codespaces**. Git and Bash are already available there; you do not clone the learner repository again or install the application. You need no laptop Python, Node.js, Docker, or Git installation, and no Azure account, Copilot subscription, second reviewer, or pasted PAT. Use the default image and smallest suitable permitted machine, normally two cores, for editing and Git.
+
+Codespaces compute and storage have usage limits and a payer; public repositories do not provide unlimited free Codespaces. Check access, quota, and who pays before starting. Standard Actions usage is separate. If policy, quota, or connectivity prevents the primary route, use the documented [local Git](0-setup.md#fallback-a-local-vs-code-and-git) or [file-editor fallback](0-setup.md#fallback-b-github-file-editor).
+
+Throughout these guides, **editor** and **terminal** mean the Codespaces editor and integrated Bash terminal unless labeled as a fallback. GitHub.com remains the place for PRs, settings, Actions dispatch/results, and approval. Application builds, tests, scans, and the optional token proof run in Actions, not Codespaces.
 
 Complete [Step 0](0-setup.md) before the event. The opening eight minutes only verify readiness.
 
@@ -40,9 +44,11 @@ For optional practice afterward, [prove a workflow's GitHub API permissions](tak
 
 ## Using this kit
 
-Create a learner repository from the [original Pets template](https://github.com/github-samples/pets-workshop), then fetch the versioned kit from [frye/pets-devsecops-workshop](https://github.com/frye/pets-devsecops-workshop/tree/v0.1.1). [Step 0](0-setup.md) shows how to extract the fetched kit outside your learner clone without adding a remote or merging history. The browser route copies the same version's raw files. The optional helper installs only two core workflows.
+Create a learner repository from the [original Pets template](https://github.com/github-samples/pets-workshop), then open a codespace on **your copy's `main`**. From its existing checkout, fetch the versioned [companion kit](https://github.com/frye/pets-devsecops-workshop/tree/v0.1.2) into a sibling under `/workspaces`. [Step 0](0-setup.md) gives the full sequence. The helper installs only two core workflows, without adding a remote or merging histories.
 
-The companion is not an application template. If the original template changes incompatibly, the organizer must refresh and retest the companion kit. The [versioned ZIP](https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.1) is an optional alternative to Git fetch.
+The companion is not an application template. If the original template changes incompatibly, the organizer must refresh and retest the companion kit. The [versioned ZIP](https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.2) is an alternative way to obtain the same material.
+
+Reuse one codespace for the learner repository. Saving is not committing or pushing. Keep the sibling kit under `/workspaces`, preserve intended work on GitHub, and [stop the codespace explicitly](0-setup.md#010-stop-and-reuse-the-same-codespace) when finished; closing its tab does not stop compute. Stopped storage still counts toward usage. Keep forwarded ports private; no app hosting is added.
 
 The kit works as a local folder: all lesson, starter, solution, and take-home links are relative. External links to existing Pets material use the inspected source revision. Files introduced by this track are never linked to an upstream location where they do not exist.
 

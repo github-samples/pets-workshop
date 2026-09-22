@@ -4,7 +4,15 @@
 
 Published instructions, local tests, and a successful author run answer different questions. This register separates them so the event's promise matches the evidence.
 
-Kit 0.1.1 is a **prerelease**. All live and take-home materials are authored, but browser-only and representative learner rehearsals remain required before calling it event-ready. The optional job-token exercise adds no mandatory setup files or minutes to the core.
+Kit 0.1.2 is a **Codespaces-first prerelease**. The complete editing/setup route is authored, but actual Codespaces and representative learner rehearsals remain required before calling it event-ready. The two core workflow files, 75-minute core, and optional status of the job-token exercise are unchanged.
+
+## Codespaces rehearsal status
+
+The authoring environment's existing GitHub CLI identity was `frye`. The read-only `GET /user/codespaces` preflight returned HTTP 403 with `Must have admin rights to Repository`; the CLI also reported that the request needs the missing `codespace` OAuth scope. An authenticated browser control path was unavailable: the canvas exposed actions requiring a page handle that its open operation did not supply.
+
+No extra auth consent, broader credential, PAT, billing change, or alternate access mechanism was used to force the test. Payer, available allowance, machine options, creation, configured Git authentication, workflow-file pushes, blocked secret push, and stop/resume persistence were therefore **not observed in Codespaces**. The exact authorized fresh repository was absent when inspected; it was not created after this access blocker. No codespace was created, so there is no codespace ID or stopped/running resource to report and no rehearsal compute/storage resource was started.
+
+This does not mean the learner's account lacks Codespaces. It limits what this authoring session could verify. The primary guide follows official Codespaces documentation; earlier local-terminal and native Linux results below are not substituted for live Codespaces evidence. [Structured rehearsal status](fixtures/codespaces-rehearsal.json) records the same boundary.
 
 ## Observed in the authorized rehearsal repository
 
@@ -39,7 +47,9 @@ The inherited dependency baseline also produced Dependabot alerts, including hig
 
 ## Local evidence
 
-The 50-test suite includes the existing 33 helper/fetch, startup, and release cases plus 17 targeted job-token cases. Those new cases check exact denial classification, separate permissions, main-only execution, bot issue identity, unexpected success, failed cleanup, and recovery messages after an ambiguous network failure. They do not simulate a forcibly terminated runner. Shell syntax, actionlint, four inert workflows, 25 Markdown files' local links/anchors, command/config snippets, and kit inventory are checked separately.
+The 50-test suite covers helper/fetch, startup, release, and 17 targeted job-token cases. The fetch regression now replaces `FETCH_HEAD` after verifying the companion SHA and confirms that extraction still uses the saved commit, preserves learner history, and installs only the two core workflows. It is a disposable local test, not a Codespaces session.
+
+The token cases check exact denial classification, separate permissions, main-only execution, bot issue identity, unexpected success, failed cleanup, and recovery messages after an ambiguous network failure. They do not simulate a forcibly terminated runner. Shell syntax, actionlint, four unchanged inert workflows, Markdown links/anchors, command/config snippets, route consistency, and kit inventory are checked separately.
 
 The existing three API tests pass. In a disposable source copy, the added startup test fails against the original debug setting and all four tests pass after the one-line fix. The unchanged Astro client builds with Node 24. The upstream application and other workshop tracks retain their original behavior.
 
@@ -53,7 +63,7 @@ Local execution used macOS Bash; the native runner checks above cover Linux and 
 
 [Non-main run 35688654756](https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35688654756) failed the ref guard before API access and skipped the allowed job. The repository's matching training-issue list contained only the one closed main-run issue. The unrelated release run triggered by the workflow merge was cancelled without approval. [Recorded identity evidence](fixtures/token-permissions-evidence.json) preserves these results without token values.
 
-The new workflow uses only inline Python on a standard hosted runner. Core workflows, installer, fetch implementation, application, and runtime selections are unchanged in v0.1.1, so the earlier native helper/fetch evidence remains applicable without another platform run. The complete local suite was rerun.
+The optional workflow uses only inline Python on a standard hosted runner. Core workflows, installer, application, and runtime selections are unchanged in v0.1.2. The companion fetch instructions now archive a captured, verified commit; the local regression covers background ref replacement. Existing native helper evidence is retained without claiming native tests proved Codespaces-specific behavior.
 
 This is GitHub API permission evidence, not cloud federation evidence. No OIDC ID token was requested and no Azure/AWS login or provider role was configured. The OIDC guidance was checked against official documentation, including immutable subject claims. The optional workflow's browser presentation and a fresh self-service human walkthrough remain unobserved.
 
@@ -61,13 +71,14 @@ This is GitHub API permission evidence, not cloud federation evidence. No OIDC I
 
 | Gate | Required evidence |
 |---|---|
-| Fresh browser-only Step 0 | A reader follows signup/account selection, original template creation, pinned raw-file copying, settings, and starter PR without presenter intervention |
-| Secret web route | Actual blocked GitHub.com create/edit commit and corrected uncommitted retry in a fresh learner copy; official course screenshots alone do not prove this kit's route |
-| Take-home independence | Readers complete post-event, partial, and fresh-copy paths using only the written guides, including closed/merged PR recovery |
+| Actual Codespaces primary route | An authorized smallest suitable space with known payer/allowance: existing clone, verified companion fetch, helper setup, workflow-file commit/push with configured auth, code/dependency changes, actual blocked secret push/repair, stop/resume and persistent kit; stop it after rehearsal |
+| Fresh learner Step 0 | A reader follows account selection, original template creation, own-repo codespace startup and complete prework without hidden setup or presenter intervention |
+| File-editor fallback | Actual blocked GitHub.com create/edit commit and corrected uncommitted retry in a fresh learner copy; official screenshots alone do not prove this route |
+| Take-home independence | Readers resume the same codespace and complete post-event, partial, and fresh-copy paths using only the guides, including closed/merged PR recovery; record fallback use separately |
 | Timing and room | Representative prepared learners, participant-owned laptops, one presenter and 1-2 helpers; measured core <=75 minutes without bypasses; venue network/power and turnout confirmed |
 | Event-date drift | Recheck original-template fingerprints, action releases, advisories, supported secret pattern behavior, and fixture safety before delivery |
 
-An authenticated browser page handle was unavailable in the authoring environment. Opening a browser canvas did not grant usable page access; no UI actions or screenshots are claimed. CLI/REST observations are labeled as such. No real learner timing has been measured.
+No Codespaces startup, UI action, or screenshot is claimed from the blocked access attempt. Earlier CLI/REST observations remain labeled as such. No real learner timing has been measured.
 
 ## Checkpoint
 

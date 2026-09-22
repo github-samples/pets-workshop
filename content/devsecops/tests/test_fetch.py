@@ -11,7 +11,7 @@ class FetchRouteTests(unittest.TestCase):
         self.fixture.setUp()
         self.addCleanup(self.fixture.doCleanups)
 
-    def test_tag_fetch_archive_and_helper_preserve_learner_history(self):
+    def test_verified_commit_survives_refetch_and_preserves_learner_history(self):
         repo = self.fixture.repo
         root = self.fixture.root
         companion = root / "companion"
@@ -23,16 +23,20 @@ class FetchRouteTests(unittest.TestCase):
         git(companion, "config", "user.email", "test@example.invalid")
         git(companion, "add", ".")
         git(companion, "commit", "-qm", "Independent companion root")
-        git(companion, "tag", "v0.1.0")
+        tag = "v" + test_helper.MANIFEST["version"]
+        git(companion, "tag", tag)
         original_head = git(repo, "rev-parse", "HEAD")
         original_remotes = git(repo, "remote", "-v")
-        git(repo, "fetch", "--no-tags", str(companion), "refs/tags/v0.1.0")
-        self.assertEqual(git(repo, "rev-parse", "FETCH_HEAD^{commit}"),
-                         git(companion, "rev-parse", "HEAD"))
-        archive = root / "pets-devsecops-kit-v0.1.0.tar"
-        extracted = root / "pets-devsecops-kit-v0.1.0"
+        git(repo, "fetch", "--no-tags", str(companion), "refs/tags/" + tag)
+        kit_commit = git(repo, "rev-parse", "FETCH_HEAD^{commit}").decode().strip()
+        self.assertEqual(kit_commit, git(companion, "rev-parse", "HEAD").decode().strip())
+        # An editor's background fetch can replace FETCH_HEAD after verification.
+        git(repo, "fetch", "--no-tags", str(repo), "main")
+        self.assertNotEqual(git(repo, "rev-parse", "FETCH_HEAD").decode().strip(), kit_commit)
+        archive = root / ("pets-devsecops-kit-" + tag + ".tar")
+        extracted = root / ("pets-devsecops-kit-" + tag)
         extracted.mkdir()
-        git(repo, "archive", "--format=tar", "--output=" + str(archive), "FETCH_HEAD")
+        git(repo, "archive", "--format=tar", "--output=" + str(archive), kit_commit)
         subprocess.run(["tar", "-xf", archive.name, "-C", extracted.name], cwd=root, check=True)
         self.assertTrue((extracted / "starter/ci.yml").exists())
         self.assertTrue((extracted / "take-home/2-approve-a-release.md").exists())
@@ -40,7 +44,7 @@ class FetchRouteTests(unittest.TestCase):
         self.assertEqual(git(repo, "rev-parse", "HEAD"), original_head)
         self.assertEqual(git(repo, "remote", "-v"), original_remotes)
         self.assertEqual(git(repo, "status", "--porcelain"), b"")
-        unrelated = subprocess.run(["git", "-C", str(repo), "merge-base", "HEAD", "FETCH_HEAD"],
+        unrelated = subprocess.run(["git", "-C", str(repo), "merge-base", "HEAD", kit_commit],
                                    env=test_helper.ENV, capture_output=True)
         self.assertEqual(unrelated.returncode, 1)
         for mode in ("--check", "--apply"):

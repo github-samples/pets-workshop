@@ -12,14 +12,21 @@ CodeQL's `py/flask-debug` rule identifies a configuration that can expose the We
 ## Try it
 
 1. Inspect the baseline **Flask app is run in debug mode** finding and its path, `app/server/app.py`. Confirm that the source ends with `app.run(debug=True, port=5100)`. If the finding is absent or the code differs, use [troubleshooting](take-home/troubleshooting.md) before changing anything.
-2. Select branch `exercise/shelter-change` in your learner repository. Edit `app/server/app.py` and change only the final call:
+2. In the same Codespaces terminal, inspect your work before switching:
+
+   ```bash
+   git status --short
+   git switch exercise/shelter-change
+   ```
+
+   Start with a clean tree or preserve existing edits on their intended branch first. In the editor, open `app/server/app.py` and change only the final call:
 
    ```python
    if __name__ == '__main__':
        app.run(debug=False, port=5100) # Port 5100 to avoid macOS conflicts
    ```
 
-3. In `app/server/test_app.py`, add the following method inside `class TestApp`, before `if __name__ == '__main__':`. Keep its four-space indentation. A copyable [test snippet](solutions/startup-test.py.txt) is also supplied.
+3. In `app/server/test_app.py`, add the following method inside `class TestApp`, before `if __name__ == '__main__':`. Keep its four-space indentation. Open the fetched kit's `../pets-devsecops-kit-v0.1.2/solutions/startup-test.py.txt` in the Codespaces editor to copy the [test snippet](solutions/startup-test.py.txt).
 
    ```python
        def test_direct_startup_disables_debug(self):
@@ -34,17 +41,18 @@ CodeQL's `py/flask-debug` rule identifies a configuration that can expose the We
            run.assert_called_once_with(debug=False, port=5100)
    ```
 
-4. Commit both changes to the existing branch. In the web editor, two commits are fine; evaluate the last one with both edits. Do not create a new PR or commit these edits to `main`. Terminal users can use:
+4. Save both files in the editor, then commit and push from the learner root. Do not create a new PR or commit these edits to `main`:
 
    ```bash
-   git switch exercise/shelter-change
    git add -- app/server/app.py app/server/test_app.py
    git diff --cached
    git commit -m "Disable direct debug startup and test the default"
    git push
    ```
 
-5. Confirm CI and CodeQL started for the updated PR. Continue to dependencies while analysis runs. Check back at the start of lesson 4 and during the demonstrations.
+5. On GitHub.com, confirm CI and CodeQL started for the updated PR. Do not install dependencies or run these tests in the codespace. Continue to dependencies while Actions runs; check back at the start of lesson 4 and during the demonstrations.
+
+If Codespaces is unavailable, the [local Git fallback](0-setup.md#fallback-a-local-vs-code-and-git) uses the same commands. The [file-editor fallback](0-setup.md#fallback-b-github-file-editor) applies the same two edits on `exercise/shelter-change`; evaluate the last commit containing both changes.
 
 The test intercepts `Flask.run`; it never opens a socket. It uses an in-memory database and sets `FLASK_DEBUG=1` deliberately, proving the explicit safe default wins. Do not edit `app/scripts/common.sh`: its debug setting belongs to the existing local-development route. Deliberate local debugging remains available through the Flask CLI. Neither route is a production deployment recipe.
 
