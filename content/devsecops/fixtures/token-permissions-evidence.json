@@ -1,0 +1,49 @@
+{
+  "evidence_type": "recorded-author-run-not-learner-live",
+  "observed_utc": "2026-09-22",
+  "workflow_pr": "https://github.com/frye/pets-devsecops-rehearsal/pull/12",
+  "workflow_file": ".github/workflows/token-permissions.yml",
+  "main_revision": "93c56ca7002a4ad2bf1aa982ffbaab293f74a9c2",
+  "run": "https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35688557307",
+  "attempt": 1,
+  "denied_job": {
+    "name": "deny-issue-write",
+    "configured_permissions": {"issues": "read"},
+    "actual_http_status": 403,
+    "actual_message": "Resource not accessible by integration",
+    "rate_limit_remaining_positive": true,
+    "retry_after_absent": true,
+    "job_conclusion": "success"
+  },
+  "authorized_job": {
+    "name": "allow-issue-write",
+    "configured_permissions": {"issues": "write"},
+    "actual_http_status": 201,
+    "creator_login": "github-actions[bot]",
+    "creator_type": "Bot",
+    "issue_url": "https://github.com/frye/pets-devsecops-rehearsal/issues/13",
+    "issue_created_at": "2026-09-22T04:53:11Z",
+    "issue_closed_at": "2026-09-22T04:53:12Z",
+    "issue_state_verified_via_api": "closed",
+    "job_conclusion": "success"
+  },
+  "non_main_proof": {
+    "run": "https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35688654756",
+    "ref": "refs/heads/exercise/token-permissions",
+    "guard_result": "failed-before-API-access",
+    "allowed_job": "skipped",
+    "matching_training_issues": 0
+  },
+  "cleanup": {
+    "matching_training_issues_total": 1,
+    "matching_training_issues_open": 0,
+    "unrelated_issues_modified": false,
+    "unrelated_release_run_triggered_by_workflow_merge": "35688556860",
+    "unrelated_release_run_cleanup": "cancelled-without-approval"
+  },
+  "repository_default_workflow_permissions_changed": false,
+  "tokens_or_bearer_headers_recorded": false,
+  "oidc_token_requested": false,
+  "cloud_authentication_tested": false,
+  "fresh_browser_walkthrough": "not-observed"
+}

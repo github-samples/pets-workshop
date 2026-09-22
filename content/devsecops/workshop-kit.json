@@ -1,17 +1,21 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "prerelease-human-and-browser-rehearsal-pending",
   "source_repository": "github-samples/pets-workshop",
   "source_commit": "d2437a6f3dbb1fe4bd5e97790ccc12c42cbfc03a",
   "reviewed_utc": "2026-09-22",
   "publication": {
     "repository": "frye/pets-devsecops-workshop",
-    "tag": "v0.1.0",
-    "release": "https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.0"
+    "tag": "v0.1.1",
+    "release": "https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.1"
   },
   "core_workflows": [
     "ci.yml",
     "dependency-review.yml"
+  ],
+  "optional_workflows": [
+    "release-simulation.yml",
+    "token-permissions.yml"
   ],
   "checks": [
     "api-tests",
@@ -35,6 +39,7 @@
     "secret_fixture_safety_and_both_routes": "official-inactive-source-terminal-observed-browser-pending",
     "merge_policy": "observed-cli-api",
     "release_approval_and_receipt": "observed-cli-api-with-approved-receipt-and-non-main-rejection",
+    "job_token_deny_allow_cleanup": "observed-main403-201-bot-issue-closed-and-non-main-no-mutation",
     "step0_both_routes": "unverified",
     "take_home_independent_reader": "unverified",
     "learner_timing": "unverified"
@@ -52,8 +57,8 @@
   },
   "inventory": {
     ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
-    "0-setup.md": "352b518929d98efcfb0def8d3cb48ffacd23eff27a90be3a61b7cc5a2955c2be",
-    "1-devops-baseline.md": "0104b16c43ef2c32f384742d425952b4bb5597308077dc9221e3dbaf293c6e01",
+    "0-setup.md": "666b93d56f225bbe579bb4df632c457c6fdc792090fd2ca3337f51d03f3ff5d0",
+    "1-devops-baseline.md": "28fcd42b8053d579cbcea8bb68e7ea1bfda1ebc8f34927e8a9721847e1a8b506",
     "2-security-planning.md": "2d13f2d99a2e4c02feb61cc63eee4660f097ea745ab1e7b33f275b74e93769cc",
     "3-code-scanning.md": "f8922c636108932f3f3162b45e3ebb34835f829242e6397bc38cbf5a92b60505",
     "4-dependencies.md": "f94aca865fa6cf505fcb3c140a252e8d84c6612494255009a3ed2193570d7ee3",
@@ -61,11 +66,11 @@
     "6-merge-policy.md": "52ddbc1760b809a407d9776cb546638f96dbbbc85b2f68c3c73ea5497f39341a",
     "7-delivery-and-response.md": "5b16926c9a6ccb34f82f88075d27a69b21f4ab975b31e6416a3f05cea5b5a595",
     "8-wrap-up.md": "11cb7ed805cc5be4343d2c93268c599e26a78f91626fc4cdf0933bd1da7591b7",
-    "README.md": "9b6931cb990fb6a1470503bcccaf7af6f87e5747124b864d16c245f3613c276a",
+    "README.md": "644c20aae724cdefb007defbc08f35de091a56e675a4006691fad5fc2cc7de71",
     "SOURCE-LICENSE": "2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7",
     "baseline.sha256": "6ed0e65e27c15ce68299adce3647182a0a9d8b9deecbc5c31414d8b84f9c7a37",
-    "evidence.md": "29c8f4f7117b5b2d5e14fa5bcedb4994622a123a0d014a8d7478d6d198ee40ce",
-    "facilitator.md": "12fcd17b8f92ba2f48fbf66195857c75c15e619a1a97e778f7db5b0f36b29f09",
+    "evidence.md": "0e9dabfa03d6bc8ce0456e335122468e12ddd745e88d7b1feaa26777d8c1bf7f",
+    "facilitator.md": "7d1aee9610a525bdea1193f47029956e6acc3a5a6084a898034d9e6f4620dd9d",
     "fixtures/SKILLS-LICENSE": "ea517ca548f7aa5d4689b740ba7d166040d5bb8c27e2782f2681a0004609b00e",
     "fixtures/dependency-after.txt": "2e42353827f19eaaaad185f84d86a2288d1b3b6a89f616a5bac62760774519e5",
     "fixtures/dependency-before.txt": "c0cd524d2858bf84afd04e4de3a0001ec4f898fcf6186b32b31566afba1f6918",
@@ -76,26 +81,30 @@
     "fixtures/recorded-release/receipt.sha256": "bb2f592ff536505b79ee33c7163289ae65103ef6832d35e42d6028c980558669",
     "fixtures/secret-training.txt": "dbb5840abd911e736f8df4167ac215be7bd268202e6ddc8a5c86274e1dceb0cd",
     "fixtures/secret-validation.md": "760b1a0bd0beee785cc2f5a513153cde74ff5bc6123452cd7c2516ba4639ea13",
-    "readiness.md": "387a0aa441d9036809b1120b60304b73d007b34bc53df4fda0f21a093e210443",
+    "fixtures/token-permissions-evidence.json": "086f2b07a9734b5168619863e785e37d8da02a9d35ec04f18caac656b7175ed3",
+    "readiness.md": "c0c47e5da377e97220619f5c56a41f03f34ac6f43b8091a2c9ac0d379e923fd9",
     "scripts/build-kit.py": "3a0269acb192f60b940591e575afce6705e5698f0d6846ed91972d428885fbe3",
     "scripts/prepare-devsecops.sh": "667dbb576d66c1cd112a55e538a31c28857975ff706e574f1fe5480cbe8030a5",
-    "scripts/validate-kit.py": "0823a2a480a7ab3d83b8a711b0ec2c17b3eb725271da1e893df5ad48a6ba56a4",
-    "solutions/README.md": "c3ad0579b3b330068f938966dc58cff9bc7ee395582db762f5e16e7a80674267",
+    "scripts/validate-kit.py": "5c46035683532d56a1787932123b7e87d2f3e074683d02fe317e44e05103b8f1",
+    "solutions/README.md": "53a4732e5dc5fe0f2423649c38ecf79fd2d95496ffe456ddf55571897f99e1d2",
     "solutions/dependabot.yml": "a1f847e73b55ea6cd05c284b90d7fa20f352d4345d818847bec90de85da92490",
     "solutions/startup-test.py.txt": "c4ae05fb3e63450ed99905ba6813cc3df32a8ef3c827b5381385b6d71ada8dec",
-    "sources.md": "15214352e7a53f741a7b00a5de655d00ea15d3b78505f5e7b593ae121b652fa1",
+    "sources.md": "378c40760dbd847454c00c5b19d0d07a2967f431ed0569908a4574d8967321bf",
     "starter/ci.yml": "aad87cbcc1d311c7ed32c651de87c616722091d4d7d7403d7f40b9f6d5ce90fd",
     "starter/dependency-review.yml": "5e09e2ec56e0ba7914e7d4fc3870a0024cecd4bdf28229c6a4c2028d941fef18",
     "starter/release-simulation.yml": "64dc2cdb0cacdafaaaa6f3d5155a5fce37c3705916a8b85c92a336764cc45bf3",
+    "starter/token-permissions.yml": "f91be58f35045b4f49cb99b05d99054bf536bd18843b4793c972be50f6e673eb",
     "take-home/0-resume.md": "74ac4b4d1c1139881c4ce6bd0cec3ffcb3bb295d239a71d483f5965eb8b05107",
     "take-home/1-enforce-merge-policy.md": "4f4cda986d5ac7475be17c37290e868024d86936a3f824974abab0440549a762",
     "take-home/2-approve-a-release.md": "33fb1fe3f77727803f6d8f62c60df9cbabdc0700b2901077794dab1addee7329",
-    "take-home/3-maintain-dependencies.md": "6869defaae41c01976f5b76c64398c37070db9b5a929bbc48bd2b09ccdc43826",
-    "take-home/README.md": "4cafba1246ebcdddee01df85c904d6fea2614849c0fcb06025fb2dd7db4d7e9d",
-    "take-home/troubleshooting.md": "1bc139ccf99f974fe3fefac8fffc83afbaa69a29106d8f8b13c0ac6ac4a53e9f",
+    "take-home/3-maintain-dependencies.md": "84ff632ee1b154f1bb91111b50f3fbf949874b9efd31367ab62fa8ef5bded169",
+    "take-home/4-workload-identity.md": "4269bd391b3f5c9aa9a94b8409c1112141a115416dba2c001128981c2b8679c7",
+    "take-home/README.md": "e4e7e793cf926dd41ea505bb7260f5bafa9474fd6f887779d153edc620ca1e1c",
+    "take-home/troubleshooting.md": "9e7df3bb11dc9bba868c6d53d12cb7f663dbc6f96de8bfcf716fd91436c87658",
     "tests/test_fetch.py": "9b788eb507271c2b22004cb949e8bc7edb442a260c879b18317becade3967344",
     "tests/test_helper.py": "fd72d20b70eefdf4f27a97bd75ee0b3f2997c8604a04fe6562be2b1acdbc8eb6",
     "tests/test_release.py": "cf600de9dff11644fdfed5bb963742e8fb75b4c41d77954891aaa36814cde99e",
-    "tests/test_solution.py": "9ec49960207a2e68e08b4b83e7cc9507aaf901c3bfca9e5233718707df8a93d2"
+    "tests/test_solution.py": "9ec49960207a2e68e08b4b83e7cc9507aaf901c3bfca9e5233718707df8a93d2",
+    "tests/test_token_permissions.py": "b3633cf453083eea312a032facb9a2b8e744ea1dbc1023e80c8821e3cb9e2e2c"
   }
 }

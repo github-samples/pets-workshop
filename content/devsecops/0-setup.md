@@ -8,7 +8,7 @@
 Preparing the repository before the event gives you time to resolve account policies and Actions failures. The first eight minutes of the event are a readiness check, not an account-creation or installation session.
 
 > [!IMPORTANT]
-> Use the [v0.1.0 companion kit](https://github.com/frye/pets-devsecops-workshop/tree/v0.1.0) and read its [readiness gates](readiness.md). This prerelease has automated and terminal authoring evidence. A fresh browser-only learner walkthrough and measured timing are still outstanding. The readiness register links the observed CodeQL baseline.
+> Use the [v0.1.1 companion kit](https://github.com/frye/pets-devsecops-workshop/tree/v0.1.1) and read its [readiness gates](readiness.md). This prerelease has automated and terminal authoring evidence. A fresh browser-only learner walkthrough and measured timing are still outstanding. The readiness register links the observed CodeQL baseline.
 
 ## 0.1 Choose an account
 
@@ -30,19 +30,19 @@ The template flow copies the current upstream contents. This kit was prepared ag
 
 ## 0.3 Obtain one kit version
 
-The companion supplies every customization and guide. Use one version throughout: **v0.1.0**, with [manifest](workshop-kit.json) and [release/checksum](https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.0).
+The companion supplies every customization and guide. Use one version throughout: **v0.1.1**, with [manifest](workshop-kit.json) and [release/checksum](https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.1).
 
-For the browser route, open the [version-pinned guide](https://github.com/frye/pets-devsecops-workshop/blob/v0.1.0/0-setup.md) and these raw files:
+For the browser route, open the [version-pinned guide](https://github.com/frye/pets-devsecops-workshop/blob/v0.1.1/0-setup.md) and these raw files:
 
-- [Raw CI starter](https://raw.githubusercontent.com/frye/pets-devsecops-workshop/v0.1.0/starter/ci.yml)
-- [Raw dependency-review starter](https://raw.githubusercontent.com/frye/pets-devsecops-workshop/v0.1.0/starter/dependency-review.yml)
+- [Raw CI starter](https://raw.githubusercontent.com/frye/pets-devsecops-workshop/v0.1.1/starter/ci.yml)
+- [Raw dependency-review starter](https://raw.githubusercontent.com/frye/pets-devsecops-workshop/v0.1.1/starter/dependency-review.yml)
 
 For the terminal route, create your repository from the original template first. Replace `YOUR-OWNER` below, clone that learner repository, and fetch the companion tag without adding a remote:
 
 ```bash
 git clone https://github.com/YOUR-OWNER/pets-devsecops.git
 cd pets-devsecops
-git fetch --no-tags https://github.com/frye/pets-devsecops-workshop.git refs/tags/v0.1.0
+git fetch --no-tags https://github.com/frye/pets-devsecops-workshop.git refs/tags/v0.1.1
 git rev-parse 'FETCH_HEAD^{commit}'
 ```
 
@@ -51,11 +51,11 @@ Compare the printed commit with the commit recorded on the versioned release. St
 Extract the companion root to a new sibling directory. These output paths must not already exist. The chained commands stop on failure and do not pipe an archive into an unchecked extractor:
 
 ```bash
-test ! -e ../pets-devsecops-kit-v0.1.0 &&
-test ! -e ../pets-devsecops-kit-v0.1.0.tar &&
-mkdir ../pets-devsecops-kit-v0.1.0 &&
-git archive --format=tar --output=../pets-devsecops-kit-v0.1.0.tar FETCH_HEAD &&
-tar -xf ../pets-devsecops-kit-v0.1.0.tar -C ../pets-devsecops-kit-v0.1.0
+test ! -e ../pets-devsecops-kit-v0.1.1 &&
+test ! -e ../pets-devsecops-kit-v0.1.1.tar &&
+mkdir ../pets-devsecops-kit-v0.1.1 &&
+git archive --format=tar --output=../pets-devsecops-kit-v0.1.1.tar FETCH_HEAD &&
+tar -xf ../pets-devsecops-kit-v0.1.1.tar -C ../pets-devsecops-kit-v0.1.1
 ```
 
 Open the extracted README and script before running anything. Keep the whole kit, including take-home files, outside the learner clone. If you prefer downloading the release ZIP, extract it outside the clone and substitute that script path below. Never pipe a remote script into a shell.
@@ -67,7 +67,7 @@ Only these two files belong in live prework:
 | [starter/ci.yml](starter/ci.yml) | `.github/workflows/ci.yml` |
 | [starter/dependency-review.yml](starter/dependency-review.yml) | `.github/workflows/dependency-review.yml` |
 
-Do not install `release-simulation.yml`, the solutions, or any fixture yet. Do not add a companion remote or use `git pull` to combine unrelated histories.
+Do not install `release-simulation.yml`, `token-permissions.yml`, the solutions, or any fixture yet. Those optional files belong to later labs. Do not add a companion remote or use `git pull` to combine unrelated histories.
 
 ## 0.4 Install the core workflows
 
@@ -110,8 +110,8 @@ These commands affect only this clone; the helper never sets identity. Do not sh
 2. Confirm `main` and no unrelated changes. Read [the helper](scripts/prepare-devsecops.sh) before running it:
 
    ```bash
-   bash "../pets-devsecops-kit-v0.1.0/scripts/prepare-devsecops.sh" --repo . --check
-   bash "../pets-devsecops-kit-v0.1.0/scripts/prepare-devsecops.sh" --repo . --apply
+   bash "../pets-devsecops-kit-v0.1.1/scripts/prepare-devsecops.sh" --repo . --check
+   bash "../pets-devsecops-kit-v0.1.1/scripts/prepare-devsecops.sh" --repo . --apply
    ```
 
 3. The first command is read-only. The second copies only the two workflow files after checking origin, branch, application fingerprints, and local changes. It never commits, pushes, installs software, changes remotes, authenticates, or changes GitHub settings. Its output names each copied or unchanged file.

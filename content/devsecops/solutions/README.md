@@ -34,13 +34,22 @@ CI installs only `app/server/requirements.txt`. It must never install the exerci
 |---|---|---|
 | Core files | [ci.yml](../starter/ci.yml), [dependency-review.yml](../starter/dependency-review.yml) on `main` before branches | Required checks must report on all exercise PRs |
 | Check names | `api-tests`, `client-build`, `dependency-review` | These are job names, not workflow titles |
-| Permissions | `contents: read`, no `pull_request_target`, no stored checkout credential | PR code receives no deployment privilege |
+| Core/release permissions | `contents: read`, no `pull_request_target`, no stored checkout credential | PR code receives no deployment privilege |
 | Dependency threshold | `high`, all scopes, `warn-only: false` | The training failure must block |
 | Ruleset | Active on `main`, empty bypass, required PR/checks, CodeQL high, zero peer approvals | Solo-compatible enforcement |
 | CODEOWNERS | Remove upstream usernames in the learner copy; no required owner review | Do not assign people who do not maintain this copy |
 | Environment | `workshop-demo`, reviewer is learner, self-review allowed, admin bypass off, one branch rule `main` | Demonstrates approval without a second account |
 | Release | [release-simulation.yml](../starter/release-simulation.yml), exact SHA, successful prerequisites, approval | Manual dispatch cannot skip checks |
 | Dependabot | [Complete config](dependabot.yml): npm, pip, Actions | Covers all three dependency sources without promising immediate PRs |
+| Optional identity exercise | [token-permissions.yml](../starter/token-permissions.yml): manual `main` only; separate `issues: read` and `issues: write` jobs; no checkout | Demonstrates least privilege without changing repository defaults or core setup |
+
+## Optional workload-identity proof
+
+In [take-home Lab 4](../take-home/4-workload-identity.md), the first job is green only when the GitHub API returns the precise non-rate-limited integration-permission HTTP 403. A generic 403, missing Issues feature, authentication failure, or network error does not prove the intended control.
+
+The second job receives a different installation token with `issues: write`. HTTP 201, the actual `github-actions[bot]` creator, and a closed matching issue prove the allowed operation and cleanup. The user who initiated the run is not the bot identity. Each job's cleanup runs even after a failed proof, but does not override that failure; interruption may still require manual closure of the exact recorded issue.
+
+No `contents: write`, broad grant, or `id-token: write` is needed. OIDC ID-token requests and provider-issued cloud permissions are separate concepts explained in the guide, not actions performed by this workflow.
 
 ## Secret repair
 

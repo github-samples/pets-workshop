@@ -8,7 +8,7 @@ You're volunteering at the dog shelter. Its Flask API and Astro website pass the
 You'll fix code, review a dependency change, and practice secret protection in your own public repository. The presenter demonstrates merge policy and a cloud-free release. The [take-home labs](take-home/README.md) include the instructions and files to perform those two exercises yourself afterward.
 
 > [!IMPORTANT]
-> Kit **0.1.0** is a prerelease for review and rehearsal. The [readiness register](readiness.md) records actual checks and remaining gaps, including fresh browser-only walkthroughs and human timing. Do not treat publication as approval to promise every attendee a completed 75-minute core.
+> Kit **0.1.1** is a prerelease for review and rehearsal. The [readiness register](readiness.md) records actual checks and remaining gaps, including fresh browser-only walkthroughs and human timing. Do not treat publication as approval to promise every attendee a completed 75-minute core.
 
 ## What you need
 
@@ -36,11 +36,13 @@ These are design budgets. No representative learner rehearsal has established th
 
 The core totals 75 minutes; startup and closing bring the event to 90. Playwright, cloud deployment, and participant settings changes for lessons 6-7 are outside that core.
 
+For optional practice afterward, [prove a workflow's GitHub API permissions](take-home/4-workload-identity.md) yourself: observe a denied request, then a separate narrowly authorized job and its closed training issue. The guide also points to OIDC for future cloud identity work. Neither extends core setup or replaces the secret-protection exercise.
+
 ## Using this kit
 
-Create a learner repository from the [original Pets template](https://github.com/github-samples/pets-workshop), then fetch the versioned kit from [frye/pets-devsecops-workshop](https://github.com/frye/pets-devsecops-workshop/tree/v0.1.0). [Step 0](0-setup.md) shows how to extract the fetched kit outside your learner clone without adding a remote or merging history. The browser route copies the same version's raw files. The optional helper installs only two core workflows.
+Create a learner repository from the [original Pets template](https://github.com/github-samples/pets-workshop), then fetch the versioned kit from [frye/pets-devsecops-workshop](https://github.com/frye/pets-devsecops-workshop/tree/v0.1.1). [Step 0](0-setup.md) shows how to extract the fetched kit outside your learner clone without adding a remote or merging history. The browser route copies the same version's raw files. The optional helper installs only two core workflows.
 
-The companion is not an application template. If the original template changes incompatibly, the organizer must refresh and retest the companion kit. The [versioned ZIP](https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.0) is an optional alternative to Git fetch.
+The companion is not an application template. If the original template changes incompatibly, the organizer must refresh and retest the companion kit. The [versioned ZIP](https://github.com/frye/pets-devsecops-workshop/releases/tag/v0.1.1) is an optional alternative to Git fetch.
 
 The kit works as a local folder: all lesson, starter, solution, and take-home links are relative. External links to existing Pets material use the inspected source revision. Files introduced by this track are never linked to an upstream location where they do not exist.
 

@@ -1,0 +1,176 @@
+name: Token permissions
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: workshop-token-permissions
+  cancel-in-progress: false
+
+jobs:
+  deny-issue-write:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      issues: read
+    env:
+      PROOF_MODE: deny
+    steps: &permission-proof
+      - name: Prove job-scoped issue permission
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROOF_PHASE: prove
+        shell: python
+        run: &exercise |
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(message)
+
+          def report(message):
+              print(message)
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+                  summary.write(message + "\n\n")
+
+          require(os.environ["GITHUB_EVENT_NAME"] == "workflow_dispatch"
+                  and os.environ["GITHUB_REF"] == "refs/heads/main",
+                  "Only a manual run on main may perform this exercise.")
+          require(os.environ["GITHUB_SERVER_URL"] == "https://github.com"
+                  and os.environ["GITHUB_API_URL"] == "https://api.github.com",
+                  "This exercise supports GitHub.com only.")
+          repository = os.environ["GITHUB_REPOSITORY"]
+          require(re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository),
+                  "Unexpected repository identifier.")
+          mode = os.environ["PROOF_MODE"]
+          phase = os.environ["PROOF_PHASE"]
+          require(mode in ("deny", "allow") and phase in ("prove", "cleanup"),
+                  "Unexpected exercise mode.")
+          run_id = os.environ["GITHUB_RUN_ID"]
+          attempt = os.environ["GITHUB_RUN_ATTEMPT"]
+          require(run_id.isdigit() and attempt.isdigit(), "Unexpected run identifier.")
+          root = "https://api.github.com/repos/" + repository
+          page = "https://github.com/" + repository
+          run_url = page + "/actions/runs/" + run_id
+          title = f"[workshop-token-permissions] {run_id}/{attempt} {mode}"
+          body = ("Harmless workload-identity training issue; close after this exercise.\n\n"
+                  f"Run: {run_url}\n"
+                  f"Marker: workshop-token-permissions:{run_id}:{attempt}:{mode}\n")
+          state = Path(os.environ["RUNNER_TEMP"]) / ("workshop-token-" + mode + ".json")
+
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, request, fp, code, msg, headers, newurl):
+                  return None
+
+          opener = urllib.request.build_opener(NoRedirect())
+
+          def api(method, suffix, payload=None):
+              request = urllib.request.Request(
+                  root + suffix, method=method,
+                  data=None if payload is None else json.dumps(payload).encode(),
+                  headers={
+                      "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                      "Accept": "application/vnd.github+json",
+                      "Content-Type": "application/json",
+                      "X-GitHub-Api-Version": "2026-03-10",
+                  })
+              try:
+                  response = opener.open(request, timeout=30)
+              except urllib.error.HTTPError as error:
+                  response = error
+              except (urllib.error.URLError, TimeoutError):
+                  raise SystemExit("Network failure: not permission-denial evidence. Inspect the exact training issue before retrying.")
+              with response:
+                  status = response.code
+                  headers = response.headers
+                  raw = response.read()
+              try:
+                  data = json.loads(raw)
+              except (ValueError, UnicodeError):
+                  raise SystemExit(f"HTTP {status} returned invalid JSON; proof incomplete.")
+              require(isinstance(data, dict), f"HTTP {status} returned an unexpected body.")
+              return status, data, headers
+
+          def issue_number(data):
+              number = data.get("number")
+              require(type(number) is int and number > 0, "Missing valid issue number; inspect the recorded title manually.")
+              return number
+
+          def own_issue(data, number):
+              require(data.get("number") == number and "pull_request" not in data
+                      and data.get("title") == title and data.get("body") == body
+                      and data.get("user", {}).get("login") == "github-actions[bot]"
+                      and data.get("user", {}).get("type") == "Bot",
+                      "Issue identity did not match this run's bot-created fixture; do not modify unrelated issues.")
+
+          if phase == "cleanup":
+              if not state.exists():
+                  report("No recorded created issue to close. This does not override the proof result; check the recorded title if creation was interrupted.")
+              else:
+                  saved = json.loads(state.read_text())
+                  require(saved.get("repository") == repository and saved.get("title") == title,
+                          "Cleanup state does not belong to this run.")
+                  number = issue_number(saved)
+                  issue_url = page + "/issues/" + str(number)
+                  report("Cleanup target: " + issue_url)
+                  status, issue, _ = api("GET", "/issues/" + str(number))
+                  require(status == 200, f"Cleanup read failed: HTTP {status}. Close only {issue_url} manually.")
+                  own_issue(issue, number)
+                  if issue.get("state") != "closed":
+                      status, issue, _ = api("PATCH", "/issues/" + str(number), {"state": "closed"})
+                      require(status == 200, f"Cleanup close failed: HTTP {status}. Close only {issue_url} manually.")
+                      own_issue(issue, number)
+                  require(issue.get("state") == "closed", f"Cleanup not confirmed. Inspect {issue_url}.")
+                  report("Confirmed closed: " + issue_url + " (creator: github-actions[bot]).")
+          else:
+              report(f"Run: {run_url}; attempt: {attempt}; revision: {os.environ['GITHUB_SHA']}; mode: {mode}.")
+              report("Exact training title: `" + title + "`")
+              report("Recovery search: " + page + "/issues?q=" + urllib.parse.quote('is:issue "' + title + '"'))
+              status, metadata, _ = api("GET", "")
+              require(status == 200, f"Repository preflight failed: HTTP {status}; not a permission proof.")
+              require(metadata.get("has_issues") is True and metadata.get("archived") is False,
+                      "Issues must be enabled and the repository unarchived; no creation attempted.")
+              status, issue, headers = api("POST", "/issues", {"title": title, "body": body})
+              if status == 201:
+                  number = issue_number(issue)
+                  state.write_text(json.dumps({"repository": repository, "title": title, "number": number}))
+                  report("Created training issue: " + page + "/issues/" + str(number))
+                  require(mode == "allow", "Unexpected read-only creation: denial proof FAILED. Cleanup will try to close only this issue.")
+                  own_issue(issue, number)
+                  report("Authorized creation returned HTTP 201; actual creator: github-actions[bot].")
+              elif mode == "deny":
+                  remaining = headers.get("X-RateLimit-Remaining", "")
+                  require(status == 403
+                          and issue.get("message") == "Resource not accessible by integration"
+                          and remaining.isdigit() and int(remaining) > 0
+                          and headers.get("Retry-After") is None,
+                          f"Expected a non-rate-limited integration-permission 403; received HTTP {status}. Proof incomplete.")
+                  report("Expected denial confirmed: HTTP 403, Resource not accessible by integration; rate-limit budget remains.")
+              else:
+                  raise SystemExit(f"Authorized creation expected HTTP 201, received HTTP {status}; proof incomplete.")
+
+      - name: Close only this job's training issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROOF_PHASE: cleanup
+        shell: python
+        run: *exercise
+
+  allow-issue-write:
+    needs: deny-issue-write
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    env:
+      PROOF_MODE: allow
+    steps: *permission-proof

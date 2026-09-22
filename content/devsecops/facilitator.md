@@ -51,6 +51,12 @@ After a four-minute wait, continue with the next independent activity and revisi
 
 At minute 80, stop starting new troubleshooting/edit cycles. At minute 83, begin closing regardless of queues. Keep missing outcomes pending/incomplete. Never bypass secret protection, required checks, code-scanning policy, or approval to finish on time.
 
+## Optional identity practice
+
+During lesson 1's existing seven minutes, identify the job's GitHub App installation identity and read-only scope alongside the CI commands. Point to [the self-service workload-identity lab](take-home/4-workload-identity.md) for later practice. Offer its two-job permission exercise as optional take-home or a separately scheduled follow-along. Do not add a fourth required individual outcome to the 75-minute core; keep the secret exercise and all timeboxes unchanged.
+
+The optional workflow is installed through a reviewed learner PR, not the setup helper. Learners need no cloud account, new app, PAT, or laptop runtime. Its OIDC section is a route to provider-specific trust documentation; no cloud authentication or resource authorization was tested by the GitHub issue exercise.
+
 ## Build and publish the companion
 
 From the Pets source worktree, maintainers can validate and build the entire kit:
@@ -59,7 +65,7 @@ From the Pets source worktree, maintainers can validate and build the entire kit
 python3 -m unittest discover -s content/devsecops/tests -v
 python3 content/devsecops/scripts/validate-kit.py
 bash -n content/devsecops/scripts/prepare-devsecops.sh
-actionlint content/devsecops/starter/ci.yml content/devsecops/starter/dependency-review.yml content/devsecops/starter/release-simulation.yml
+actionlint content/devsecops/starter/ci.yml content/devsecops/starter/dependency-review.yml content/devsecops/starter/release-simulation.yml content/devsecops/starter/token-permissions.yml
 python3 content/devsecops/scripts/build-kit.py --refresh-manifest --source-repo . --output-dir /path/to/kit-output
 python3 content/devsecops/scripts/build-kit.py --output-dir /path/to/second-output
 ```

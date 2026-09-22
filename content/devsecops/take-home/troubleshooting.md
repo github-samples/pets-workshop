@@ -1,6 +1,6 @@
 # Troubleshooting without weakening controls
 
-| [Previous: dependency maintenance](3-maintain-dependencies.md) | [Next: annotated solutions](../solutions/README.md) |
+| [Previous: optional workload identity](4-workload-identity.md) | [Next: annotated solutions](../solutions/README.md) |
 |:---|---:|
 
 ## Why it matters
@@ -74,11 +74,13 @@ If the supplied fixture is not blocked, mark the result incomplete. Do not bypas
 
 ## Checkpoint
 
+For the optional job-token exercise, use [its failure and cleanup table](4-workload-identity.md#4-handle-failures-and-cleanup). Only the exact expected integration-permission denial is successful evidence. Close only the issue whose recorded URL and run marker match; cancellation can interrupt automatic cleanup. Do not grant broader permissions or replace `GITHUB_TOKEN` with a personal token to force a pass.
+
 Record the failing step, exact error, revision/run URL, kit version, and safe next action. Exclude tokens and private data. If the issue remains unresolved, its outcome stays incomplete.
 
 ## Resources
 
 [Required checks troubleshooting](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks), [blocked-push repair](https://docs.github.com/en/code-security/how-tos/secure-your-secrets/work-with-leak-prevention/push-protection-on-the-command-line), and [environment protection](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments).
 
-| [Previous: dependency maintenance](3-maintain-dependencies.md) | [Next: annotated solutions](../solutions/README.md) |
+| [Previous: optional workload identity](4-workload-identity.md) | [Next: annotated solutions](../solutions/README.md) |
 |:---|---:|

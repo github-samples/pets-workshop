@@ -67,9 +67,11 @@ def main():
                 yaml.load(content, Loader=yaml.BaseLoader)
                 snippets += 1
     workflows = {name: yaml.load((KIT / "starter" / name).read_text(), Loader=yaml.BaseLoader)
-                 for name in ("ci.yml", "dependency-review.yml", "release-simulation.yml")}
+                 for name in ("ci.yml", "dependency-review.yml", "release-simulation.yml",
+                              "token-permissions.yml")}
     for name, workflow in workflows.items():
-        require(workflow["permissions"] == {"contents": "read"}, f"{name}: unexpected permission")
+        expected_permissions = {} if name == "token-permissions.yml" else {"contents": "read"}
+        require(workflow["permissions"] == expected_permissions, f"{name}: unexpected permission")
         require("pull_request_target" not in workflow["on"], f"{name}: privileged PR trigger")
         require(not re.search(r"paths(?:-ignore)?:", (KIT / "starter" / name).read_text()),
                 f"{name}: required workflow can be skipped by paths")
@@ -118,6 +120,19 @@ def main():
                     if step.get("name") == "Install workshop Python baseline")
     require(constraints(ci, "api-tests") == constraints(release, "release-api-tests"),
             "Python snapshots diverged")
+    identity = workflows["token-permissions.yml"]
+    require(set(identity["on"]) == {"workflow_dispatch"} and not identity["on"]["workflow_dispatch"],
+            "Identity exercise must be manual with no arbitrary inputs")
+    require(set(identity["jobs"]) == {"deny-issue-write", "allow-issue-write"},
+            "Identity exercise must use separate job tokens")
+    for name, permission in (("deny-issue-write", "read"), ("allow-issue-write", "write")):
+        job = identity["jobs"][name]
+        require(job["permissions"] == {"issues": permission}, "Overbroad identity permission")
+        require(all("uses" not in step and "continue-on-error" not in step
+                    for step in job["steps"]), "Identity exercise must not check out code or hide failure")
+        require(job["steps"][1]["if"] == "always()", "Missing issue cleanup on failure")
+    require(identity["jobs"]["allow-issue-write"]["needs"] == "deny-issue-write",
+            "Authorized proof must require actual denial proof")
     require(not (KIT / ".github/workflows").exists(), "Kit has active workflows")
     fixture = (KIT / "fixtures/secret-training.txt").read_text()
     require("<REMOVE_ME>" in fixture and fixture.count("<REMOVE_ME>") == 1, "Fixture not inert")
@@ -129,7 +144,7 @@ def main():
     manifest = json.loads((KIT / "workshop-kit.json").read_text())
     require(manifest["core_workflows"] == ["ci.yml", "dependency-review.yml"], "Helper scope changed")
     print(f"Validated {len(markdown)} Markdown files, {link_count} local links, "
-          f"{snippets} command/config snippets, and three inert workflows.")
+          f"{snippets} command/config snippets, and {len(workflows)} inert workflows.")
 
 
 if __name__ == "__main__":

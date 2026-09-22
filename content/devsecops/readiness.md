@@ -4,7 +4,7 @@
 
 Published instructions, local tests, and a successful author run answer different questions. This register separates them so the event's promise matches the evidence.
 
-Kit 0.1.0 is a **prerelease**. All live and take-home materials are authored, but browser-only and representative learner rehearsals remain required before calling it event-ready.
+Kit 0.1.1 is a **prerelease**. All live and take-home materials are authored, but browser-only and representative learner rehearsals remain required before calling it event-ready. The optional job-token exercise adds no mandatory setup files or minutes to the core.
 
 ## Observed in the authorized rehearsal repository
 
@@ -39,11 +39,23 @@ The inherited dependency baseline also produced Dependabot alerts, including hig
 
 ## Local evidence
 
-The 33-test suite exercises helper safety/idempotence in disposable repositories, the original/fixed startup test, exact companion-tag fetch and archive extraction, and release guard failures. Shell syntax, actionlint, pinned-workflow structure, 24 Markdown files' local links/anchors, command/config snippets, and kit inventory are checked separately.
+The 50-test suite includes the existing 33 helper/fetch, startup, and release cases plus 17 targeted job-token cases. Those new cases check exact denial classification, separate permissions, main-only execution, bot issue identity, unexpected success, failed cleanup, and recovery messages after an ambiguous network failure. They do not simulate a forcibly terminated runner. Shell syntax, actionlint, four inert workflows, 25 Markdown files' local links/anchors, command/config snippets, and kit inventory are checked separately.
 
 The existing three API tests pass. In a disposable source copy, the added startup test fails against the original debug setting and all four tests pass after the one-line fix. The unchanged Astro client builds with Node 24. The upstream application and other workshop tracks retain their original behavior.
 
 Local execution used macOS Bash; the native runner checks above cover Linux and Git Bash too. They exposed a real CRLF fingerprint-path issue, reproduced locally and fixed by stripping only the terminal carriage return before the existing validations. A separate regression checks CRLF-manifest read-only/apply behavior and still rejects application drift. Kit-scoped `.gitattributes` keeps distributed text LF; no global Git configuration was changed. Automated platform checks are not a human learner walkthrough.
+
+## Optional job-token exercise
+
+[Rehearsal PR12](https://github.com/frye/pets-devsecops-rehearsal/pull/12) passed the existing required checks and CodeQL policy before merging at `93c56ca7002a4ad2bf1aa982ffbaab293f74a9c2`. No ruleset bypass or repository-default workflow-permission change was used.
+
+[Main run 35688557307](https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35688557307) reported `Issues: read` for `deny-issue-write`. The actual POST returned the expected HTTP 403 integration-permission message with remaining rate-limit budget. The separate `allow-issue-write` job reported `Issues: write`, received HTTP 201, and verified the returned `github-actions[bot]` creator/type. [Training issue 13](https://github.com/frye/pets-devsecops-rehearsal/issues/13) was created at `2026-09-22T04:53:11Z` and closed by the cleanup step at `2026-09-22T04:53:12Z`; the issue API independently confirmed its closed state and matching run marker.
+
+[Non-main run 35688654756](https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35688654756) failed the ref guard before API access and skipped the allowed job. The repository's matching training-issue list contained only the one closed main-run issue. The unrelated release run triggered by the workflow merge was cancelled without approval. [Recorded identity evidence](fixtures/token-permissions-evidence.json) preserves these results without token values.
+
+The new workflow uses only inline Python on a standard hosted runner. Core workflows, installer, fetch implementation, application, and runtime selections are unchanged in v0.1.1, so the earlier native helper/fetch evidence remains applicable without another platform run. The complete local suite was rerun.
+
+This is GitHub API permission evidence, not cloud federation evidence. No OIDC ID token was requested and no Azure/AWS login or provider role was configured. The OIDC guidance was checked against official documentation, including immutable subject claims. The optional workflow's browser presentation and a fresh self-service human walkthrough remain unobserved.
 
 ## Remaining event go/no-go gates
 

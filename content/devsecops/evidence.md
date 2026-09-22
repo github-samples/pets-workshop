@@ -46,11 +46,15 @@ Write your repository URL, kit version, editing route, and date first. Use these
 | Approved release | Same-SHA prerequisites, waiting approval, approver, receipt and artifact ID | ___ |
 | Negative release | Non-main dispatch rejected with no receipt | ___ |
 | Maintenance | Merged npm/pip/Actions configuration and accepted update job/configuration | ___ |
+| Optional job-token identity | Run/revision; separate job grants; exact integration403 with rate budget; HTTP201, bot creator, issue URL and closed state | ___ |
+| Optional identity ref guard | Non-main manual attempt rejected before any API mutation; allowed job skipped | ___ |
 | Cleanup | Fixture PRs not merged, pending runs cancelled, receipt saved before expiry | ___ |
 
 ## Checkpoint
 
 Leave any unanswered row incomplete. A recording, absent dependency diff, successful analysis with findings, or later deletion of a committed secret does not satisfy the corresponding live criterion.
+
+The optional identity exercise is not another core requirement. Its OIDC references are further reading: GitHub issue authorization does not demonstrate Azure/AWS login or cloud resource access.
 
 ## Resources
 

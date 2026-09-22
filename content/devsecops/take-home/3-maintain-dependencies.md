@@ -1,6 +1,6 @@
 # 3. Maintain the dependency baseline
 
-| [Previous: approve a release](2-approve-a-release.md) | [Next: troubleshooting](troubleshooting.md) |
+| [Previous: approve a release](2-approve-a-release.md) | [Next: optional workload identity](4-workload-identity.md) |
 |:---|---:|
 
 ## Why it matters
@@ -70,5 +70,5 @@ Save the merged configuration PR and evidence of accepted update configuration. 
 
 [Dependabot configuration options](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference), [security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates), and [pip repeatable installs](https://pip.pypa.io/en/stable/topics/repeatable-installs/).
 
-| [Previous: approve a release](2-approve-a-release.md) | [Next: troubleshooting](troubleshooting.md) |
+| [Previous: approve a release](2-approve-a-release.md) | [Next: optional workload identity](4-workload-identity.md) |
 |:---|---:|
