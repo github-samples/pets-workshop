@@ -1,0 +1,14 @@
+{
+  "kind": "workshop-simulation-no-deployment",
+  "repository": "frye/pets-devsecops-rehearsal",
+  "commit": "de046227a52580e22f5834ff7ba907a60c7b3860",
+  "ref": "refs/heads/main",
+  "run": "https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35673125582",
+  "attempt": "1",
+  "prerequisites": [
+    "guard",
+    "release-api-tests",
+    "release-client-build"
+  ],
+  "environment": "workshop-demo"
+}

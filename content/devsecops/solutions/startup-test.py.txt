@@ -1,0 +1,10 @@
+    def test_direct_startup_disables_debug(self):
+        import os
+        from pathlib import Path
+        import runpy
+
+        with patch.dict(os.environ, {'DATABASE_PATH': ':memory:', 'FLASK_DEBUG': '1'}):
+            with patch('flask.Flask.run') as run:
+                runpy.run_path(str(Path(__file__).with_name('app.py')), run_name='__main__')
+
+        run.assert_called_once_with(debug=False, port=5100)

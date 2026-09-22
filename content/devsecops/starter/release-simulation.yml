@@ -1,0 +1,182 @@
+name: Release simulation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: workshop-release
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - &check-policy
+        name: Verify main revision and existing environment policy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import json
+          import os
+          import urllib.request
+
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(message)
+
+          require(os.environ["GITHUB_REF"] == "refs/heads/main", "Release requires main.")
+          require(os.environ["GITHUB_EVENT_NAME"] in ("push", "workflow_dispatch"), "Unsupported event.")
+          root = os.environ["GITHUB_API_URL"] + "/repos/" + os.environ["GITHUB_REPOSITORY"]
+
+          def get(path):
+              request = urllib.request.Request(root + path, headers={
+                  "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                  "Accept": "application/vnd.github+json",
+                  "X-GitHub-Api-Version": "2026-03-10",
+              })
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  return json.load(response)
+
+          require(get("/git/ref/heads/main")["object"]["sha"] == os.environ["GITHUB_SHA"],
+                  "Stale revision: cancel this run and run current main.")
+          environment = get("/environments/workshop-demo")
+          require(environment.get("can_admins_bypass") is False,
+                  "Disable administrator bypass on workshop-demo.")
+          require(any(rule["type"] == "required_reviewers" and rule.get("reviewers")
+                      for rule in environment["protection_rules"]),
+                  "Configure required reviewers on workshop-demo before running.")
+          policy = environment.get("deployment_branch_policy") or {}
+          require(policy.get("custom_branch_policies") is True
+                  and policy.get("protected_branches") is False,
+                  "Use selected branches and tags, with one branch rule: main.")
+          branches = get("/environments/workshop-demo/deployment-branch-policies?per_page=100")
+          require(branches["total_count"] == 1
+                  and branches["branch_policies"][0]["name"] == "main"
+                  and branches["branch_policies"][0]["type"] == "branch",
+                  "Only the main branch may use workshop-demo; remove other branch/tag rules.")
+
+  release-api-tests:
+    needs: guard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.14'
+      - name: Install workshop Python baseline
+        run: |
+          cat > "$RUNNER_TEMP/workshop-constraints.txt" <<'CONSTRAINTS'
+          blinker==1.9.0
+          click==8.5.0
+          Flask==3.1.3
+          Flask-SQLAlchemy==3.1.1
+          greenlet==3.5.6
+          itsdangerous==2.2.0
+          Jinja2==3.1.6
+          MarkupSafe==3.0.3
+          SQLAlchemy==2.0.54
+          typing_extensions==4.16.0
+          Werkzeug==3.1.8
+          CONSTRAINTS
+          python -m pip install -r app/server/requirements.txt -c "$RUNNER_TEMP/workshop-constraints.txt"
+          python -m pip check
+      - name: Run API tests
+        working-directory: app/server
+        env:
+          DATABASE_PATH: ':memory:'
+        run: python -m unittest test_app -v
+
+  release-client-build:
+    needs: guard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install and build client
+        working-directory: app/client
+        run: |
+          npm ci
+          npm run build
+
+  release:
+    needs: [guard, release-api-tests, release-client-build]
+    if: >-
+      ${{
+        always() && !cancelled() &&
+        needs.guard.result == 'success' &&
+        needs.release-api-tests.result == 'success' &&
+        needs.release-client-build.result == 'success'
+      }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    environment: workshop-demo
+    steps:
+      - *check-policy
+      - name: Write simulation receipt
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          receipt = {
+              "kind": "workshop-simulation-no-deployment",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "commit": os.environ["GITHUB_SHA"],
+              "ref": os.environ["GITHUB_REF"],
+              "run": os.environ["GITHUB_SERVER_URL"] + "/" + os.environ["GITHUB_REPOSITORY"]
+                     + "/actions/runs/" + os.environ["GITHUB_RUN_ID"],
+              "attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "prerequisites": ["guard", "release-api-tests", "release-client-build"],
+              "environment": "workshop-demo",
+          }
+          Path("receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
+          checksum = hashlib.sha256(Path("receipt.json").read_bytes()).hexdigest()
+          Path("receipt.sha256").write_text(checksum + "  receipt.json\n")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("## Cloud-free simulation\n\n")
+              summary.write("Revision: `" + receipt["commit"] + "`\n\n")
+              summary.write("Run: " + receipt["run"] + " (attempt " + receipt["attempt"] + ")\n\n")
+              summary.write("receipt.json SHA-256: `" + checksum + "`\n\n")
+      - name: Store receipt only
+        id: receipt
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: workshop-receipt-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            receipt.json
+            receipt.sha256
+          if-no-files-found: error
+          retention-days: 3
+      - name: Record artifact identity
+        env:
+          ARTIFACT_ID: ${{ steps.receipt.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.receipt.outputs.artifact-url }}
+          ARTIFACT_DIGEST: ${{ steps.receipt.outputs.artifact-digest }}
+        run: |
+          test -n "$ARTIFACT_ID"
+          test -n "$ARTIFACT_DIGEST"
+          {
+            printf 'Artifact ID: `%s`\n\n' "$ARTIFACT_ID"
+            printf 'Artifact: %s\n\n' "$ARTIFACT_URL"
+            printf 'Uploaded archive digest: `%s`\n' "$ARTIFACT_DIGEST"
+          } >> "$GITHUB_STEP_SUMMARY"

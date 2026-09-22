@@ -1,0 +1,27 @@
+{
+  "evidence_type": "recorded-author-run-not-learner-live",
+  "observed_utc": "2026-09-22",
+  "run": "https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35673125582",
+  "commit": "de046227a52580e22f5834ff7ba907a60c7b3860",
+  "attempt": 1,
+  "prerequisites": {
+    "guard": "success",
+    "release-api-tests": "success",
+    "release-client-build": "success"
+  },
+  "approval_wait_observed": true,
+  "approval": {
+    "reviewer": "frye",
+    "method": "REST pending_deployments approval",
+    "environment": "workshop-demo",
+    "administrator_bypass": false,
+    "solo_self_approval": true
+  },
+  "artifact_id": 10672032391,
+  "artifact_url": "https://github.com/frye/pets-devsecops-rehearsal/actions/runs/35673125582/artifacts/10672032391",
+  "artifact_size_bytes": 586,
+  "archive_digest": "sha256:71ecb675b0e73fe25ac30d6e8cc74ad4da2fc475b57f85fdf519b29c1198b609",
+  "artifact_expires_at": "2026-09-25T00:45:08Z",
+  "receipt_sha256": "8a9c06ad283091e4107dd67788a0e8fa89e14d54ab18c2ad3b34f35af3e8ee4a",
+  "receipt_download_and_checksum_verified": true
+}
