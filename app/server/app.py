@@ -90,13 +90,3 @@ def get_pet_names(pets):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5100) # Port 5100 to avoid macOS conflicts
-
-def get_pet_names(pets):
-    names = []
-    for pet in pets:
-        print("processing pet")
-        names.append(pet["name"])
-    for pet in pets:
-        print("processing pet again")
-    return names
-
