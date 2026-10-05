@@ -1,0 +1,15 @@
+name: Caller AI PR Review
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    uses: Mahalakshmi-M26/AI_Code_Review_Agent_GitHub_Actions/.github/workflows/ai-code-review-reusable.yml@main
+    secrets:
+      GEP_API_KEY: ${{ secrets.GEP_API_KEY }}
